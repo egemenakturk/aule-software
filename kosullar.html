@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>.i18n-pending body{visibility:hidden}</style>
+  <script>
+    /* Pick the language before first paint: ?lang= → saved choice → location (Türkiye time zone = TR, elsewhere = EN). */
+    (function () {
+      var d = document.documentElement, l = null, t = null;
+      /* Theme: saved choice, otherwise dark (the primary theme). */
+      try { t = localStorage.getItem('aule-theme'); } catch (e) {}
+      d.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
+      try { l = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+      if (l !== 'tr' && l !== 'en') { try { l = localStorage.getItem('aule-lang'); } catch (e) {} }
+      if (l !== 'tr' && l !== 'en') {
+        var c = (d.getAttribute('data-country') || '').toUpperCase(); /* optional: set by your host's geo header */
+        var z = ''; try { z = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+        l = c ? (c === 'TR' ? 'tr' : 'en') : (/Istanbul$/.test(z) ? 'tr' : 'en');
+      }
+      d.lang = l;
+      if (l === 'en') { d.classList.add('i18n-pending'); setTimeout(function () { d.classList.remove('i18n-pending'); }, 1500); }
+    })();
+  </script>
+  <title>Kullanım koşulları | Aule Software</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/aule.css">
+</head>
+<body data-title-en="Terms of use | Aule Software" data-desc-en="Aule Software">
+<a class="au-skip button-sm" href="#content" data-i18n="skip">İçeriğe geç</a>
+<main id="content" class="au-section">
+  <div class="au-container">
+    <div class="au-section-head au-measure" style="padding-top: var(--spacing-900)">
+      <a class="au-logo au-logo-lg" href="/" aria-label="Aule Software">Aule<i>.</i></a>
+      <p class="au-eyebrow caption-4" data-i18n="legal">Yasal</p>
+      <h1 class="heading-2" data-i18n="footer.terms">Kullanım koşulları</h1>
+      <p class="body-3 au-muted" data-i18n="terms.d">{{kullanım koşulları metni: hukuk danışmanınızdan alınacak}}</p>
+      <div><a class="au-btn au-btn-secondary" href="/" data-i18n="back">Ana sayfaya dön</a></div>
+    </div>
+  </div>
+</main>
+<script src="/assets/js/i18n.js"></script>
+</body>
+</html>

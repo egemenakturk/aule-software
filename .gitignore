@@ -1,0 +1,14 @@
+# Editors and OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local Claude settings (shared skills and launch config stay in the repo)
+.claude/settings.local.json
+
+# Dependencies and builds, if added later
+node_modules/
+dist/

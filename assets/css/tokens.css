@@ -1,0 +1,110 @@
+/* Aule Software — generated from tokens.json */
+:root, [data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #131209;
+  --surface-raised: #1f1f1f;
+  --surface-sunken: #000000;
+  --ink: #f3efe6;
+  --ink-muted: #9b978d;
+  --hairline: #313131;
+  --control-border: #77736a;
+  --brass: #c9a66b;
+  --action: #f3efe6;
+  --action-hover: #ffffff;
+  --on-action: #131209;
+  --focus: var(--brass);
+  --danger: #e8846e;
+  --heading-from: #ffffff;
+  --heading-to: #9b9b9b;
+  --band: #272727;
+  --on-band: #f3efe6;
+  --on-band-muted: #a9a497;
+  --band-accent: #c9a66b;
+  --band-line: #3d3d3d;
+  --surface-top: #1e1c15;
+  --surface-glow: rgba(201, 166, 107, 0.14);
+  --nav-glass: rgba(19, 18, 9, 0.72);
+  --nav-panel: rgba(19, 18, 9, 0.96);
+}
+:root {
+  --spacing-0: 0px;
+  --spacing-25: 2px;
+  --spacing-50: 4px;
+  --spacing-75: 8px;
+  --spacing-100: 12px;
+  --spacing-200: 16px;
+  --spacing-300: 24px;
+  --spacing-400: 32px;
+  --spacing-500: 40px;
+  --spacing-600: 48px;
+  --spacing-700: 64px;
+  --spacing-800: 80px;
+  --spacing-900: 96px;
+  --radius-none: 0px;
+  --radius-sm: 2px;
+  --radius-base: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-full: 9999px;
+  --opacity-word-muted: 0.3;
+  --opacity-disabled: 0.5;
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+[data-theme="light"] {
+  color-scheme: light;
+  --surface: #f6f3ec;
+  --surface-raised: #fbf9f4;
+  --surface-sunken: #ece8df;
+  --ink: #131209;
+  --ink-muted: #6b675e;
+  --hairline: #ddd8cc;
+  --control-border: #8f8a7f;
+  --brass: #7a5c30;
+  --action: #131209;
+  --action-hover: #34322a;
+  --on-action: #f6f3ec;
+  --focus: var(--brass);
+  --danger: #a3341f;
+  --heading-from: #000000;
+  --heading-to: #666666;
+  --band: #131209;
+  --on-band: #f3efe6;
+  --on-band-muted: #a9a497;
+  --band-accent: #c9a66b;
+  --band-line: #3a3830;
+  --surface-top: #f6f3ec;
+  --surface-glow: rgba(122, 92, 48, 0);
+  --nav-glass: rgba(246, 243, 236, 0.72);
+  --nav-panel: rgba(246, 243, 236, 0.96);
+}
+.heading-1 { font-family: var(--font-sans); font-size: 60px; line-height: 60px; font-weight: 600; letter-spacing: -0.025em; }
+.heading-2 { font-family: var(--font-sans); font-size: 48px; line-height: 48px; font-weight: 600; letter-spacing: -0.02em; }
+.heading-3 { font-family: var(--font-sans); font-size: 36px; line-height: 40px; font-weight: 600; letter-spacing: -0.02em; }
+.heading-4 { font-family: var(--font-sans); font-size: 30px; line-height: 36px; font-weight: 600; letter-spacing: -0.015em; }
+.heading-5 { font-family: var(--font-sans); font-size: 24px; line-height: 32px; font-weight: 600; letter-spacing: -0.01em; }
+.heading-6 { font-family: var(--font-sans); font-size: 20px; line-height: 28px; font-weight: 600; letter-spacing: -0.01em; }
+.title-1 { font-family: var(--font-sans); font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: -0.01em; }
+.title-2 { font-family: var(--font-sans); font-size: 18px; line-height: 28px; font-weight: 500; }
+.title-3 { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 500; }
+.title-4 { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 500; }
+.title-5 { font-family: var(--font-sans); font-size: 12px; line-height: 16px; font-weight: 500; }
+.body-1 { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 600; }
+.body-2 { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 500; }
+.body-3 { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 400; }
+.body-4 { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 600; }
+.body-5 { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 500; }
+.body-6 { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 400; }
+.button-lg { font-family: var(--font-sans); font-size: 18px; line-height: 28px; font-weight: 600; }
+.button-md { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 600; }
+.button-sm { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 600; }
+.button-xsm { font-family: var(--font-sans); font-size: 12px; line-height: 16px; font-weight: 600; }
+.caption-1 { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 500; }
+.caption-2 { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 400; }
+.caption-3 { font-family: var(--font-sans); font-size: 12px; line-height: 16px; font-weight: 600; }
+.caption-4 { font-family: var(--font-sans); font-size: 12px; line-height: 16px; font-weight: 500; }
+.caption-5 { font-family: var(--font-sans); font-size: 12px; line-height: 16px; font-weight: 400; }
+.code { font-family: var(--font-mono); font-size: 14px; line-height: 20px; font-weight: 400; }

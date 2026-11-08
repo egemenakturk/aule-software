@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="tr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>.i18n-pending body{visibility:hidden}</style>
+  <script>
+    /* Pick the language before first paint: ?lang= → saved choice → location (Türkiye time zone = TR, elsewhere = EN). */
+    (function () {
+      var d = document.documentElement, l = null, t = null;
+      /* Theme: saved choice, otherwise dark (the primary theme). */
+      try { t = localStorage.getItem('aule-theme'); } catch (e) {}
+      d.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
+      try { l = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+      if (l !== 'tr' && l !== 'en') { try { l = localStorage.getItem('aule-lang'); } catch (e) {} }
+      if (l !== 'tr' && l !== 'en') {
+        var c = (d.getAttribute('data-country') || '').toUpperCase(); /* optional: set by your host's geo header */
+        var z = ''; try { z = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+        l = c ? (c === 'TR' ? 'tr' : 'en') : (/Istanbul$/.test(z) ? 'tr' : 'en');
+      }
+      d.lang = l;
+      if (l === 'en') { d.classList.add('i18n-pending'); setTimeout(function () { d.classList.remove('i18n-pending'); }, 1500); }
+    })();
+  </script>
+  <title>Aule Software | Kurumsal dijital dönüşüm ve özel yazılım</title>
+  <meta name="description" content="Aule Software, departmanlarınızın iş süreçlerini analiz eder; verimliliği artıran ve operasyonel maliyeti düşüren yazılımları kurumunuza özel geliştirir.">
+  <meta name="theme-color" content="#131209">
+  <link rel="canonical" href="{{site_url}}/">
+  <link rel="alternate" hreflang="tr" href="{{site_url}}/?lang=tr">
+  <link rel="alternate" hreflang="en" href="{{site_url}}/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="{{site_url}}/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="Aule Software">
+  <meta property="og:title" content="Aule Software | Kurumsal dijital dönüşüm ve özel yazılım">
+  <meta property="og:description" content="Verimliliği artıran, operasyonel maliyeti düşüren, kurumunuza özel yazılım.">
+  <meta property="og:url" content="{{site_url}}/">
+  <meta property="og:image" content="{{site_url}}/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/aule.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Hazır yazılım yerine neden kurumunuza özel yazılım?", "acceptedAnswer": {"@type": "Answer", "text": "Paket yazılımlar ortak ihtiyaçlara göre tasarlanır ve süreçlerinizi onlara uyarlamanızı gerektirir. Kurumunuza özel yazılım ise mevcut iş akışınıza uyum sağlar."}},
+      {"@type": "Question", "name": "Özel yazılım yüksek bütçe gerektirmez mi?", "acceptedAnswer": {"@type": "Answer", "text": "Yapay zekâ destekli geliştirme, maliyeti ve teslim süresini belirgin biçimde düşürdü. Her öneriyi yatırımın geri dönüş süresiyle birlikte sunuyoruz."}},
+      {"@type": "Question", "name": "Fiyatlandırma nasıl belirleniyor?", "acceptedAnswer": {"@type": "Answer", "text": "Fiyatlandırma projenin kapsamına göre belirlenir. Analizin ardından, beklenen yatırım getirisiyle birlikte projeye özel bir teklif sunarız."}},
+      {"@type": "Question", "name": "Kaynak kod ve veriler kime ait olur?", "acceptedAnswer": {"@type": "Answer", "text": "Geliştirdiğimiz yazılımın kaynak kodu ve tüm verileri kurumunuza aittir."}},
+      {"@type": "Question", "name": "Yayından sonra destek veriyor musunuz?", "acceptedAnswer": {"@type": "Answer", "text": "Evet. Yıllık bakım ve teknik destek kapsamında sistemlerinizi güncel ve güvenli tutuyoruz."}},
+      {"@type": "Question", "name": "Süreç nasıl başlıyor?", "acceptedAnswer": {"@type": "Answer", "text": "Bir ön görüşmeyle hedeflerinizi ve öncelikli departmanları belirliyoruz. Ardından yerinde analizle iş süreçlerini inceliyor ve önerilerimizi raporluyoruz."}}
+    ]
+  }
+  </script>
+</head>
+<body>
+<!--page:start-->
+<a class="au-skip button-sm" href="#content" data-i18n="skip">İçeriğe geç</a>
+
+<header>
+  <nav class="au-nav" aria-label="Ana menü" data-i18n-attr="aria-label=nav.label">
+    <a class="au-logo" href="#top" aria-label="Aule Software, sayfa başı" data-i18n-attr="aria-label=nav.home">Aule<i>.</i></a>
+    <ul class="au-nav-links title-4">
+      <li><a href="#services" data-nav-link data-i18n="nav.services">Hizmetler</a></li>
+      <li><a href="#cases" data-nav-link data-i18n="nav.cases">Projeler</a></li>
+      <li><a href="#commitments" data-nav-link data-i18n="nav.commitments">Taahhütler</a></li>
+      <li><a href="#faq" data-nav-link data-i18n="nav.faq">SSS</a></li>
+    </ul>
+    <div class="au-lang" role="group" aria-label="Dil seçimi" data-i18n-attr="aria-label=lang.label">
+      <button type="button" data-lang="tr" aria-pressed="true" lang="tr" aria-label="Türkçe">TR</button>
+      <button type="button" data-lang="en" aria-pressed="false" lang="en" aria-label="English">EN</button>
+    </div>
+    <button class="au-theme" type="button" data-theme-toggle aria-label="Açık temaya geç"><svg class="au-icon sun" viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="56"/><line x1="128" y1="40" x2="128" y2="16"/><line x1="64" y1="64" x2="48" y2="48"/><line x1="64" y1="192" x2="48" y2="208"/><line x1="192" y1="64" x2="208" y2="48"/><line x1="192" y1="192" x2="208" y2="208"/><line x1="40" y1="128" x2="16" y2="128"/><line x1="128" y1="216" x2="128" y2="240"/><line x1="216" y1="128" x2="240" y2="128"/></svg><svg class="au-icon moon" viewBox="0 0 256 256" aria-hidden="true"><path d="M108.1 28.1a96.1 96.1 0 0 0 119.8 119.8A96 96 0 1 1 108.1 28.1Z"/></svg></button>
+    <a class="au-btn au-btn-primary au-btn-sm" href="#contact" data-i18n="cta">Ön görüşme planlayın</a>
+    <button class="au-nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menüyü aç" data-menu-toggle><span></span><span></span></button>
+  </nav>
+  <div class="au-menu" id="menu" aria-hidden="true">
+    <ul class="heading-4">
+      <li style="--i:0"><a href="#services" data-nav-link data-i18n="nav.services">Hizmetler</a></li>
+      <li style="--i:1"><a href="#cases" data-nav-link data-i18n="nav.cases">Projeler</a></li>
+      <li style="--i:2"><a href="#commitments" data-nav-link data-i18n="nav.commitments">Taahhütler</a></li>
+      <li style="--i:3"><a href="#faq" data-nav-link data-i18n="nav.faq">SSS</a></li>
+    </ul>
+    <div class="au-menu-foot" style="--i:4">
+      <a class="au-btn au-btn-primary" href="#contact" data-i18n="cta">Ön görüşme planlayın</a>
+    </div>
+  </div>
+</header>
+
+<main id="content">
+  <!-- Hero -->
+  <section class="au-hero" id="top" aria-labelledby="hero-title">
+    <div class="au-container">
+      <div class="au-hero-mark" aria-hidden="true"><span class="au-mark"><span class="au-mark-l" style="--k:0">A</span><span class="au-mark-l" style="--k:1">u</span><span class="au-mark-l" style="--k:2">l</span><span class="au-mark-l" style="--k:3">e</span><span class="au-mark-dot"><span class="au-mark-ring" style="--r:0"></span><span class="au-mark-ring" style="--r:1"></span><span class="au-mark-ring" style="--r:2"></span></span></span></div>
+      <div class="au-hero-copy">
+        <p class="au-eyebrow caption-4 au-intro" style="--d:0" data-i18n="hero.eyebrow">Kurumsal dijital dönüşüm</p>
+        <h1 class="au-hero-title heading-1" id="hero-title" data-split data-i18n="hero.title">Verimliliği artıran,<br> maliyeti düşüren<br> kurumsal yazılım.</h1>
+        <p class="au-hero-sub body-3 au-intro" style="--d:3" data-i18n="hero.sub">Departmanlarınızın iş süreçlerini analiz ediyor, operasyonunuzu hızlandıran yazılımları kurumunuza özel geliştiriyoruz.</p>
+        <div class="au-hero-actions au-intro" style="--d:4">
+          <a class="au-btn au-btn-primary" href="#contact"><span class="au-btn-label" data-i18n="cta">Ön görüşme planlayın</span><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/><polyline points="144 56 216 128 144 200"/></svg></a>
+          <p class="au-trust caption-2"><span><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="trust.1">Kaynak kod sizindir</span></span><span><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="trust.2">Yıllık bakım ve teknik destek</span></span></p>
+        </div>
+      </div>
+
+      <div class="au-panel au-reveal" role="img" aria-label="Departmanlarınızın tek bir kurumsal platformda birleştiğini gösteren şema" data-i18n-attr="aria-label=map.label">
+        <div class="au-panel-inner" aria-hidden="true">
+          <svg class="au-dotgrid" aria-hidden="true"><defs><pattern id="au-dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="currentColor"/></pattern></defs><rect width="100%" height="100%" fill="url(#au-dots)"/></svg>
+          <div class="au-map-depts title-4">
+            <span class="au-chip" style="--c:0" data-i18n="map.d1">Finans</span>
+            <span class="au-chip" style="--c:1" data-i18n="map.d2">İnsan kaynakları</span>
+            <span class="au-chip" style="--c:2" data-i18n="map.d3">Operasyon</span>
+            <span class="au-chip" style="--c:3" data-i18n="map.d4">Satın alma</span>
+            <span class="au-chip" style="--c:4" data-i18n="map.d5">Satış</span>
+          </div>
+          <svg class="au-map-lines" viewBox="0 0 1000 80" preserveAspectRatio="none">
+            <path d="M100 0 C100 48 500 32 500 80"/><path d="M300 0 C300 48 500 32 500 80"/><path d="M500 0 L500 80"/><path d="M700 0 C700 48 500 32 500 80"/><path d="M900 0 C900 48 500 32 500 80"/>
+            <circle class="au-pulse" r="3.5" opacity="0"><animateMotion dur="3s" begin="0s" repeatCount="indefinite" path="M100 0 C100 48 500 32 500 80" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.22 1 0.36 1"/><animate attributeName="opacity" dur="3s" begin="0s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.15;0.75;1"/></circle><circle class="au-pulse" r="3.5" opacity="0"><animateMotion dur="3s" begin="0.6s" repeatCount="indefinite" path="M300 0 C300 48 500 32 500 80" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.22 1 0.36 1"/><animate attributeName="opacity" dur="3s" begin="0.6s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.15;0.75;1"/></circle><circle class="au-pulse" r="3.5" opacity="0"><animateMotion dur="3s" begin="1.2s" repeatCount="indefinite" path="M500 0 L500 80" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.22 1 0.36 1"/><animate attributeName="opacity" dur="3s" begin="1.2s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.15;0.75;1"/></circle><circle class="au-pulse" r="3.5" opacity="0"><animateMotion dur="3s" begin="1.8s" repeatCount="indefinite" path="M700 0 C700 48 500 32 500 80" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.22 1 0.36 1"/><animate attributeName="opacity" dur="3s" begin="1.8s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.15;0.75;1"/></circle><circle class="au-pulse" r="3.5" opacity="0"><animateMotion dur="3s" begin="2.4s" repeatCount="indefinite" path="M900 0 C900 48 500 32 500 80" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.22 1 0.36 1"/><animate attributeName="opacity" dur="3s" begin="2.4s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.15;0.75;1"/></circle>
+          </svg>
+          <div class="au-map-core">
+            <div class="au-map-head"><span class="title-3" data-i18n="map.core">Kurumunuza özel platform</span><span class="au-live caption-3"><span class="au-live-dot"></span><span data-i18n="map.live">Canlı</span></span></div>
+            <div class="au-map-modules">
+              <div class="au-module">
+                <span class="au-module-title title-4"><svg class="au-icon" viewBox="0 0 256 256"><path d="M96 240l16-80-64-24L160 16l-16 80 64 24Z"/></svg><span data-i18n="map.m1">Otomasyon</span></span>
+                <ul class="au-tasks caption-4">
+                  <li style="--t:0"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="map.t1">Talep onaylandı</span></li>
+                  <li style="--t:1"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="map.t2">Fatura eşleştirildi</span></li>
+                  <li style="--t:2"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="map.t3">Rapor gönderildi</span></li>
+                </ul>
+              </div>
+              <div class="au-module">
+                <span class="au-module-title title-4"><svg class="au-icon" viewBox="0 0 256 256"><ellipse cx="128" cy="80" rx="88" ry="48"/><path d="M40 80v48c0 26.5 39.4 48 88 48s88-21.5 88-48V80"/><path d="M40 128v48c0 26.5 39.4 48 88 48s88-21.5 88-48v-48"/></svg><span data-i18n="map.m2">Entegre veri</span></span>
+                <div class="au-sources caption-3"><span>ERP</span><span>CRM</span><span data-i18n="map.s3">İK</span></div>
+                <div class="au-sync"><span class="au-sync-bar"><span></span></span><span class="caption-5 au-muted" data-i18n="map.sync">Senkronize ediliyor</span></div>
+              </div>
+              <div class="au-module">
+                <span class="au-module-title title-4"><svg class="au-icon" viewBox="0 0 256 256"><polyline points="48 208 48 136 96 136"/><line x1="224" y1="208" x2="32" y2="208"/><polyline points="96 208 96 88 152 88"/><polyline points="152 208 152 40 208 40 208 208"/></svg><span data-i18n="map.m3">Raporlama</span></span>
+                <div class="au-bars"><span style="--h:0.38;--b:0"></span><span style="--h:0.46;--b:1"></span><span style="--h:0.42;--b:2"></span><span style="--h:0.58;--b:3"></span><span style="--h:0.66;--b:4"></span><span style="--h:0.8;--b:5"></span><span style="--h:0.94;--b:6"></span></div>
+              </div>
+            </div>
+            <div class="au-map-kpis body-5">
+              <span class="au-kpi"><svg class="au-icon au-kpi-up" viewBox="0 0 256 256"><polyline points="232 56 136 152 96 112 24 184"/><polyline points="232 120 232 56 168 56"/></svg><span data-i18n="map.k1">Verimlilik</span></span>
+              <span class="au-kpi"><svg class="au-icon au-kpi-down" viewBox="0 0 256 256"><polyline points="232 200 136 104 96 144 24 72"/><polyline points="232 136 232 200 168 200"/></svg><span data-i18n="map.k2">Operasyonel maliyet</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tagline reveal -->
+  <section class="au-tagline" aria-label="İlkemiz" data-i18n-attr="aria-label=tagline.label">
+    <div class="au-container">
+      <div class="au-band au-tagline-band">
+        <svg class="au-dotgrid" aria-hidden="true"><defs><pattern id="au-dots-tag" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="currentColor"/></pattern></defs><rect width="100%" height="100%" fill="url(#au-dots-tag)"/></svg>
+        <p class="au-tagline-text heading-1" data-tagline data-i18n="tagline">Hazır yazılım<br> ortak sorunları çözer.<br> Biz sizinkini çözeriz.</p>
+        <svg class="au-icon au-tagline-mark" style="width:48px;height:48px" viewBox="0 0 256 256" aria-hidden="true"><rect x="48" y="48" width="64" height="64" rx="8"/><rect x="144" y="48" width="64" height="64" rx="8"/><rect x="48" y="144" width="64" height="64" rx="8"/><rect x="144" y="144" width="64" height="64" rx="8"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services and process -->
+  <section class="au-section" id="services" aria-labelledby="work-title">
+    <div class="au-container">
+      <div class="au-section-head au-measure au-reveal">
+        <p class="au-eyebrow caption-4" data-i18n="work.eyebrow">Hizmetler ve süreç</p>
+        <h2 class="heading-2" id="work-title" data-split data-i18n="work.title">Analizden kalıcı desteğe,<br> tek bir iş ortağı.</h2>
+      </div>
+      <div class="au-work au-reveal" data-work>
+        <div class="au-work-tabs" role="tablist" aria-label="Hizmet adımları" data-i18n-attr="aria-label=work.label">
+          <button class="au-work-tab" type="button" role="tab" id="work-tab-1" aria-controls="work-panel-1" aria-selected="true" tabindex="0">
+            <span class="au-work-num code">01</span>
+            <span class="au-work-text"><span class="title-1" data-i18n="work.1.t">Analiz</span><span class="body-6 au-work-desc" data-i18n="work.1.d">Departmanlarınızla birebir görüşerek mevcut iş akışlarını haritalar, tekrar eden manuel adımları ve görünmeyen maliyetleri tespit ederiz. Çalışan saatini, hata oranını ve fırsat maliyetini birlikte hesaplarız.</span><span class="au-work-deliver caption-3"><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.1.o1">İş akışı haritası</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.1.o2">Maliyet analizi</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.1.o3">Fırsat raporu</span></span></span></span>
+            <span class="au-work-progress" aria-hidden="true"><span></span></span>
+          </button>
+          <button class="au-work-tab" type="button" role="tab" id="work-tab-2" aria-controls="work-panel-2" aria-selected="false" tabindex="-1">
+            <span class="au-work-num code">02</span>
+            <span class="au-work-text"><span class="title-1" data-i18n="work.2.t">Çözüm tasarımı</span><span class="body-6 au-work-desc" data-i18n="work.2.d">Otomasyon potansiyeli en yüksek alanları önceliklendirir, her öneri için yatırım getirisini ve uygulama yol haritasını çıkarırız. Neyin, hangi sırayla ve ne kadar sürede hayata geçeceği baştan bellidir.</span><span class="au-work-deliver caption-3"><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.2.o1">Önceliklendirme</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.2.o2">Yatırım getirisi hesabı</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.2.o3">Yol haritası</span></span></span></span>
+            <span class="au-work-progress" aria-hidden="true"><span></span></span>
+          </button>
+          <button class="au-work-tab" type="button" role="tab" id="work-tab-3" aria-controls="work-panel-3" aria-selected="false" tabindex="-1">
+            <span class="au-work-num code">03</span>
+            <span class="au-work-text"><span class="title-1" data-i18n="work.3.t">Geliştirme</span><span class="body-6 au-work-desc" data-i18n="work.3.d">Kurum içi altyapınızla uyumlu, güvenli web platformları geliştiririz: kullanıcı ve rol yönetimi, raporlama panelleri ve mevcut sistemlerle entegrasyon dahil. Yapay zekâ destekli geliştirmeyle kısa döngülerde, ekiplerinizle birlikte test ederek ilerleriz.</span><span class="au-work-deliver caption-3"><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.3.o1">İntranet platformu</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.3.o2">Rol ve yetki yönetimi</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.3.o3">Raporlama panelleri</span></span></span></span>
+            <span class="au-work-progress" aria-hidden="true"><span></span></span>
+          </button>
+          <button class="au-work-tab" type="button" role="tab" id="work-tab-4" aria-controls="work-panel-4" aria-selected="false" tabindex="-1">
+            <span class="au-work-num code">04</span>
+            <span class="au-work-text"><span class="title-1" data-i18n="work.4.t">Eğitim ve devreye alma</span><span class="body-6 au-work-desc" data-i18n="work.4.d">Sistemi kademeli olarak devreye alır, her kullanıcı grubuna uygulamalı eğitim veririz. Kullanım kılavuzları ve değişim yönetimi desteğiyle yazılım ilk günden gündelik işin parçası olur.</span><span class="au-work-deliver caption-3"><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.4.o1">Uygulamalı eğitim</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.4.o2">Kullanım kılavuzları</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.4.o3">Değişim yönetimi</span></span></span></span>
+            <span class="au-work-progress" aria-hidden="true"><span></span></span>
+          </button>
+          <button class="au-work-tab" type="button" role="tab" id="work-tab-5" aria-controls="work-panel-5" aria-selected="false" tabindex="-1">
+            <span class="au-work-num code">05</span>
+            <span class="au-work-text"><span class="title-1" data-i18n="work.5.t">Bakım ve destek</span><span class="body-6 au-work-desc" data-i18n="work.5.d">Yıllık bakım ve teknik destek kapsamında güvenlik güncellemelerini, performans iyileştirmelerini ve yeni özellik geliştirmelerini üstleniriz. Sistemleriniz yayından sonra da güncel ve güvenli kalır.</span><span class="au-work-deliver caption-3"><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.5.o1">Güvenlik güncellemeleri</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.5.o2">Performans izleme</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.5.o3">Yeni özellikler</span></span></span></span>
+            <span class="au-work-progress" aria-hidden="true"><span></span></span>
+          </button>
+        </div>
+        <div class="au-work-stage">
+          <svg class="au-dotgrid" aria-hidden="true"><defs><pattern id="au-dots-work" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="currentColor"/></pattern></defs><rect width="100%" height="100%" fill="url(#au-dots-work)"/></svg>
+          <div class="au-work-panel is-active" role="tabpanel" id="work-panel-1" aria-labelledby="work-tab-1">
+            <div class="au-work-panel-head"><span class="title-3" data-i18n="viz.1.title">Manuel iş yükü haritası</span><span class="au-tag caption-3" data-i18n="viz.1.tag">Analiz raporu</span></div><div class="au-rows"><div class="au-row"><span class="body-5" data-i18n="map.d1">Finans</span><span class="au-meter"><span style="--w:0.62;--b:0"></span></span><span></span></div><div class="au-row"><span class="body-5" data-i18n="map.d2">İnsan kaynakları</span><span class="au-meter"><span style="--w:0.44;--b:1"></span></span><span></span></div><div class="au-row"><span class="body-5" data-i18n="map.d3">Operasyon</span><span class="au-meter is-accent"><span style="--w:0.88;--b:2"></span></span><span class="au-tag is-accent caption-3" data-i18n="viz.opportunity">Fırsat</span></div><div class="au-row"><span class="body-5" data-i18n="map.d4">Satın alma</span><span class="au-meter is-accent"><span style="--w:0.74;--b:3"></span></span><span class="au-tag is-accent caption-3" data-i18n="viz.opportunity">Fırsat</span></div><div class="au-row"><span class="body-5" data-i18n="map.d5">Satış</span><span class="au-meter"><span style="--w:0.36;--b:4"></span></span><span></span></div></div>
+          </div>
+          <div class="au-work-panel" role="tabpanel" id="work-panel-2" aria-labelledby="work-tab-2">
+            <div class="au-work-panel-head"><span class="title-3" data-i18n="viz.2.title">Önceliklendirilmiş öneriler</span></div><div class="au-proposals"><div class="au-proposal" style="--b:0"><span class="title-4"><span data-i18n="viz.proposal">Öneri</span> A</span><span class="au-proposal-row"><span class="caption-5 au-muted" data-i18n="viz.roi">Yatırım getirisi</span><span class="au-tag is-accent caption-3"><span data-i18n="viz.priority">Öncelik</span> 1</span></span><span class="au-meter is-accent"><span style="--w:0.92;--b:2"></span></span></div><div class="au-proposal" style="--b:1"><span class="title-4"><span data-i18n="viz.proposal">Öneri</span> B</span><span class="au-proposal-row"><span class="caption-5 au-muted" data-i18n="viz.roi">Yatırım getirisi</span><span class="au-tag caption-3"><span data-i18n="viz.priority">Öncelik</span> 2</span></span><span class="au-meter"><span style="--w:0.74;--b:3"></span></span></div><div class="au-proposal" style="--b:2"><span class="title-4"><span data-i18n="viz.proposal">Öneri</span> C</span><span class="au-proposal-row"><span class="caption-5 au-muted" data-i18n="viz.roi">Yatırım getirisi</span><span class="au-tag caption-3"><span data-i18n="viz.priority">Öncelik</span> 3</span></span><span class="au-meter"><span style="--w:0.55;--b:4"></span></span></div></div>
+          </div>
+          <div class="au-work-panel" role="tabpanel" id="work-panel-3" aria-labelledby="work-tab-3">
+            <div class="au-work-panel-head"><span class="title-3" data-i18n="viz.3.title">Teslim döngüleri</span><span class="au-tag is-accent caption-3"><span class="au-live-dot"></span><span data-i18n="viz.3.live">Yayında</span></span></div><div class="au-work-card"><div class="au-track"><span class="au-node" style="--b:0"><i></i><span class="code">v0.1</span></span><span class="au-node" style="--b:1"><i></i><span class="code">v0.5</span></span><span class="au-node" style="--b:2"><i></i><span class="code">v0.9</span></span><span class="au-node" style="--b:3"><i></i><span class="code">v1.0</span></span></div><div class="au-steps-mini caption-3"><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="viz.3.a">Tasarım</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="viz.3.b">Geliştirme</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="viz.3.c">Test</span></span></div></div>
+          </div>
+          <div class="au-work-panel" role="tabpanel" id="work-panel-4" aria-labelledby="work-tab-4">
+            <div class="au-work-panel-head"><span class="title-3" data-i18n="viz.4.title">Ekip adaptasyonu</span><span class="au-tag caption-3" data-i18n="viz.4.tag">Eğitim tamamlandı</span></div><div class="au-work-card"><div class="au-people"><span style="--b:0"></span><span style="--b:1"></span><span style="--b:2"></span><span style="--b:3"></span><span style="--b:4"></span><span style="--b:5"></span><span style="--b:6"></span><span style="--b:7"></span><span style="--b:8"></span><span style="--b:9"></span><span style="--b:10"></span><span style="--b:11"></span><span style="--b:12"></span><span style="--b:13"></span><span style="--b:14"></span><span style="--b:15"></span></div><div class="au-meter is-accent"><span style="--w:1;--b:12"></span></div></div>
+          </div>
+          <div class="au-work-panel" role="tabpanel" id="work-panel-5" aria-labelledby="work-tab-5">
+            <div class="au-work-panel-head"><span class="title-3" data-i18n="viz.5.title">Yıllık bakım planı</span><span class="au-tag is-accent caption-3" data-i18n="viz.5.tag">Yıllık plan</span></div><div class="au-status"><div class="au-status-row" style="--b:0"><span class="body-5" data-i18n="viz.5.a">Güvenlik güncellemeleri</span><span class="au-tag caption-3"><span class="au-live-dot"></span><span data-i18n="viz.5.ok">Güncel</span></span></div><div class="au-status-row" style="--b:1"><span class="body-5" data-i18n="viz.5.b">Performans izleme</span><span class="au-tag caption-3"><span class="au-live-dot"></span><span data-i18n="viz.5.active">Aktif</span></span></div><div class="au-status-row" style="--b:2"><span class="body-5" data-i18n="viz.5.c">Teknik destek</span><span class="au-tag caption-3"><span class="au-live-dot"></span><span data-i18n="viz.5.avail">Erişilebilir</span></span></div><div class="au-status-row" style="--b:3"><span class="body-5" data-i18n="viz.5.d">Yeni geliştirmeler</span><span class="au-tag caption-3"><span class="au-live-dot"></span><span data-i18n="viz.5.plan">Planlı</span></span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case studies -->
+  <section class="au-section" id="cases" aria-labelledby="cases-title">
+    <div class="au-container">
+      <div class="au-section-head au-measure au-reveal">
+        <p class="au-eyebrow caption-4" data-i18n="cases.eyebrow">Projeler</p>
+        <h2 class="heading-2" id="cases-title" data-split data-i18n="cases.title">Dönüşüm,<br> rakamlarla.</h2>
+        <p class="body-3 au-muted" data-i18n="cases.d">İki farklı departmanda hayata geçirdiğimiz projeler ve sonuçları.</p>
+      </div>
+      <div class="au-cases">
+        <article class="au-case">
+          <div class="au-case-copy au-reveal">
+            <span class="au-case-tag caption-4"><span class="au-live-dot"></span><span data-i18n="case.1.tag">Bankacılık · İnsan kaynakları</span></span>
+            <h3 class="heading-4" data-i18n="case.1.title">İK etkinlik ve eğitim yönetimi</h3>
+            <p class="body-3" data-i18n="case.1.sub">Büyük bir bankanın İK departmanı, yıl boyunca düzenlenen etkinlik ve eğitim süreçlerini manuel yönetiyordu.</p>
+            <div class="au-case-blocks">
+              <div class="au-case-block is-problem"><h4 class="caption-3"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="96"/><line x1="128" y1="80" x2="128" y2="136"/><circle cx="128" cy="172" r="4" fill="currentColor"/></svg><span data-i18n="case.problem">Sorun</span></h4><p class="body-6" data-i18n="case.1.prob">Etkinlik planlama, katılımcı takibi, salon ve yemek organizasyonu ve eğitim sertifikaları Excel ve mail üzerinden yürütülüyordu. Bu süreçleri iki çalışan yürütüyordu.</p></div>
+              <div class="au-case-block"><h4 class="caption-3"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="case.solution">Çözüm</span></h4><p class="body-6" data-i18n="case.1.sol">İntranet tabanlı etkinlik yönetim platformu: otomatik davet, katılım takibi, salon ve yemek yönetimi, sertifika oluşturma ve raporlama tek ekranda.</p></div>
+            </div>
+          </div>
+          <div class="au-ledger au-reveal">
+            <svg class="au-dotgrid" aria-hidden="true"><defs><pattern id="au-dots-case1" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="currentColor"/></pattern></defs><rect width="100%" height="100%" fill="url(#au-dots-case1)"/></svg>
+            <div class="au-ledger-head caption-4"><span data-i18n="case.ledger">Maliyet karşılaştırması</span><span class="au-logo" aria-hidden="true">Aule<i>.</i></span></div>
+            <div class="au-ledger-rows body-5">
+              <div class="au-ledger-label caption-5" data-i18n="case.opex">Yıllık operasyonel maliyet</div>
+              <div class="au-ledger-row"><span data-i18n="case.manual">Manuel süreç</span><span class="is-old" data-count="565820">₺565.820</span></div>
+              <div class="au-ledger-row"><span data-i18n="case.after">Yazılım sonrası</span><span data-count="132185">₺132.185</span></div>
+              <div class="au-ledger-row"><span data-i18n="case.invest">Yazılım yatırımı</span><span data-count="350000">₺350.000</span></div>
+            </div>
+            <div class="au-ledger-save"><span class="heading-2" data-count="433635">₺433.635</span><span class="caption-2" data-i18n="case.save">Yıllık operasyonel tasarruf</span></div>
+            <div class="au-ledger-roi caption-5"><span data-i18n="case.1.roi">Yatırım yaklaşık 10 ayda kendini amorti eder</span><span class="au-roi-track"><span style="--w:0.81"></span></span></div>
+          </div>
+        </article>
+        <article class="au-case">
+          <div class="au-case-copy au-reveal">
+            <span class="au-case-tag caption-4"><span class="au-live-dot"></span><span data-i18n="case.2.tag">Enerji · Hukuk</span></span>
+            <h3 class="heading-4" data-i18n="case.2.title">Sözleşme ve hukuki süreç takibi</h3>
+            <p class="body-3" data-i18n="case.2.sub">Bir enerji şirketinin hukuk departmanı, yüzlerce tedarikçi sözleşmesini ve hukuki süreci kâğıt dosyalar ve Excel ile takip ediyordu.</p>
+            <div class="au-case-blocks">
+              <div class="au-case-block is-problem"><h4 class="caption-3"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="96"/><line x1="128" y1="80" x2="128" y2="136"/><circle cx="128" cy="172" r="4" fill="currentColor"/></svg><span data-i18n="case.problem">Sorun</span></h4><p class="body-6" data-i18n="case.2.prob">Sözleşme yenilemeleri kaçırılıyor, dava takibi zorlaşıyor, mevzuat değişiklikleri geç fark ediliyordu. Departmandaki herkes bu takibe ara ara zaman ayırmak zorunda kalıyordu; dosya aramak gündelik işin bir parçası olmuştu.</p></div>
+              <div class="au-case-block"><h4 class="caption-3"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="case.solution">Çözüm</span></h4><p class="body-6" data-i18n="case.2.sol">Dijital sözleşme yönetim sistemi: otomatik yenileme hatırlatmaları, dava takvimi, mevzuat takip modülü, onay akışları ve arama.</p></div>
+            </div>
+          </div>
+          <div class="au-ledger au-reveal">
+            <svg class="au-dotgrid" aria-hidden="true"><defs><pattern id="au-dots-case2" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="currentColor"/></pattern></defs><rect width="100%" height="100%" fill="url(#au-dots-case2)"/></svg>
+            <div class="au-ledger-head caption-4"><span data-i18n="case.ledger">Maliyet karşılaştırması</span><span class="au-logo" aria-hidden="true">Aule<i>.</i></span></div>
+            <div class="au-ledger-rows body-5">
+              <div class="au-ledger-label caption-5" data-i18n="case.opex">Yıllık operasyonel maliyet</div>
+              <div class="au-ledger-row"><span data-i18n="case.manual">Manuel süreç</span><span class="is-old" data-count="850909">₺850.909</span></div>
+              <div class="au-ledger-row"><span data-i18n="case.after">Yazılım sonrası</span><span data-count="283636">₺283.636</span></div>
+              <div class="au-ledger-row"><span data-i18n="case.invest">Yazılım yatırımı</span><span data-count="450000">₺450.000</span></div>
+            </div>
+            <div class="au-ledger-save"><span class="heading-2" data-count="567273">₺567.273</span><span class="caption-2" data-i18n="case.save">Yıllık operasyonel tasarruf</span></div>
+            <div class="au-ledger-roi caption-5"><span data-i18n="case.2.roi">Yatırım yaklaşık 10 ayda kendini amorti eder</span><span class="au-roi-track"><span style="--w:0.79"></span></span></div>
+          </div>
+        </article>
+      </div>
+      <p class="au-cases-note caption-5" data-i18n="cases.note">Maliyetler yıllık operasyonel maliyeti gösterir; yazılım yatırımı ayrıca belirtilmiştir. Sizin süreciniz için hesabı analiz sonunda birlikte yaparız.</p>
+    </div>
+  </section>
+
+  <!-- Approach / why now -->
+  <section class="au-section" id="approach" aria-labelledby="approach-title">
+    <div class="au-container au-split">
+      <div class="au-section-head au-reveal">
+        <p class="au-eyebrow caption-4" data-i18n="approach.eyebrow">Yaklaşım</p>
+        <h2 class="heading-2" id="approach-title" data-split data-i18n="approach.title">Paket yazılım mı,<br> size özel yazılım mı?</h2>
+        <p class="body-3 au-muted" data-i18n="approach.d">Farkı belirleyen, yazılımın sizin süreçlerinize göre kurulması ve tamamen size ait olmasıdır.</p>
+      </div>
+      <table class="au-compare au-reveal">
+        <caption class="au-sr" data-i18n="compare.caption">Paket yazılım ile Aule karşılaştırması</caption>
+        <thead class="caption-1">
+          <tr><th scope="col"><span class="au-sr" data-i18n="compare.feature">Özellik</span></th><th scope="col" data-i18n="compare.pkg">Paket yazılım</th><th scope="col">Aule</th></tr>
+        </thead>
+        <tbody class="body-5">
+          <tr><th scope="row" data-i18n="compare.1">Süreçlerinize göre tasarım</th><td class="is-no"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/></svg><span class="au-sr" data-i18n="compare.no">Hayır</span></td><td class="is-yes"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span class="au-sr" data-i18n="compare.yes">Evet</span></td></tr>
+          <tr><th scope="row" data-i18n="compare.2">Yalnızca ihtiyaç duyulan işlevler</th><td class="is-no"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/></svg><span class="au-sr" data-i18n="compare.no">Hayır</span></td><td class="is-yes"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span class="au-sr" data-i18n="compare.yes">Evet</span></td></tr>
+          <tr><th scope="row" data-i18n="compare.3">Yerinde süreç analizi</th><td class="is-no"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/></svg><span class="au-sr" data-i18n="compare.no">Hayır</span></td><td class="is-yes"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span class="au-sr" data-i18n="compare.yes">Evet</span></td></tr>
+          <tr><th scope="row" data-i18n="compare.4">Önceden hesaplanan yatırım getirisi</th><td class="is-no"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/></svg><span class="au-sr" data-i18n="compare.no">Hayır</span></td><td class="is-yes"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span class="au-sr" data-i18n="compare.yes">Evet</span></td></tr>
+          <tr><th scope="row" data-i18n="compare.5">Kaynak kod sahipliği</th><td class="is-no"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/></svg><span class="au-sr" data-i18n="compare.no">Hayır</span></td><td class="is-yes"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span class="au-sr" data-i18n="compare.yes">Evet</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Commitments -->
+  <section class="au-section" id="commitments" aria-labelledby="commit-title">
+    <div class="au-container">
+      <div class="au-band au-reveal">
+        <div class="au-band-head">
+          <p class="au-eyebrow caption-4" data-i18n="commit.eyebrow">Taahhütlerimiz</p>
+          <h2 class="heading-2" id="commit-title" data-split data-i18n="commit.title">Uzun vadeli<br> bir iş ortaklığı.</h2>
+        </div>
+        <div class="au-band-grid au-reveal au-stagger">
+          <div class="au-band-item">
+            <span class="au-tile-icon"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="64 88 16 128 64 168"/><polyline points="192 88 240 128 192 168"/><line x1="160" y1="40" x2="96" y2="216"/></svg></span>
+            <h3 class="heading-6" data-i18n="commit.1.t">Kaynak kod sizindir</h3>
+            <p class="body-3" data-i18n="commit.1.d">Geliştirdiğimiz yazılımın kaynak kodu ve verileri tamamen kurumunuza aittir.</p>
+          </div>
+          <div class="au-band-item">
+            <span class="au-tile-icon"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><line x1="136" y1="172" x2="40" y2="172"/><line x1="216" y1="172" x2="168" y2="172"/><line x1="56" y1="84" x2="40" y2="84"/><line x1="216" y1="84" x2="88" y2="84"/><line x1="88" y1="60" x2="88" y2="108"/><line x1="168" y1="148" x2="168" y2="196"/></svg></span>
+            <h3 class="heading-6" data-i18n="commit.2.t">Projeye özel fiyatlandırma</h3>
+            <p class="body-3" data-i18n="commit.2.d">Her proje kendi kapsamına göre fiyatlanır; ihtiyaç duymadığınız hiçbir kalem için ödeme yapmazsınız.</p>
+          </div>
+          <div class="au-band-item">
+            <span class="au-tile-icon"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><path d="M40 114.8V56a8 8 0 0 1 8-8h160a8 8 0 0 1 8 8v58.8c0 84.2-71.3 112.1-85.5 116.8a7.5 7.5 0 0 1-4.9 0C111.3 226.9 40 199 40 114.8Z"/><polyline points="88 136 112 160 168 104"/></svg></span>
+            <h3 class="heading-6" data-i18n="commit.3.t">Yıllık bakım ve teknik destek</h3>
+            <p class="body-3" data-i18n="commit.3.d">Sistemleriniz yayından sonra da güncel ve güvenli kalır; ihtiyaç duyduğunuzda yanınızdayız.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Aule (bento) -->
+  <section class="au-section" aria-labelledby="value-title">
+    <div class="au-container">
+      <div class="au-section-head au-measure au-reveal">
+        <p class="au-eyebrow caption-4" data-i18n="value.eyebrow">Neden Aule</p>
+        <h2 class="heading-2" id="value-title" data-split data-i18n="value.title">Dijital dönüşüm,<br> ölçülebilir sonuçlar.</h2>
+      </div>
+      <div class="au-bento au-reveal au-stagger">
+        <article class="au-bento-card au-bento-wide">
+          <div class="au-bento-copy">
+            <h3 class="heading-5" data-i18n="value.1.t">Daha yüksek verimlilik</h3>
+            <p class="body-3" data-i18n="value.1.d">Tekrarlayan işleri otomatikleştirir, ekiplerinizin zamanını katma değerli işlere ayırırız.</p>
+          </div>
+          <div class="au-viz au-viz-panel" aria-hidden="true"><div class="au-switch-row" style="--b:0"><span class="body-5" data-i18n="value.1.b1">Veri girişi</span><span class="au-switch-state caption-3"><span class="off" data-i18n="value.manual">Manuel</span><span class="on" data-i18n="value.auto">Otomatik</span></span><span class="au-switch"></span></div><div class="au-switch-row" style="--b:1"><span class="body-5" data-i18n="value.1.b2">Onay akışları</span><span class="au-switch-state caption-3"><span class="off" data-i18n="value.manual">Manuel</span><span class="on" data-i18n="value.auto">Otomatik</span></span><span class="au-switch"></span></div><div class="au-switch-row" style="--b:2"><span class="body-5" data-i18n="value.1.b3">Raporlama</span><span class="au-switch-state caption-3"><span class="off" data-i18n="value.manual">Manuel</span><span class="on" data-i18n="value.auto">Otomatik</span></span><span class="au-switch"></span></div><div class="au-switch-row" style="--b:3"><span class="body-5" data-i18n="value.1.b4">Bildirimler</span><span class="au-switch-state caption-3"><span class="off" data-i18n="value.manual">Manuel</span><span class="on" data-i18n="value.auto">Otomatik</span></span><span class="au-switch"></span></div></div>
+        </article>
+        <article class="au-bento-card">
+          <div class="au-bento-copy">
+            <h3 class="heading-5" data-i18n="value.2.t">Daha düşük operasyonel maliyet</h3>
+            <p class="body-3" data-i18n="value.2.d">Manuel süreçlerin yarattığı maliyeti kalıcı olarak azaltır, yatırımın geri dönüşünü önceden hesaplarız.</p>
+          </div>
+          <div class="au-viz au-split-bars" aria-hidden="true"><div class="au-split-row"><span class="caption-4" data-i18n="value.2.today">Bugün</span><span class="au-split-bar"><span class="manual" style="flex:7;--b:0"></span><span class="value" style="flex:3;--b:1"></span></span></div><div class="au-split-row"><span class="caption-4" data-i18n="value.2.aule">Aule ile</span><span class="au-split-bar"><span class="manual" style="flex:2;--b:2"></span><span class="value" style="flex:8;--b:3"></span></span></div><div class="au-legend caption-5"><span><i></i><span data-i18n="value.2.manual">Manuel iş</span></span><span><i class="value"></i><span data-i18n="value.2.value">Katma değerli iş</span></span></div></div>
+        </article>
+        <article class="au-bento-card">
+          <div class="au-bento-copy">
+            <h3 class="heading-5" data-i18n="value.3.t">Süreçlerinize tam uyum</h3>
+            <p class="body-3" data-i18n="value.3.d">Hazır paketlere uyum sağlamak yerine, yazılımı departmanlarınızın çalışma biçimine göre kurarız.</p>
+          </div>
+          <ol class="au-viz au-flow-v" aria-hidden="true"><li style="--b:0"><span class="body-5" data-i18n="value.3.f1">Talep</span><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg></li><li style="--b:1"><span class="body-5" data-i18n="value.3.f2">Onay</span><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg></li><li style="--b:2"><span class="body-5" data-i18n="value.3.f3">Satın alma</span><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg></li><li style="--b:3"><span class="body-5" data-i18n="value.3.f4">Fatura</span><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg></li></ol>
+        </article>
+        <article class="au-bento-card au-bento-wide">
+          <div class="au-bento-copy">
+            <h3 class="heading-5" data-i18n="value.4.t">Yapay zekâ ile hızlı ve ekonomik</h3>
+            <p class="body-3" data-i18n="value.4.d">Yapay zekâ destekli geliştirme, kuruma özel yazılımın maliyetini ve teslim süresini belirgin biçimde düşürür.</p>
+          </div>
+          <div class="au-viz au-gantt" aria-hidden="true"><div class="au-gantt-row"><span class="caption-4" data-i18n="value.4.a">Geleneksel</span><span class="au-gantt-bar" style="max-width:100%"><span class="caption-3" style="flex:2;--b:0" data-i18n="value.4.p1">Analiz</span><span class="caption-3" style="flex:2;--b:1" data-i18n="value.4.p2">Tasarım</span><span class="caption-3" style="flex:5;--b:2" data-i18n="value.4.p3">Geliştirme</span><span class="caption-3" style="flex:2;--b:3" data-i18n="value.4.p4">Test</span></span></div><div class="au-gantt-row is-ai"><span class="caption-4" data-i18n="value.4.b">Aule ile</span><span class="au-gantt-bar" style="max-width:46%"><span class="caption-3" style="flex:1;--b:4" data-i18n="value.4.p1">Analiz</span><span class="caption-3" style="flex:1;--b:5" data-i18n="value.4.p2">Tasarım</span><span class="caption-3" style="flex:2;--b:6" data-i18n="value.4.p3">Geliştirme</span><span class="caption-3" style="flex:1;--b:7" data-i18n="value.4.p4">Test</span></span></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="au-section" id="faq" aria-labelledby="faq-title">
+    <div class="au-container au-faq">
+      <div class="au-section-head au-reveal">
+        <p class="au-eyebrow caption-4" data-i18n="faq.eyebrow">SSS</p>
+        <h2 class="heading-2" id="faq-title" data-split data-i18n="faq.title">Sık sorulan sorular</h2>
+      </div>
+      <div class="au-faq-list au-reveal au-stagger">
+        <details class="au-faq-item">
+          <summary class="title-2"><span data-i18n="faq.1.q">Hangi kurumlarla çalışıyorsunuz?</span><svg class="au-icon au-icon-lg" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/><line x1="128" y1="40" x2="128" y2="216"/></svg></summary>
+          <p class="au-faq-answer body-3" data-i18n="faq.1.a">Operasyonunda tekrarlayan ve manuel süreçler bulunan, verimliliğini artırmak isteyen her ölçekteki kurumla çalışıyoruz.</p>
+        </details>
+        <details class="au-faq-item">
+          <summary class="title-2"><span data-i18n="faq.2.q">Hazır yazılım yerine neden kurumunuza özel yazılım?</span><svg class="au-icon au-icon-lg" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/><line x1="128" y1="40" x2="128" y2="216"/></svg></summary>
+          <p class="au-faq-answer body-3" data-i18n="faq.2.a">Paket yazılımlar ortak ihtiyaçlara göre tasarlanır ve süreçlerinizi onlara uyarlamanızı gerektirir. Kurumunuza özel yazılım ise mevcut iş akışınıza uyum sağlar; yalnızca ihtiyaç duyduğunuz işlevlere yatırım yaparsınız.</p>
+        </details>
+        <details class="au-faq-item">
+          <summary class="title-2"><span data-i18n="faq.3.q">Özel yazılım yüksek bütçe gerektirmez mi?</span><svg class="au-icon au-icon-lg" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/><line x1="128" y1="40" x2="128" y2="216"/></svg></summary>
+          <p class="au-faq-answer body-3" data-i18n="faq.3.a">Yapay zekâ destekli geliştirme, maliyeti ve teslim süresini belirgin biçimde düşürdü. Her öneriyi, yatırımın geri dönüş süresiyle birlikte sunuyoruz.</p>
+        </details>
+        <details class="au-faq-item">
+          <summary class="title-2"><span data-i18n="faq.4.q">Süreç nasıl başlıyor?</span><svg class="au-icon au-icon-lg" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/><line x1="128" y1="40" x2="128" y2="216"/></svg></summary>
+          <p class="au-faq-answer body-3" data-i18n="faq.4.a">Bir ön görüşmeyle hedeflerinizi ve öncelikli departmanları belirliyoruz. Ardından yerinde analizle iş süreçlerini inceliyor ve önerilerimizi raporluyoruz.</p>
+        </details>
+        <details class="au-faq-item">
+          <summary class="title-2"><span data-i18n="faq.5.q">Ekiplerimiz yeni sisteme nasıl uyum sağlayacak?</span><svg class="au-icon au-icon-lg" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/><line x1="128" y1="40" x2="128" y2="216"/></svg></summary>
+          <p class="au-faq-answer body-3" data-i18n="faq.5.a">Kullanıcı eğitimi hizmetimizin ayrılmaz bir parçasıdır. Sistemi devreye alırken ekiplerinize uygulamalı eğitim veriyoruz.</p>
+        </details>
+        <details class="au-faq-item">
+          <summary class="title-2"><span data-i18n="faq.6.q">Fiyatlandırma nasıl belirleniyor?</span><svg class="au-icon au-icon-lg" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/><line x1="128" y1="40" x2="128" y2="216"/></svg></summary>
+          <p class="au-faq-answer body-3" data-i18n="faq.6.a">Fiyatlandırma projenin kapsamına göre belirlenir. Analizin ardından, beklenen yatırım getirisiyle birlikte projeye özel bir teklif sunarız.</p>
+        </details>
+        <details class="au-faq-item">
+          <summary class="title-2"><span data-i18n="faq.7.q">Kaynak kod ve veriler kime ait olur?</span><svg class="au-icon au-icon-lg" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/><line x1="128" y1="40" x2="128" y2="216"/></svg></summary>
+          <p class="au-faq-answer body-3" data-i18n="faq.7.a">Geliştirdiğimiz yazılımın kaynak kodu ve tüm verileri kurumunuza aittir.</p>
+        </details>
+        <details class="au-faq-item">
+          <summary class="title-2"><span data-i18n="faq.8.q">Yayından sonra destek veriyor musunuz?</span><svg class="au-icon au-icon-lg" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/><line x1="128" y1="40" x2="128" y2="216"/></svg></summary>
+          <p class="au-faq-answer body-3" data-i18n="faq.8.a">Evet. Yıllık bakım ve teknik destek kapsamında sistemlerinizi güncel ve güvenli tutuyor, ihtiyaç duyduğunuzda yanınızda oluyoruz.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="au-section" id="contact" aria-labelledby="contact-title">
+    <div class="au-container">
+      <div class="au-cta au-reveal">
+        <svg class="au-dotgrid" aria-hidden="true"><defs><pattern id="au-dots-cta" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="currentColor"/></pattern></defs><rect width="100%" height="100%" fill="url(#au-dots-cta)"/></svg>
+        <div class="au-cta-copy">
+          <p class="au-eyebrow caption-4" data-i18n="contact.eyebrow">İletişim</p>
+          <h2 class="heading-3" id="contact-title" data-split data-i18n="contact.title">Dönüşüm yolculuğunuzu birlikte planlayalım.</h2>
+          <p class="body-3" data-i18n="contact.d">Kısa bir ön görüşmede hedeflerinizi ve öncelikli süreçlerinizi konuşalım.</p>
+          <ul class="au-list body-3 au-reveal au-stagger">
+            <li><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="contact.b1">Önce analiz, ardından teklif</span></li>
+            <li><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="contact.b2">Kaynak kod ve veriler size aittir</span></li>
+            <li><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="contact.b3">Yıllık bakım ve teknik destek</span></li>
+          </ul>
+        </div>
+        <div>
+          <form class="au-form" data-contact-form data-endpoint="" novalidate>
+            <div class="au-field">
+              <label class="title-4" for="f-name" data-i18n="form.name">Ad soyad</label>
+              <input class="au-input" id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
+              <p class="au-field-error caption-2" id="f-name-err" aria-live="polite"></p>
+            </div>
+            <div class="au-field">
+              <label class="title-4" for="f-email" data-i18n="form.email">Kurumsal mail adresi</label>
+              <input class="au-input" id="f-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="ad@sirket.com" data-i18n-attr="placeholder=form.emailPh" required aria-describedby="f-email-err">
+              <p class="au-field-error caption-2" id="f-email-err" aria-live="polite"></p>
+            </div>
+            <div class="au-field">
+              <label class="title-4" for="f-company" data-i18n="form.company">Şirket <span class="au-muted">(isteğe bağlı)</span></label>
+              <input class="au-input" id="f-company" name="company" type="text" autocomplete="organization" aria-describedby="f-company-err">
+              <p class="au-field-error caption-2" id="f-company-err" aria-live="polite"></p>
+            </div>
+            <div class="au-field">
+              <label class="title-4" for="f-message" data-i18n="form.message">Size nasıl yardımcı olabiliriz?</label>
+              <textarea class="au-input" id="f-message" name="message" required aria-describedby="f-message-err" placeholder="Hedeflerinizden ve öncelikli süreçlerinizden kısaca bahsedin." data-i18n-attr="placeholder=form.messagePh"></textarea>
+              <p class="au-field-error caption-2" id="f-message-err" aria-live="polite"></p>
+            </div>
+            <button class="au-btn au-btn-primary" type="submit"><span class="au-btn-label" data-i18n="cta">Ön görüşme planlayın</span><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/><polyline points="144 56 216 128 144 200"/></svg></button>
+            <p class="au-form-note caption-5" data-form-status aria-live="polite"><span data-i18n="form.note">Bilgileriniz yalnızca talebinize yanıt vermek amacıyla kullanılır.</span> <a href="gizlilik.html" data-i18n="footer.privacy">Gizlilik politikası</a></p>
+          </form>
+          <div class="au-success" data-form-success tabindex="-1" hidden>
+            <svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg>
+            <p class="heading-6" data-success-name>Teşekkürler.</p>
+            <p class="body-3 au-muted" data-i18n="form.success">Mesajınız tarafımıza ulaştı. En kısa sürede sizinle iletişime geçeceğiz.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="au-footer">
+  <div class="au-container">
+    <p class="au-footer-mark au-reveal" aria-hidden="true">Aule<span>.</span></p>
+    <div class="au-footer-top">
+      <div>
+        <a class="au-logo au-logo-lg" href="#top" aria-label="Aule Software">Aule<i>.</i></a>
+        <p class="body-6" data-i18n="footer.tag">Kurumsal dijital dönüşüm ve özel yazılım.</p>
+      </div>
+      <ul class="au-footer-links body-6">
+        <li><a href="#services" data-i18n="nav.services">Hizmetler</a></li>
+        <li><a href="#cases" data-i18n="nav.cases">Projeler</a></li>
+        <li><a href="#commitments" data-i18n="nav.commitments">Taahhütler</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">İletişim</a></li>
+      </ul>
+    </div>
+    <hr class="au-divider">
+    <div class="au-footer-bottom caption-5">
+      <span>© <span data-year>2026</span> Aule Software</span>
+      <ul class="au-footer-links">
+        <li><a href="gizlilik.html" data-i18n="footer.privacy">Gizlilik politikası</a></li>
+        <li><a href="kosullar.html" data-i18n="footer.terms">Kullanım koşulları</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<!--page:end-->
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
