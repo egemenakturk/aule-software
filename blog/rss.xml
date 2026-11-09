@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Aule Software Blog</title>
+    <link>https://www.aulesoftware.com/blog/</link>
+    <description>Kuruma özel yazılım, iş süreçleri analizi ve dijital dönüşüm üzerine yazılar.</description>
+    <language>tr</language>
+    <item>
+      <title>Hazır yazılım mı, kuruma özel yazılım mı? Karar rehberi</title>
+      <link>https://www.aulesoftware.com/blog/hazir-yazilim-mi-kuruma-ozel-yazilim-mi/</link>
+      <guid>https://www.aulesoftware.com/blog/hazir-yazilim-mi-kuruma-ozel-yazilim-mi/</guid>
+      <pubDate>Mon, 09 Nov 2026 09:00:00 +0300</pubDate>
+      <description>Paket yazılım ile kuruma özel yazılım arasında seçim yaparken bakılması gereken kriterler, gözden kaçan maliyetler, toplam sahip olma maliyeti hesabı ve karar vermenizi kolaylaştıracak sekiz soru.</description>
+    </item>
+    <item>
+      <title>Departman süreçlerinin analizi: verimlilik fırsatları nasıl bulunur?</title>
+      <link>https://www.aulesoftware.com/blog/departman-sureclerinin-analizi/</link>
+      <guid>https://www.aulesoftware.com/blog/departman-sureclerinin-analizi/</guid>
+      <pubDate>Mon, 09 Nov 2026 09:00:00 +0300</pubDate>
+      <description>Bir departmanın iş akışlarını haritalamak, zaman ve maliyet kayıplarını ölçmek, otomasyon fırsatlarını önceliklendirmek ve yatırımın geri dönüşünü hesaplamak için adım adım bir yöntem.</description>
+    </item>
+    <item>
+      <title>Yapay zekâ destekli yazılım geliştirme: kalite ve veri güvenliği nasıl korunur?</title>
+      <link>https://www.aulesoftware.com/blog/yapay-zeka-destekli-yazilim-gelistirme-kalite-ve-guvenlik/</link>
+      <guid>https://www.aulesoftware.com/blog/yapay-zeka-destekli-yazilim-gelistirme-kalite-ve-guvenlik/</guid>
+      <pubDate>Mon, 09 Nov 2026 09:00:00 +0300</pubDate>
+      <description>Yapay zekâ kodlama araçlarıyla daha hızlı geliştirirken kod kalitesini, kurumsal verinin gizliliğini, KVKK uyumunu ve tedarik zinciri güvenliğini korumak için uyguladığımız kontroller.</description>
+    </item>
+    <item>
+      <title>Forward Deployed Engineer nedir? Müşterinin yanında çalışan mühendis</title>
+      <link>https://www.aulesoftware.com/blog/forward-deployed-engineer-nedir/</link>
+      <guid>https://www.aulesoftware.com/blog/forward-deployed-engineer-nedir/</guid>
+      <pubDate>Mon, 09 Nov 2026 09:00:00 +0300</pubDate>
+      <description>Forward Deployed Engineer rolünün ne olduğu, nereden çıktığı, klasik yazılım ekibi ve danışmanlıktan farkı, yapay zekâ döneminde neden yeniden önem kazandığı ve kurumlara ne kazandırdığı.</description>
+    </item>
+  </channel>
+</rss>

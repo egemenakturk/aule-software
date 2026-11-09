@@ -193,6 +193,7 @@
     'commit.3.d': 'Your systems stay current and secure after launch, and we are there whenever you need us.',
 
     'nav.about': 'About',
+    'nav.blog': 'Blog',
     'about.eyebrow': 'About us',
     'about.title': 'The discipline of<br> critical systems,<br> in your software.',
     'about.story': 'In a rapidly changing business world, it is getting harder for organizations to meet standards and work efficiently at the same time. We saw that packaged software leaves this gap open and that departments still carry the load of manual processes. We founded Aule Software to offer the experience we gained in critical systems to organizations of every size, as business analysis and software built for them.',

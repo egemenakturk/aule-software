@@ -12,3 +12,4 @@ desktop.ini
 # Dependencies and builds, if added later
 node_modules/
 dist/
+__pycache__/

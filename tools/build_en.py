@@ -206,6 +206,10 @@ def build_legal():
 
 
 def main():
+    import sys
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import build_blog
+    build_blog.main()          # blog pages, the "Son yazılar" block in index.html, sitemap.xml
     build_legal()
     en = load_en()
     tr = SRC.read_text(encoding='utf-8')
@@ -240,6 +244,9 @@ def main():
     doc = re.sub(r'(<meta property="og:description" content=")[^"]*', lambda m: m.group(1) + html.escape(en['meta.ogDesc'], quote=True), doc, count=1)
     doc = doc.replace(f'{SITE}/assets/og-image.png', f'{SITE}/assets/og-image-en.png')
     # relative paths one level down
+    # the blog is Turkish only: no teaser on the English page, menu link goes to the Turkish blog
+    doc = re.sub(r'  <!--blog:start-->.*?<!--blog:end-->\n', '', doc, count=1, flags=re.S)
+    doc = doc.replace('href="blog/"', 'href="../blog/" hreflang="tr"')
     doc = re.sub(r'((?:href|src)=")(assets/)', r'\1../\2', doc)
     doc = doc.replace('href="gizlilik/"', 'href="privacy/"').replace('href="kosullar/"', 'href="terms/"')
     doc = put_jsonld(doc, graph('en', doc, title, desc))

@@ -14,4 +14,24 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.aulesoftware.com/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aulesoftware.com/"/>
   </url>
+  <url>
+    <loc>https://www.aulesoftware.com/blog/</loc>
+    <lastmod>2026-11-09</lastmod>
+  </url>
+  <url>
+    <loc>https://www.aulesoftware.com/blog/hazir-yazilim-mi-kuruma-ozel-yazilim-mi/</loc>
+    <lastmod>2026-11-09</lastmod>
+  </url>
+  <url>
+    <loc>https://www.aulesoftware.com/blog/departman-sureclerinin-analizi/</loc>
+    <lastmod>2026-11-09</lastmod>
+  </url>
+  <url>
+    <loc>https://www.aulesoftware.com/blog/yapay-zeka-destekli-yazilim-gelistirme-kalite-ve-guvenlik/</loc>
+    <lastmod>2026-11-09</lastmod>
+  </url>
+  <url>
+    <loc>https://www.aulesoftware.com/blog/forward-deployed-engineer-nedir/</loc>
+    <lastmod>2026-11-09</lastmod>
+  </url>
 </urlset>

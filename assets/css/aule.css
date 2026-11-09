@@ -901,3 +901,110 @@ body::after {
 .au-direct a, .au-address a, .au-founder-mail { color: var(--ink); text-decoration: underline; text-decoration-color: var(--control-border); text-underline-offset: 3px; transition: text-decoration-color 300ms var(--ease); }
 .au-direct a:hover, .au-address a:hover, .au-founder-mail:hover { text-decoration-color: var(--brass); }
 .au-founder-mail { display: inline-flex; align-items: center; gap: var(--spacing-75); justify-self: start; }
+
+/* ── Blog ────────────────────────────────────────────────────────── */
+.au-post-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--spacing-200); }
+.au-post-card {
+  position: relative; display: grid; grid-template-rows: auto auto 1fr auto; gap: calc(var(--spacing-100) * 1.5);
+  padding: var(--spacing-400); background: var(--surface-raised);
+  border: 1px solid var(--hairline); border-radius: var(--radius-2xl);
+  transition: transform 500ms var(--ease), border-color 300ms var(--ease), opacity 700ms var(--ease);
+}
+.au-stagger > .au-post-card { transition-delay: calc(var(--i, 0) * 90ms); }
+.au-stagger.is-settled > .au-post-card { transition-delay: 0ms; }
+.au-post-card:hover { transform: translateY(-4px); border-color: var(--control-border); }
+.au-post-card h3 a { color: var(--ink); text-decoration: none; }
+.au-post-card h3 a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.au-post-card h3 a:focus-visible { outline: none; }
+.au-post-card:has(a:focus-visible) { outline: 2px solid var(--focus); outline-offset: 3px; }
+.au-post-cat { color: var(--brass); text-transform: uppercase; letter-spacing: 0.08em; }
+.au-post-meta { color: var(--ink-muted); padding-top: calc(var(--spacing-100) * 1.5); border-top: 1px solid var(--hairline); }
+.au-blog-more { margin-top: var(--spacing-500); display: flex; justify-content: center; }
+.au-blog-head { padding-top: calc(var(--spacing-900) + var(--spacing-400)); }
+.au-blog-head .au-post-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 960px) { .au-post-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .au-post-grid, .au-blog-head .au-post-grid { grid-template-columns: 1fr; }
+  .au-post-card { padding: var(--spacing-300); }
+  .au-blog-head .heading-2 { font-size: 30px; line-height: 36px; letter-spacing: -0.015em; } /* Heading 4 */
+}
+
+/* Article */
+.au-article-head {
+  display: grid; gap: var(--spacing-200); max-width: 860px;
+  padding-top: calc(var(--spacing-900) + var(--spacing-400)); padding-bottom: var(--spacing-600);
+}
+.au-crumbs { display: flex; flex-wrap: wrap; gap: var(--spacing-100); color: var(--ink-muted); }
+.au-crumbs a { color: var(--ink-muted); text-decoration: none; transition: color 200ms var(--ease); }
+.au-crumbs a:hover { color: var(--ink); }
+.au-article-title { text-wrap: balance; }
+.au-article-lead { max-width: 720px; }
+.au-article-meta { display: flex; align-items: center; gap: calc(var(--spacing-100) * 1.5); margin-top: var(--spacing-100); }
+.au-avatar-sm { width: 40px; height: 40px; font-size: 14px; }
+.au-article-layout {
+  display: grid; grid-template-columns: 240px minmax(0, 720px); gap: var(--spacing-700);
+  padding-top: var(--spacing-600); border-top: 1px solid var(--hairline);
+}
+.au-toc { position: sticky; top: calc(var(--spacing-900) + var(--spacing-100)); align-self: start; display: grid; gap: calc(var(--spacing-100) * 1.5); }
+.au-toc > p { color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.au-toc ol { display: grid; gap: var(--spacing-100); list-style: none; padding: 0; margin: 0; border-left: 1px solid var(--hairline); }
+.au-toc a { display: block; padding-left: var(--spacing-200); margin-left: -1px; border-left: 1px solid transparent; color: var(--ink-muted); text-decoration: none; transition: color 200ms var(--ease), border-color 200ms var(--ease); }
+.au-toc a:hover { color: var(--ink); border-left-color: var(--brass); }
+
+/* Long-form text */
+.au-prose { color: var(--ink); min-width: 0; }
+.au-prose > * + * { margin-top: calc(var(--spacing-200) + var(--spacing-50)); }
+.au-prose h2 { margin-top: var(--spacing-700); scroll-margin-top: calc(var(--spacing-900) + var(--spacing-200)); }
+.au-prose h3 { margin-top: var(--spacing-500); scroll-margin-top: calc(var(--spacing-900) + var(--spacing-200)); }
+.au-prose h2 + *, .au-prose h3 + * { margin-top: var(--spacing-200); }
+.au-prose > :first-child { margin-top: 0; }
+.au-prose p, .au-prose li { color: color-mix(in srgb, var(--ink) 86%, var(--ink-muted)); }
+.au-prose strong { color: var(--ink); font-weight: 600; }
+.au-prose a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--brass); text-underline-offset: 3px; text-decoration-thickness: 1px; transition: text-decoration-thickness 200ms var(--ease); }
+.au-prose a:hover { text-decoration-thickness: 2px; }
+.au-prose code { font-family: var(--font-mono); font-size: 0.88em; padding: 2px 6px; border-radius: var(--radius-sm); background: var(--surface-sunken); }
+.au-prose ul, .au-prose ol { display: grid; gap: var(--spacing-100); padding-left: var(--spacing-300); }
+.au-prose ul { list-style: none; padding-left: calc(var(--spacing-200) + var(--spacing-50)); }
+.au-prose ul > li { position: relative; }
+.au-prose ul > li::before { content: ""; position: absolute; left: calc(-1 * calc(var(--spacing-200) + var(--spacing-50))); top: 0.72em; width: 8px; height: 1px; background: var(--brass); }
+.au-prose ol > li::marker { color: var(--brass); font-weight: 600; }
+.au-callout {
+  padding: var(--spacing-400); border-radius: var(--radius-2xl);
+  background: var(--surface-raised); border: 1px solid var(--hairline); border-left: 2px solid var(--brass);
+}
+.au-callout p + p { margin-top: calc(var(--spacing-100) * 1.5); }
+.au-callout p { color: var(--ink); }
+.au-table-wrap { overflow-x: auto; border: 1px solid var(--hairline); border-radius: var(--radius-2xl); -webkit-overflow-scrolling: touch; }
+.au-table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 22px; }
+.au-table th, .au-table td { padding: calc(var(--spacing-100) * 1.5) var(--spacing-200); text-align: left; vertical-align: top; border-bottom: 1px solid var(--hairline); }
+.au-table th { font-weight: 600; color: var(--ink); background: var(--surface-raised); white-space: nowrap; }
+.au-table td { color: color-mix(in srgb, var(--ink) 86%, var(--ink-muted)); min-width: 120px; }
+.au-table tbody tr:last-child td { border-bottom: 0; }
+.au-table td:empty::after { content: "\00a0"; }
+
+/* Article foot */
+.au-article-foot { display: grid; gap: var(--spacing-300); max-width: 1040px; padding-top: var(--spacing-700); }
+.au-author-box {
+  display: grid; grid-template-columns: auto 1fr; gap: var(--spacing-300); align-items: start;
+  padding: var(--spacing-400); background: var(--surface-raised); border: 1px solid var(--hairline); border-radius: var(--radius-2xl);
+}
+.au-author-box > div { display: grid; gap: var(--spacing-75); }
+.au-author-box .au-founder-mail { margin-top: var(--spacing-75); }
+.au-post-cta { grid-template-columns: 1fr auto; align-items: center; gap: var(--spacing-400); padding: var(--spacing-600); }
+.au-post-cta > div { display: grid; gap: calc(var(--spacing-100) * 1.5); }
+.au-post-cta .body-6 { color: var(--on-band-muted); }
+.au-related { padding-top: var(--spacing-800); }
+.au-related .heading-5 { margin-bottom: var(--spacing-300); }
+
+@media (max-width: 1080px) {
+  .au-article-layout { grid-template-columns: minmax(0, 1fr); gap: var(--spacing-400); }
+  .au-toc { position: static; padding: var(--spacing-300); background: var(--surface-raised); border: 1px solid var(--hairline); border-radius: var(--radius-2xl); }
+}
+@media (max-width: 640px) {
+  .au-article-head .heading-2 { font-size: 30px; line-height: 36px; letter-spacing: -0.015em; } /* Heading 4 */
+  .au-prose.body-7 { font-size: 17px; line-height: 28px; }
+  .au-author-box { grid-template-columns: 1fr; padding: var(--spacing-300); }
+  .au-post-cta { grid-template-columns: 1fr; padding: var(--spacing-400); }
+  .au-callout { padding: var(--spacing-300); }
+}
+@media (prefers-reduced-motion: reduce) { .au-post-card:hover { transform: none; } }
