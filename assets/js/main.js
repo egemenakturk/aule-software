@@ -321,10 +321,38 @@
         var name = (form.elements.name.value.trim().split(/\s+/)[0]) || '';
         var success_ = document.querySelector('[data-form-success]');
         success_.querySelector('[data-success-name]').textContent = t('thanks', 'Teşekkürler') + (name ? ', ' + name + '.' : '.');
+        form.reset();
+        form.querySelectorAll('.au-field').forEach(function (f) {
+          f.classList.remove('is-invalid');
+          var i = f.querySelector('.au-input'); if (i) i.removeAttribute('aria-invalid');
+          var er = f.querySelector('.au-field-error'); if (er) er.textContent = '';
+        });
         form.hidden = true;
         success_.hidden = false;
         success_.focus();
       };
+      var again = document.querySelector('[data-form-again]');
+      if (again && !again.__bound) {
+        again.__bound = true;
+        again.addEventListener('click', function () {
+          var box = document.querySelector('[data-form-success]');
+          var reopen = function () {
+            box.hidden = true;
+            box.classList.remove('is-closing');
+            box.style.height = '';
+            form.hidden = false;
+            var first = form.querySelector('.au-input'); if (first) first.focus({ preventScroll: true });
+          };
+          var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (reduce || box.classList.contains('is-closing')) { reopen(); return; }
+          // Shrink the card to zero height, then hide it.
+          box.style.height = box.offsetHeight + 'px';
+          void box.offsetHeight;
+          box.classList.add('is-closing');
+          box.style.height = '0px';
+          setTimeout(reopen, 460);
+        });
+      }
       if (!ENDPOINT) { setTimeout(function () { done(true); }, 700); return; } // demo mode until an endpoint is set
       fetch(ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
         .then(function (r) { return r.json().then(function (d) { return r.ok && d.success !== false; }, function () { return r.ok; }); })

@@ -240,6 +240,7 @@
     'form.messagePh': 'Briefly describe your goals and priority processes.',
     'form.note': 'Your details are used only to respond to your enquiry.',
     'form.success': 'We have received your message and will be in touch shortly.',
+    'form.again': 'Send another message',
 
     'footer.tag': 'Enterprise digital transformation and bespoke software.',
     'footer.privacy': 'Privacy policy',

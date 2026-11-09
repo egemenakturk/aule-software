@@ -326,8 +326,19 @@ textarea.au-input { min-height: 120px; resize: vertical; }
 .au-field.is-invalid .au-input { border-color: var(--danger); }
 .au-field.is-invalid .au-field-error { display: block; }
 .au-form-note { color: var(--ink-muted); }
-.au-success { display: grid; gap: var(--spacing-200); align-content: center; padding: var(--spacing-400); border: 1px solid var(--hairline); border-radius: var(--radius-2xl); background: var(--surface); }
-.au-success .au-icon { width: 24px; height: 24px; color: var(--brass); }
+.au-success { display: grid; gap: var(--spacing-200); justify-items: start; align-content: center; padding: var(--spacing-400); border: 1px solid var(--hairline); border-radius: var(--radius-2xl); background: var(--surface); }
+.au-success:focus { outline: none; }
+.au-form + .au-success { margin-top: var(--spacing-400); }
+.au-success.is-closing {
+  overflow: hidden; opacity: 0; padding-block: 0; margin-top: 0; border-width: 0;
+  transition: height 450ms var(--ease), opacity 250ms var(--ease), padding 450ms var(--ease), margin 450ms var(--ease), border-width 450ms var(--ease);
+}
+@media (prefers-reduced-motion: reduce) { .au-success.is-closing { transition: none; } }
+.au-success-badge { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--brass); color: var(--brass); }
+.au-success-badge .au-icon { width: 22px; height: 22px; }
+.au-success-again { margin-top: var(--spacing-100); padding: 0; background: none; border: 0; border-bottom: 1px solid var(--hairline); color: var(--ink-muted); font: inherit; cursor: pointer; transition: color 300ms var(--ease), border-color 300ms var(--ease); }
+.au-success-again:hover { color: var(--ink); border-color: var(--ink); }
+.au-success-again:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
 .au-success[hidden] { display: none; }
 
 /* ── Footer ─────────────────────────────────────────────────────── */
