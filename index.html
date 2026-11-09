@@ -434,7 +434,11 @@
           </ul>
         </div>
         <div>
-          <form class="au-form" data-contact-form data-endpoint="" novalidate>
+          <form class="au-form" data-contact-form data-endpoint="https://api.web3forms.com/submit" novalidate>
+            <input type="hidden" name="access_key" value="386b50cd-10a3-4f6e-baa7-c68162e7bc89">
+            <input type="hidden" name="subject" value="Aule Software web sitesi: yeni iletişim talebi">
+            <input type="hidden" name="from_name" value="Aule Software Web Sitesi">
+            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
             <div class="au-field">
               <label class="title-4" for="f-name" data-i18n="form.name">Ad soyad</label>
               <input class="au-input" id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">

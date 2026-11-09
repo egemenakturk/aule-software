@@ -275,7 +275,7 @@
   /* Contact form: client side validation, inline errors, calm confirmation. */
   var form = document.querySelector('[data-contact-form]');
   if (form) {
-    // TODO: set the endpoint of your form service (Formspree, Resend, own API…).
+    // Endpoint is Web3Forms (set via data-endpoint on the form); empty = demo mode.
     var ENDPOINT = form.getAttribute('data-endpoint') || '';
     var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     var check = function (input) {
@@ -327,7 +327,8 @@
       };
       if (!ENDPOINT) { setTimeout(function () { done(true); }, 700); return; } // demo mode until an endpoint is set
       fetch(ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
-        .then(function (r) { done(r.ok); })
+        .then(function (r) { return r.json().then(function (d) { return r.ok && d.success !== false; }, function () { return r.ok; }); })
+        .then(done)
         .catch(function () { done(false); });
     });
   }
