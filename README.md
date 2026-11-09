@@ -14,8 +14,12 @@ Ardından `http://localhost:5173` adresini açın.
 
 | Dosya | İçerik |
 | --- | --- |
-| `index.html` | Ana sayfa. Türkçe metinler burada, her metin bir `data-i18n` anahtarı taşır. |
-| `assets/js/i18n.js` | İngilizce metinler (`EN` sözlüğü) ve dil seçimi. Türkiye saat diliminden gelen ziyaretçi Türkçe, diğerleri İngilizce görür; seçim kaydedilir ve `?lang=tr|en` ile paylaşılabilir. |
+| `index.html` | Türkçe ana sayfa (`/`). Her metin bir `data-i18n` anahtarı taşır. |
+| `en/index.html` | İngilizce sayfa (`/en/`). **Elle düzenlenmez**; `tools/build_en.py` üretir. |
+| `assets/js/i18n.js` | İngilizce metinler (`EN` sözlüğü) ve betiklerin kullandığı mesajlar. İlk ziyarette Türkiye saat dilimindeki tarayıcılar `/`, diğerleri `/en/` sayfasına yönlendirilir; arama motoru ve önizleme botları yönlendirilmez. Dil seçimi kaydedilir. |
+| `tools/build_en.py` | `index.html` + `i18n.js` → `en/index.html`; iki sayfanın yapısal verisini (kuruluş, hizmet, 8 soruluk SSS) görünen metinden üretir. |
+| `robots.txt`, `sitemap.xml` | Arama motoru keşif dosyaları. |
+| `assets/fonts/` | Kendi sunucumuzdan yüklenen Geist yazı tipleri (OFL). |
 | `assets/js/main.js` | Animasyonlar, hizmet yolculuğu sekmeleri, sayaçlar, tema düğmesi, mobil menü ve form doğrulaması. |
 | `assets/css/tokens.css` | Renk, yazı, boşluk ve köşe token'ları. Koyu tema varsayılandır, açık tema `data-theme="light"` ile gelir. |
 | `assets/css/aule.css` | Bileşen stilleri (`.au-*`). |
@@ -23,8 +27,16 @@ Ardından `http://localhost:5173` adresini açın.
 
 Tasarım kuralları ve bileşenler, Claude'daki **Aule Software** design system'inde belgelenmiştir.
 
+## Metin değiştirirken
+
+Türkçe metni `index.html`'de, İngilizcesini `assets/js/i18n.js`'te aynı anahtarla değiştirin, sonra:
+
+```bash
+python tools/build_en.py
+```
+
 ## Yayından önce
 
-- `index.html` içindeki `{{site_url}}` değerlerini gerçek alan adıyla değiştirin ve `assets/og-image.png` ekleyin.
-- İletişim formunun `data-endpoint` niteliğine bir form servisinin adresini yazın. Boşken form demo modunda çalışır ve gönderim yapmaz.
+- Alan adı `https://www.aulesoftware.com` olarak ayarlı (canonical, hreflang, sitemap, robots, paylaşım görselleri). Barındırmada çıplak alan adı (`aulesoftware.com`) ve `http` istekleri bu adrese 301 ile yönlendirilmeli.
+- İletişim formu Web3Forms'a bağlıdır (`data-endpoint`, gizli `access_key` alanı). `data-fallback-email` niteliğine iletişim e-postası yazılırsa gönderim hatasında bu adres de gösterilir. `data-endpoint` boşaltılırsa form gönderim yapmaz ve "henüz aktif değil" uyarısı gösterir.
 - Gizlilik politikası ve kullanım koşulları metinlerini ekleyin.

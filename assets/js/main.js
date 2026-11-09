@@ -32,7 +32,7 @@
     /* once the logo mark has landed, hover reacts without the intro delays */
     setTimeout(function () { document.querySelectorAll('.au-mark').forEach(function (m) { m.classList.add('is-settled'); }); }, 2200);
   };
-  var readyTimer = setTimeout(ready, 600);
+  var readyTimer = setTimeout(ready, 300);
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(function () { clearTimeout(readyTimer); requestAnimationFrame(ready); });
   }
@@ -189,6 +189,22 @@
   }
 
 
+
+  /* Pause infinite animations (CSS and SVG) while their container is off screen. */
+  if (hasIO) {
+    var loops = document.querySelectorAll('.au-panel, .au-hero-mark, .au-work-stage, .au-tagline-band');
+    var loopIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var off = !e.isIntersecting;
+        e.target.classList.toggle('is-offscreen', off);
+        e.target.querySelectorAll('svg').forEach(function (s) {
+          if (typeof s.pauseAnimations === 'function') { if (off) s.pauseAnimations(); else s.unpauseAnimations(); }
+        });
+      });
+    }, { rootMargin: '100px 0px' });
+    loops.forEach(function (el) { loopIO.observe(el); });
+  }
+
   /* Theme: dark by default, light on request; the choice is remembered. */
   var themeBtns = document.querySelectorAll('[data-theme-toggle]');
   var themeMeta = document.querySelector('meta[name="theme-color"]');
@@ -197,7 +213,6 @@
     var light = currentTheme() === 'light';
     themeBtns.forEach(function (b) {
       b.setAttribute('aria-label', light ? t('toDark', 'Koyu temaya geç') : t('toLight', 'Açık temaya geç'));
-      b.setAttribute('aria-pressed', String(light));
     });
     if (themeMeta) themeMeta.setAttribute('content', light ? '#f6f3ec' : '#131209');
   };
@@ -312,12 +327,28 @@
         button.removeAttribute('aria-busy');
         button.disabled = false;
         label.textContent = original;
-        if (!success) {
-          var note = form.querySelector('[data-form-status]');
-          note.textContent = t('failed', 'Mesaj gönderilemedi.');
-          note.style.color = 'var(--danger)';
+        if (success !== true) {
+          /* Never claim delivery: say what failed and offer the direct address when one is set. */
+          var err = form.querySelector('[data-form-error]');
+          if (!err) {
+            err = document.createElement('p');
+            err.className = 'au-form-error caption-2';
+            err.setAttribute('data-form-error', '');
+            err.setAttribute('role', 'alert');
+            button.parentNode.insertBefore(err, button);
+          }
+          var mail = form.getAttribute('data-fallback-email') || '';
+          err.textContent = success === 'offline' ? t('notConnected', 'Çevrimiçi form henüz aktif değil.') : t('failed', 'Mesaj gönderilemedi.');
+          if (mail) {
+            var a = document.createElement('a');
+            a.href = 'mailto:' + mail; a.textContent = mail;
+            err.appendChild(document.createTextNode(' ' + t('writeTo', 'Bize doğrudan yazın:') + ' '));
+            err.appendChild(a);
+          }
           return;
         }
+        var stale = form.querySelector('[data-form-error]');
+        if (stale) stale.remove();
         var name = (form.elements.name.value.trim().split(/\s+/)[0]) || '';
         var success_ = document.querySelector('[data-form-success]');
         success_.querySelector('[data-success-name]').textContent = t('thanks', 'Teşekkürler') + (name ? ', ' + name + '.' : '.');
@@ -353,7 +384,7 @@
           setTimeout(reopen, 460);
         });
       }
-      if (!ENDPOINT) { setTimeout(function () { done(true); }, 700); return; } // demo mode until an endpoint is set
+      if (!ENDPOINT) { setTimeout(function () { done('offline'); }, 400); return; } // no form service connected yet: report it honestly
       fetch(ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
         .then(function (r) { return r.json().then(function (d) { return r.ok && d.success !== false; }, function () { return r.ok; }); })
         .then(done)

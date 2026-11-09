@@ -1,63 +1,268 @@
 <!doctype html>
-<html lang="tr" class="no-js">
+<html lang="tr" class="no-js" data-href-en="en/">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>.i18n-pending body{visibility:hidden}</style>
   <script>
-    /* Pick the language before first paint: ?lang= → saved choice → location (Türkiye time zone = TR, elsewhere = EN). */
     (function () {
-      var d = document.documentElement, l = null, t = null;
+      var d = document.documentElement, t = null, want = null;
       /* Theme: saved choice, otherwise dark (the primary theme). */
       try { t = localStorage.getItem('aule-theme'); } catch (e) {}
       d.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
-      try { l = new URLSearchParams(location.search).get('lang'); } catch (e) {}
-      if (l !== 'tr' && l !== 'en') { try { l = localStorage.getItem('aule-lang'); } catch (e) {} }
-      if (l !== 'tr' && l !== 'en') {
+      /* Language: Türkçe on /, English on /en/. On a first visit a real browser is sent to the page for its
+         location (Türkiye time zone = TR, elsewhere = EN). Crawlers, link previews and explicit choices are never redirected. */
+      var ua = navigator.userAgent || '';
+      if (navigator.webdriver || /bot|crawl|spider|slurp|google|bing|yandex|baidu|duckduck|lighthouse|headless|preview|facebookexternal|embed|whatsapp|telegram|linkedin|slack|discord|ahrefs|semrush/i.test(ua)) return;
+      try { if (new URLSearchParams(location.search).has('lang')) return; } catch (e) {}
+      try { want = localStorage.getItem('aule-lang'); } catch (e) {}
+      if (want !== 'tr' && want !== 'en') {
         var c = (d.getAttribute('data-country') || '').toUpperCase(); /* optional: set by your host's geo header */
         var z = ''; try { z = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
-        l = c ? (c === 'TR' ? 'tr' : 'en') : (/Istanbul$/.test(z) ? 'tr' : 'en');
+        want = c ? (c === 'TR' ? 'tr' : 'en') : (/Istanbul$/.test(z) ? 'tr' : 'en');
+        try { localStorage.setItem('aule-lang', want); } catch (e) {}
       }
-      d.lang = l;
-      if (l === 'en') { d.classList.add('i18n-pending'); setTimeout(function () { d.classList.remove('i18n-pending'); }, 1500); }
+      var target = d.getAttribute('data-href-' + want);
+      if (want !== d.lang && target) location.replace(target + location.hash);
     })();
   </script>
-  <title>Aule Software | Kurumsal dijital dönüşüm ve özel yazılım</title>
+  <title>Aule Software | Kuruma özel yazılım ve dijital dönüşüm</title>
   <meta name="description" content="Aule Software, departmanlarınızın iş süreçlerini analiz eder; verimliliği artıran ve operasyonel maliyeti düşüren yazılımları kurumunuza özel geliştirir.">
   <meta name="theme-color" content="#131209">
-  <link rel="canonical" href="{{site_url}}/">
-  <link rel="alternate" hreflang="tr" href="{{site_url}}/?lang=tr">
-  <link rel="alternate" hreflang="en" href="{{site_url}}/?lang=en">
-  <link rel="alternate" hreflang="x-default" href="{{site_url}}/">
+  <link rel="canonical" href="https://www.aulesoftware.com/">
+  <link rel="alternate" hreflang="tr" href="https://www.aulesoftware.com/">
+  <link rel="alternate" hreflang="en" href="https://www.aulesoftware.com/en/">
+  <link rel="alternate" hreflang="x-default" href="https://www.aulesoftware.com/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="tr_TR">
   <meta property="og:locale:alternate" content="en_US">
   <meta property="og:site_name" content="Aule Software">
-  <meta property="og:title" content="Aule Software | Kurumsal dijital dönüşüm ve özel yazılım">
+  <meta property="og:title" content="Aule Software | Kuruma özel yazılım ve dijital dönüşüm">
   <meta property="og:description" content="Verimliliği artıran, operasyonel maliyeti düşüren, kurumunuza özel yazılım.">
-  <meta property="og:url" content="{{site_url}}/">
-  <meta property="og:image" content="{{site_url}}/assets/og-image.png">
+  <meta property="og:url" content="https://www.aulesoftware.com/">
+  <meta property="og:image" content="https://www.aulesoftware.com/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.aulesoftware.com/assets/og-image.png">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/aule.css">
+  <!--jsonld:start-->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {"@type": "Question", "name": "Hazır yazılım yerine neden kurumunuza özel yazılım?", "acceptedAnswer": {"@type": "Answer", "text": "Paket yazılımlar ortak ihtiyaçlara göre tasarlanır ve süreçlerinizi onlara uyarlamanızı gerektirir. Kurumunuza özel yazılım ise mevcut iş akışınıza uyum sağlar."}},
-      {"@type": "Question", "name": "Özel yazılım yüksek bütçe gerektirmez mi?", "acceptedAnswer": {"@type": "Answer", "text": "Yapay zekâ destekli geliştirme, maliyeti ve teslim süresini belirgin biçimde düşürdü. Her öneriyi yatırımın geri dönüş süresiyle birlikte sunuyoruz."}},
-      {"@type": "Question", "name": "Fiyatlandırma nasıl belirleniyor?", "acceptedAnswer": {"@type": "Answer", "text": "Fiyatlandırma projenin kapsamına göre belirlenir. Analizin ardından, beklenen yatırım getirisiyle birlikte projeye özel bir teklif sunarız."}},
-      {"@type": "Question", "name": "Kaynak kod ve veriler kime ait olur?", "acceptedAnswer": {"@type": "Answer", "text": "Geliştirdiğimiz yazılımın kaynak kodu ve tüm verileri kurumunuza aittir."}},
-      {"@type": "Question", "name": "Yayından sonra destek veriyor musunuz?", "acceptedAnswer": {"@type": "Answer", "text": "Evet. Yıllık bakım ve teknik destek kapsamında sistemlerinizi güncel ve güvenli tutuyoruz."}},
-      {"@type": "Question", "name": "Süreç nasıl başlıyor?", "acceptedAnswer": {"@type": "Answer", "text": "Bir ön görüşmeyle hedeflerinizi ve öncelikli departmanları belirliyoruz. Ardından yerinde analizle iş süreçlerini inceliyor ve önerilerimizi raporluyoruz."}}
-    ]
-  }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.aulesoftware.com/#organization",
+      "name": "Aule Software",
+      "alternateName": "Aule",
+      "legalName": "Aule Yazılım",
+      "url": "https://www.aulesoftware.com/",
+      "description": "Aule Software, kurumların departman süreçlerini analiz eden ve kuruma özel yazılım geliştiren, İstanbul merkezli bir dijital dönüşüm şirketidir. Türkiye'de ve yurt dışında; iş süreçleri analizinden süreç otomasyonuna, kurumsal intranet platformlarından kullanıcı eğitimine ve yıllık bakıma kadar tüm adımları tek ekip yürütür.",
+      "knowsLanguage": [
+        "tr",
+        "en"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Eğitim Mah.",
+        "addressLocality": "Kadıköy",
+        "addressRegion": "İstanbul",
+        "postalCode": "34722",
+        "addressCountry": "TR"
+      },
+      "email": "info@aulesoftware.com",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "info@aulesoftware.com",
+        "availableLanguage": [
+          "Turkish",
+          "English"
+        ]
+      },
+      "founder": [
+        {
+          "@type": "Person",
+          "name": "Egemen Doğuş Aktürk",
+          "email": "egemen.akturk@aulesoftware.com",
+          "jobTitle": "Kurucu Ortak"
+        },
+        {
+          "@type": "Person",
+          "name": "Mert Kelkit",
+          "email": "mert.kelkit@aulesoftware.com",
+          "jobTitle": "Kurucu Ortak"
+        }
+      ],
+      "knowsAbout": [
+        "Kuruma özel yazılım geliştirme",
+        "İş süreçleri analizi",
+        "Süreç otomasyonu",
+        "Kurumsal intranet platformları",
+        "Ödeme sistemleri",
+        "SWIFT",
+        "Havayolu rezervasyon sistemleri"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.aulesoftware.com/#website",
+      "url": "https://www.aulesoftware.com/",
+      "name": "Aule Software",
+      "inLanguage": [
+        "tr",
+        "en"
+      ],
+      "publisher": {
+        "@id": "https://www.aulesoftware.com/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.aulesoftware.com/#webpage",
+      "url": "https://www.aulesoftware.com/",
+      "name": "Aule Software | Kuruma özel yazılım ve dijital dönüşüm",
+      "description": "Aule Software, departmanlarınızın iş süreçlerini analiz eder; verimliliği artıran ve operasyonel maliyeti düşüren yazılımları kurumunuza özel geliştirir.",
+      "inLanguage": "tr",
+      "isPartOf": {
+        "@id": "https://www.aulesoftware.com/#website"
+      },
+      "about": {
+        "@id": "https://www.aulesoftware.com/#organization"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.aulesoftware.com/#service",
+      "name": "Kurumsal dijital dönüşüm",
+      "serviceType": "Custom software development",
+      "provider": {
+        "@id": "https://www.aulesoftware.com/#organization"
+      },
+      "description": "Departmanlarınızın iş süreçlerini analiz ediyor, operasyonunuzu hızlandıran yazılımları kurumunuza özel geliştiriyoruz.",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Hizmetler ve süreç",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Analiz"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Çözüm tasarımı"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Geliştirme"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Eğitim ve devreye alma"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Bakım ve destek"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.aulesoftware.com/#faq",
+      "isPartOf": {
+        "@id": "https://www.aulesoftware.com/#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Hangi kurumlarla çalışıyorsunuz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Türkiye'de ve yurt dışında, operasyonunda tekrarlayan ve manuel süreçler bulunan, verimliliğini artırmak isteyen her ölçekteki kurumla çalışıyoruz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hazır yazılım yerine neden kurumunuza özel yazılım?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Paket yazılımlar ortak ihtiyaçlara göre tasarlanır ve süreçlerinizi onlara uyarlamanızı gerektirir. Kurumunuza özel yazılım ise mevcut iş akışınıza uyum sağlar; yalnızca ihtiyaç duyduğunuz işlevlere yatırım yaparsınız."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Özel yazılım yüksek bütçe gerektirmez mi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yapay zekâ destekli geliştirme, maliyeti ve teslim süresini belirgin biçimde düşürdü. Her öneriyi, yatırımın geri dönüş süresiyle birlikte sunuyoruz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Süreç nasıl başlıyor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bir ön görüşmeyle hedeflerinizi ve öncelikli departmanları belirliyoruz. Ardından yerinde analizle iş süreçlerini inceliyor ve önerilerimizi raporluyoruz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ekiplerimiz yeni sisteme nasıl uyum sağlayacak?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Kullanıcı eğitimi hizmetimizin ayrılmaz bir parçasıdır. Sistemi devreye alırken ekiplerinize uygulamalı eğitim veriyoruz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Fiyatlandırma nasıl belirleniyor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fiyatlandırma projenin kapsamına göre belirlenir. Analizin ardından, beklenen yatırım getirisiyle birlikte projeye özel bir teklif sunarız."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kaynak kod ve veriler kime ait olur?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Geliştirdiğimiz yazılımın kaynak kodu ve tüm verileri kurumunuza aittir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Yayından sonra destek veriyor musunuz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evet. Yıllık bakım ve teknik destek kapsamında sistemlerinizi güncel ve güvenli tutuyor, ihtiyaç duyduğunuzda yanınızda oluyoruz."
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
+  <!--jsonld:end-->
 </head>
 <body>
 <!--page:start-->
@@ -69,23 +274,23 @@
     <ul class="au-nav-links title-4">
       <li><a href="#services" data-nav-link data-i18n="nav.services">Hizmetler</a></li>
       <li><a href="#cases" data-nav-link data-i18n="nav.cases">Projeler</a></li>
-      <li><a href="#commitments" data-nav-link data-i18n="nav.commitments">Taahhütler</a></li>
       <li><a href="#faq" data-nav-link data-i18n="nav.faq">SSS</a></li>
+      <li><a href="#about" data-nav-link data-i18n="nav.about">Hakkımızda</a></li>
     </ul>
     <div class="au-lang" role="group" aria-label="Dil seçimi" data-i18n-attr="aria-label=lang.label">
-      <button type="button" data-lang="tr" aria-pressed="true" lang="tr" aria-label="Türkçe">TR</button>
-      <button type="button" data-lang="en" aria-pressed="false" lang="en" aria-label="English">EN</button>
+      <a href="./" data-lang="tr" hreflang="tr" lang="tr" aria-label="Türkçe" aria-current="true">TR</a>
+      <a href="en/" data-lang="en" hreflang="en" lang="en" aria-label="English">EN</a>
     </div>
-    <button class="au-theme" type="button" data-theme-toggle aria-label="Açık temaya geç"><svg class="au-icon sun" viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="56"/><line x1="128" y1="40" x2="128" y2="16"/><line x1="64" y1="64" x2="48" y2="48"/><line x1="64" y1="192" x2="48" y2="208"/><line x1="192" y1="64" x2="208" y2="48"/><line x1="192" y1="192" x2="208" y2="208"/><line x1="40" y1="128" x2="16" y2="128"/><line x1="128" y1="216" x2="128" y2="240"/><line x1="216" y1="128" x2="240" y2="128"/></svg><svg class="au-icon moon" viewBox="0 0 256 256" aria-hidden="true"><path d="M108.1 28.1a96.1 96.1 0 0 0 119.8 119.8A96 96 0 1 1 108.1 28.1Z"/></svg></button>
+    <button class="au-theme" type="button" data-theme-toggle aria-label="Açık temaya geç" data-i18n-attr="aria-label=theme.toLight"><svg class="au-icon sun" viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="56"/><line x1="128" y1="40" x2="128" y2="16"/><line x1="64" y1="64" x2="48" y2="48"/><line x1="64" y1="192" x2="48" y2="208"/><line x1="192" y1="64" x2="208" y2="48"/><line x1="192" y1="192" x2="208" y2="208"/><line x1="40" y1="128" x2="16" y2="128"/><line x1="128" y1="216" x2="128" y2="240"/><line x1="216" y1="128" x2="240" y2="128"/></svg><svg class="au-icon moon" viewBox="0 0 256 256" aria-hidden="true"><path d="M108.1 28.1a96.1 96.1 0 0 0 119.8 119.8A96 96 0 1 1 108.1 28.1Z"/></svg></button>
     <a class="au-btn au-btn-primary au-btn-sm" href="#contact" data-i18n="cta">Ön görüşme planlayın</a>
-    <button class="au-nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menüyü aç" data-menu-toggle><span></span><span></span></button>
+    <button class="au-nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menüyü aç" data-i18n-attr="aria-label=menu.open" data-menu-toggle><span></span><span></span></button>
   </nav>
   <div class="au-menu" id="menu" aria-hidden="true">
     <ul class="heading-4">
       <li style="--i:0"><a href="#services" data-nav-link data-i18n="nav.services">Hizmetler</a></li>
       <li style="--i:1"><a href="#cases" data-nav-link data-i18n="nav.cases">Projeler</a></li>
-      <li style="--i:2"><a href="#commitments" data-nav-link data-i18n="nav.commitments">Taahhütler</a></li>
-      <li style="--i:3"><a href="#faq" data-nav-link data-i18n="nav.faq">SSS</a></li>
+      <li style="--i:2"><a href="#faq" data-nav-link data-i18n="nav.faq">SSS</a></li>
+      <li style="--i:3"><a href="#about" data-nav-link data-i18n="nav.about">Hakkımızda</a></li>
     </ul>
     <div class="au-menu-foot" style="--i:4">
       <a class="au-btn au-btn-primary" href="#contact" data-i18n="cta">Ön görüşme planlayın</a>
@@ -100,7 +305,7 @@
       <div class="au-hero-mark" aria-hidden="true"><span class="au-mark"><span class="au-mark-l" style="--k:0">A</span><span class="au-mark-l" style="--k:1">u</span><span class="au-mark-l" style="--k:2">l</span><span class="au-mark-l" style="--k:3">e</span><span class="au-mark-dot"><span class="au-mark-ring" style="--r:0"></span><span class="au-mark-ring" style="--r:1"></span><span class="au-mark-ring" style="--r:2"></span></span></span></div>
       <div class="au-hero-copy">
         <p class="au-eyebrow caption-4 au-intro" style="--d:0" data-i18n="hero.eyebrow">Kurumsal dijital dönüşüm</p>
-        <h1 class="au-hero-title heading-1" id="hero-title" data-split data-i18n="hero.title">Verimliliği artıran,<br> maliyeti düşüren<br> kurumsal yazılım.</h1>
+        <h1 class="au-hero-title heading-1" id="hero-title" data-split data-i18n="hero.title">Verimliliği artıran,<br> maliyeti düşüren<br> kuruma özel yazılım.</h1>
         <p class="au-hero-sub body-3 au-intro" style="--d:3" data-i18n="hero.sub">Departmanlarınızın iş süreçlerini analiz ediyor, operasyonunuzu hızlandıran yazılımları kurumunuza özel geliştiriyoruz.</p>
         <div class="au-hero-actions au-intro" style="--d:4">
           <a class="au-btn au-btn-primary" href="#contact"><span class="au-btn-label" data-i18n="cta">Ön görüşme planlayın</span><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/><polyline points="144 56 216 128 144 200"/></svg></a>
@@ -170,32 +375,33 @@
       <div class="au-section-head au-measure au-reveal">
         <p class="au-eyebrow caption-4" data-i18n="work.eyebrow">Hizmetler ve süreç</p>
         <h2 class="heading-2" id="work-title" data-split data-i18n="work.title">Analizden kalıcı desteğe,<br> tek bir iş ortağı.</h2>
+        <p class="body-3 au-muted" data-i18n="work.d">Aule Software, kurumların departman süreçlerini analiz eden ve kuruma özel yazılım geliştiren, İstanbul merkezli bir dijital dönüşüm şirketidir. Türkiye&#39;de ve yurt dışında; iş süreçleri analizinden süreç otomasyonuna, kurumsal intranet platformlarından kullanıcı eğitimine ve yıllık bakıma kadar tüm adımları tek ekip yürütür.</p>
       </div>
       <div class="au-work au-reveal" data-work>
         <div class="au-work-tabs" role="tablist" aria-label="Hizmet adımları" data-i18n-attr="aria-label=work.label">
           <button class="au-work-tab" type="button" role="tab" id="work-tab-1" aria-controls="work-panel-1" aria-selected="true" tabindex="0">
-            <span class="au-work-num code">01</span>
-            <span class="au-work-text"><span class="title-1" data-i18n="work.1.t">Analiz</span><span class="body-6 au-work-desc" data-i18n="work.1.d">Departmanlarınızla birebir görüşerek mevcut iş akışlarını haritalar, tekrar eden manuel adımları ve görünmeyen maliyetleri tespit ederiz. Çalışan saatini, hata oranını ve fırsat maliyetini birlikte hesaplarız.</span><span class="au-work-deliver caption-3"><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.1.o1">İş akışı haritası</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.1.o2">Maliyet analizi</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.1.o3">Fırsat raporu</span></span></span></span>
+            <span class="au-work-num code" aria-hidden="true">01</span>
+            <span class="au-work-text"><span class="title-1" data-i18n="work.1.t">Analiz</span> <span class="body-6 au-work-desc" data-i18n="work.1.d">Departmanlarınızla birebir görüşerek mevcut iş akışlarını haritalar, tekrar eden manuel adımları ve görünmeyen maliyetleri tespit ederiz. Çalışan saatini, hata oranını ve fırsat maliyetini birlikte hesaplarız.</span> <span class="au-work-deliver caption-3"><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.1.o1">İş akışı haritası</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.1.o2">Maliyet analizi</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.1.o3">Fırsat raporu</span></span></span></span>
             <span class="au-work-progress" aria-hidden="true"><span></span></span>
           </button>
           <button class="au-work-tab" type="button" role="tab" id="work-tab-2" aria-controls="work-panel-2" aria-selected="false" tabindex="-1">
-            <span class="au-work-num code">02</span>
-            <span class="au-work-text"><span class="title-1" data-i18n="work.2.t">Çözüm tasarımı</span><span class="body-6 au-work-desc" data-i18n="work.2.d">Otomasyon potansiyeli en yüksek alanları önceliklendirir, her öneri için yatırım getirisini ve uygulama yol haritasını çıkarırız. Neyin, hangi sırayla ve ne kadar sürede hayata geçeceği baştan bellidir.</span><span class="au-work-deliver caption-3"><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.2.o1">Önceliklendirme</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.2.o2">Yatırım getirisi hesabı</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.2.o3">Yol haritası</span></span></span></span>
+            <span class="au-work-num code" aria-hidden="true">02</span>
+            <span class="au-work-text"><span class="title-1" data-i18n="work.2.t">Çözüm tasarımı</span> <span class="body-6 au-work-desc" data-i18n="work.2.d">Otomasyon potansiyeli en yüksek alanları önceliklendirir, her öneri için yatırım getirisini ve uygulama yol haritasını çıkarırız. Neyin, hangi sırayla ve ne kadar sürede hayata geçeceği baştan bellidir.</span> <span class="au-work-deliver caption-3"><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.2.o1">Önceliklendirme</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.2.o2">Yatırım getirisi hesabı</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.2.o3">Yol haritası</span></span></span></span>
             <span class="au-work-progress" aria-hidden="true"><span></span></span>
           </button>
           <button class="au-work-tab" type="button" role="tab" id="work-tab-3" aria-controls="work-panel-3" aria-selected="false" tabindex="-1">
-            <span class="au-work-num code">03</span>
-            <span class="au-work-text"><span class="title-1" data-i18n="work.3.t">Geliştirme</span><span class="body-6 au-work-desc" data-i18n="work.3.d">Kurum içi altyapınızla uyumlu, güvenli web platformları geliştiririz: kullanıcı ve rol yönetimi, raporlama panelleri ve mevcut sistemlerle entegrasyon dahil. Yapay zekâ destekli geliştirmeyle kısa döngülerde, ekiplerinizle birlikte test ederek ilerleriz.</span><span class="au-work-deliver caption-3"><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.3.o1">İntranet platformu</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.3.o2">Rol ve yetki yönetimi</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.3.o3">Raporlama panelleri</span></span></span></span>
+            <span class="au-work-num code" aria-hidden="true">03</span>
+            <span class="au-work-text"><span class="title-1" data-i18n="work.3.t">Geliştirme</span> <span class="body-6 au-work-desc" data-i18n="work.3.d">Kurum içi altyapınızla uyumlu, güvenli web platformları geliştiririz: kullanıcı ve rol yönetimi, raporlama panelleri ve mevcut sistemlerle entegrasyon dahil. Yapay zekâ destekli geliştirmeyle kısa döngülerde, ekiplerinizle birlikte test ederek ilerleriz.</span> <span class="au-work-deliver caption-3"><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.3.o1">İntranet platformu</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.3.o2">Rol ve yetki yönetimi</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.3.o3">Raporlama panelleri</span></span></span></span>
             <span class="au-work-progress" aria-hidden="true"><span></span></span>
           </button>
           <button class="au-work-tab" type="button" role="tab" id="work-tab-4" aria-controls="work-panel-4" aria-selected="false" tabindex="-1">
-            <span class="au-work-num code">04</span>
-            <span class="au-work-text"><span class="title-1" data-i18n="work.4.t">Eğitim ve devreye alma</span><span class="body-6 au-work-desc" data-i18n="work.4.d">Sistemi kademeli olarak devreye alır, her kullanıcı grubuna uygulamalı eğitim veririz. Kullanım kılavuzları ve değişim yönetimi desteğiyle yazılım ilk günden gündelik işin parçası olur.</span><span class="au-work-deliver caption-3"><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.4.o1">Uygulamalı eğitim</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.4.o2">Kullanım kılavuzları</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.4.o3">Değişim yönetimi</span></span></span></span>
+            <span class="au-work-num code" aria-hidden="true">04</span>
+            <span class="au-work-text"><span class="title-1" data-i18n="work.4.t">Eğitim ve devreye alma</span> <span class="body-6 au-work-desc" data-i18n="work.4.d">Sistemi kademeli olarak devreye alır, her kullanıcı grubuna uygulamalı eğitim veririz. Kullanım kılavuzları ve değişim yönetimi desteğiyle yazılım ilk günden gündelik işin parçası olur.</span> <span class="au-work-deliver caption-3"><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.4.o1">Uygulamalı eğitim</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.4.o2">Kullanım kılavuzları</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.4.o3">Değişim yönetimi</span></span></span></span>
             <span class="au-work-progress" aria-hidden="true"><span></span></span>
           </button>
           <button class="au-work-tab" type="button" role="tab" id="work-tab-5" aria-controls="work-panel-5" aria-selected="false" tabindex="-1">
-            <span class="au-work-num code">05</span>
-            <span class="au-work-text"><span class="title-1" data-i18n="work.5.t">Bakım ve destek</span><span class="body-6 au-work-desc" data-i18n="work.5.d">Yıllık bakım ve teknik destek kapsamında güvenlik güncellemelerini, performans iyileştirmelerini ve yeni özellik geliştirmelerini üstleniriz. Sistemleriniz yayından sonra da güncel ve güvenli kalır.</span><span class="au-work-deliver caption-3"><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.5.o1">Güvenlik güncellemeleri</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.5.o2">Performans izleme</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.5.o3">Yeni özellikler</span></span></span></span>
+            <span class="au-work-num code" aria-hidden="true">05</span>
+            <span class="au-work-text"><span class="title-1" data-i18n="work.5.t">Bakım ve destek</span> <span class="body-6 au-work-desc" data-i18n="work.5.d">Yıllık bakım ve teknik destek kapsamında güvenlik güncellemelerini, performans iyileştirmelerini ve yeni özellik geliştirmelerini üstleniriz. Sistemleriniz yayından sonra da güncel ve güvenli kalır.</span> <span class="au-work-deliver caption-3"><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.5.o1">Güvenlik güncellemeleri</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.5.o2">Performans izleme</span></span><span class="au-tag"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="work.5.o3">Yeni özellikler</span></span></span></span>
             <span class="au-work-progress" aria-hidden="true"><span></span></span>
           </button>
         </div>
@@ -384,7 +590,7 @@
       <div class="au-faq-list au-reveal au-stagger">
         <details class="au-faq-item">
           <summary class="title-2"><span data-i18n="faq.1.q">Hangi kurumlarla çalışıyorsunuz?</span><svg class="au-icon au-icon-lg" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/><line x1="128" y1="40" x2="128" y2="216"/></svg></summary>
-          <p class="au-faq-answer body-3" data-i18n="faq.1.a">Operasyonunda tekrarlayan ve manuel süreçler bulunan, verimliliğini artırmak isteyen her ölçekteki kurumla çalışıyoruz.</p>
+          <p class="au-faq-answer body-3" data-i18n="faq.1.a">Türkiye&#39;de ve yurt dışında, operasyonunda tekrarlayan ve manuel süreçler bulunan, verimliliğini artırmak isteyen her ölçekteki kurumla çalışıyoruz.</p>
         </details>
         <details class="au-faq-item">
           <summary class="title-2"><span data-i18n="faq.2.q">Hazır yazılım yerine neden kurumunuza özel yazılım?</span><svg class="au-icon au-icon-lg" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/><line x1="128" y1="40" x2="128" y2="216"/></svg></summary>
@@ -432,9 +638,10 @@
             <li><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="contact.b2">Kaynak kod ve veriler size aittir</span></li>
             <li><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="contact.b3">Yıllık bakım ve teknik destek</span></li>
           </ul>
+          <p class="au-direct body-5"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><rect x="32" y="48" width="192" height="160" rx="8"/><polyline points="224 56 128 144 32 56"/></svg><span data-i18n="contact.direct">Doğrudan yazın:</span> <a href="mailto:info@aulesoftware.com">info@aulesoftware.com</a></p>
         </div>
         <div>
-          <form class="au-form" data-contact-form data-endpoint="https://api.web3forms.com/submit" novalidate>
+          <form class="au-form" data-contact-form data-endpoint="https://api.web3forms.com/submit" data-fallback-email="info@aulesoftware.com" novalidate>
             <input type="hidden" name="access_key" value="386b50cd-10a3-4f6e-baa7-c68162e7bc89">
             <input type="hidden" name="subject" value="Aule Software web sitesi: yeni iletişim talebi">
             <input type="hidden" name="from_name" value="Aule Software Web Sitesi">
@@ -464,11 +671,59 @@
           </form>
           <div class="au-success" data-form-success tabindex="-1" hidden>
             <span class="au-success-badge" aria-hidden="true"><svg class="au-icon" viewBox="0 0 256 256"><polyline points="40 144 96 200 224 72"/></svg></span>
-            <p class="heading-6" data-success-name>Teşekkürler.</p>
+            <p class="heading-6" data-success-name data-i18n="form.thanks">Teşekkürler.</p>
             <p class="body-3 au-muted" data-i18n="form.success">Mesajınız tarafımıza ulaştı. En kısa sürede sizinle iletişime geçeceğiz.</p>
             <button class="au-success-again caption-5" type="button" data-form-again data-i18n="form.again">Yeni bir mesaj gönderin</button>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+  <!-- About -->
+  <section class="au-section" id="about" aria-labelledby="about-title">
+    <div class="au-container au-about">
+      <div class="au-about-story au-reveal">
+        <p class="au-eyebrow caption-4" data-i18n="about.eyebrow">Hakkımızda</p>
+        <h2 class="heading-2" id="about-title" data-split data-i18n="about.title">Kritik sistemlerin<br> disiplini, kurumunuzun<br> yazılımında.</h2>
+        <p class="body-3 au-muted" data-i18n="about.story">Hızla değişen iş dünyasında kurumların hem standartlara uyması hem de verimli çalışması giderek zorlaşıyor. Hazır yazılımların bu açığı kapatamadığını, departmanların hâlâ manuel süreçlerle yük taşıdığını gördük. Aule Software&#39;i, kritik sistemlerde edindiğimiz deneyimi her ölçekteki kuruma özel iş analizi ve yazılım olarak sunmak için kurduk.</p>
+        <ul class="au-facts body-5">
+          <li><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="104" r="32"/><path d="M208 104c0 72-80 128-80 128s-80-56-80-128a80 80 0 0 1 160 0Z"/></svg><span data-i18n="about.fact1">Merkez: Kadıköy, İstanbul</span></li>
+          <li><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="96"/><line x1="37.5" y1="96" x2="218.5" y2="96"/><line x1="37.5" y1="160" x2="218.5" y2="160"/><ellipse cx="128" cy="128" rx="40" ry="94.6"/></svg><span data-i18n="about.fact2">Türkiye ve yurt dışında hizmet</span></li>
+          <li><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><path d="M40 114.8V56a8 8 0 0 1 8-8h160a8 8 0 0 1 8 8v58.8c0 84.2-71.3 112.1-85.5 116.8a7.5 7.5 0 0 1-4.9 0C111.3 226.9 40 199 40 114.8Z"/><polyline points="88 136 112 160 168 104"/></svg><span data-i18n="about.fact3">ISO, IATA ve SWIFT standartlarında deneyim</span></li>
+        </ul>
+        <div class="au-name-note">
+          <span class="au-name-mark" aria-hidden="true">Aulë</span>
+          <div>
+            <h3 class="title-3" data-i18n="about.name.t">Adımızın hikâyesi</h3>
+            <p class="body-6 au-muted" data-i18n="about.name.d">J.R.R. Tolkien&#39;in evreninde Aulë, Valar&#39;ın demircisi; taşın, metalin ve zanaatın ustasıdır. Yazılımı biz de bir zanaat olarak görüyoruz: sağlam, özenle işlenmiş ve uzun ömürlü.</p>
+          </div>
+        </div>
+      </div>
+      <div class="au-founders au-reveal au-stagger">
+          <article class="au-founder">
+            <div class="au-founder-head">
+              <span class="au-avatar" aria-hidden="true">EA</span>
+              <div><h3 class="title-1">Egemen Doğuş Aktürk</h3><p class="caption-4 au-founder-role" data-i18n="about.role">Kurucu Ortak</p></div>
+            </div>
+            <p class="body-3" data-i18n="about.f1.bio">Bankacılık ve havacılık sektörlerinde 7 yılı aşkın deneyim. Uluslararası standartlara bağlı, kesintisiz çalışması gereken sistemlerde görev aldı.</p>
+            <ul class="au-founder-work caption-2">
+              <li><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="about.f1.w1">ISO standartlarına uygun uluslararası SWIFT para transferi ürünü</span></li>
+              <li><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="about.f1.w2">IATA standartlarına uygun havayolu rezervasyon sistemleri</span></li>
+            </ul>
+            <a class="au-founder-mail caption-2" href="mailto:egemen.akturk@aulesoftware.com"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><rect x="32" y="48" width="192" height="160" rx="8"/><polyline points="224 56 128 144 32 56"/></svg>egemen.akturk@aulesoftware.com</a>
+          </article>
+          <article class="au-founder">
+            <div class="au-founder-head">
+              <span class="au-avatar" aria-hidden="true">MK</span>
+              <div><h3 class="title-1">Mert Kelkit</h3><p class="caption-4 au-founder-role" data-i18n="about.role">Kurucu Ortak</p></div>
+            </div>
+            <p class="body-3" data-i18n="about.f2.bio">Bankacılık sektöründe 7 yılı aşkın deneyim. Ödeme sistemleri ve merkez bankası entegrasyonlarında uzmanlaştı.</p>
+            <ul class="au-founder-work caption-2">
+              <li><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="about.f2.w1">ISO standartlarına uygun uluslararası SWIFT para transferi ürünü</span></li>
+              <li><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="about.f2.w2">10&#39;dan fazla bankada kullanılan TCMB FAST ve KOLAS ürünleri</span></li>
+            </ul>
+            <a class="au-founder-mail caption-2" href="mailto:mert.kelkit@aulesoftware.com"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><rect x="32" y="48" width="192" height="160" rx="8"/><polyline points="224 56 128 144 32 56"/></svg>mert.kelkit@aulesoftware.com</a>
+          </article>
       </div>
     </div>
   </section>
@@ -481,12 +736,13 @@
       <div>
         <a class="au-logo au-logo-lg" href="#top" aria-label="Aule Software">Aule<i>.</i></a>
         <p class="body-6" data-i18n="footer.tag">Kurumsal dijital dönüşüm ve özel yazılım.</p>
+        <address class="body-6 au-address"><span data-i18n="footer.address">Eğitim Mah., 34722 Kadıköy / İstanbul</span><br><a href="mailto:info@aulesoftware.com">info@aulesoftware.com</a></address>
       </div>
       <ul class="au-footer-links body-6">
         <li><a href="#services" data-i18n="nav.services">Hizmetler</a></li>
         <li><a href="#cases" data-i18n="nav.cases">Projeler</a></li>
-        <li><a href="#commitments" data-i18n="nav.commitments">Taahhütler</a></li>
         <li><a href="#contact" data-i18n="nav.contact">İletişim</a></li>
+        <li><a href="#about" data-i18n="nav.about">Hakkımızda</a></li>
       </ul>
     </div>
     <hr class="au-divider">
@@ -500,7 +756,7 @@
   </div>
 </footer>
 <!--page:end-->
-<script src="assets/js/i18n.js"></script>
+<script src="assets/js/i18n.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>

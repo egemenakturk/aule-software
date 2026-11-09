@@ -1,8 +1,8 @@
-/* Aule Software — two languages.
- * Turkish lives in the HTML; English lives in EN below, keyed by data-i18n.
- * data-i18n="key"            → element content (may hold <br> or <span>)
- * data-i18n-attr="attr=key"  → attribute values, comma separated
- * The language is chosen in <head> before first paint (?lang=, saved choice, then location).
+/* Aule Software — two languages, two static pages.
+ * Turkish lives in index.html; English lives in EN below, keyed by the same data-i18n names.
+ * tools/build_en.py turns index.html + EN into en/index.html, so both languages are plain HTML
+ * that search engines and AI crawlers can read. This file no longer rewrites the page:
+ * it serves the strings scripts need (MSG) and remembers the visitor's language choice.
  */
 (function () {
   'use strict';
@@ -10,11 +10,16 @@
   var root = document.documentElement;
 
   var EN = {
+    'meta.title': 'Aule Software | Custom software and digital transformation',
+    'meta.desc': 'Aule Software analyzes how your departments work and builds custom software that raises efficiency and lowers operating costs.',
+    'meta.ogDesc': 'Custom software that raises efficiency and lowers operating costs.',
     'skip': 'Skip to content',
+    'theme.toLight': 'Switch to light theme',
+    'menu.open': 'Open menu',
+    'form.thanks': 'Thank you.',
     'nav.label': 'Main menu',
     'nav.home': 'Aule Software, back to top',
     'nav.services': 'Services',
-    'nav.approach': 'Approach',
     'nav.process': 'Process',
     'nav.faq': 'FAQ',
     'nav.contact': 'Contact',
@@ -23,7 +28,7 @@
     'cta': 'Book a consultation',
 
     'hero.eyebrow': 'Enterprise digital transformation',
-    'hero.title': 'Software that raises<br> efficiency and lowers<br> operating costs.',
+    'hero.title': 'Custom software for<br> higher efficiency and<br> lower operating costs.',
     'trust.1': 'You own the source code',
     'trust.2': 'Annual maintenance and technical support',
     'hero.sub': 'We analyze how your departments work, then design and build software tailored to your organization to make your operations faster and leaner.',
@@ -63,6 +68,7 @@
 
     'work.eyebrow': 'Services and process',
     'work.title': 'From analysis to ongoing support,<br> one partner.',
+    'work.d': 'Aule Software is an Istanbul based digital transformation company that analyzes how departments work and builds custom software for each organization. In Türkiye and abroad, one team covers every step, from business process analysis and process automation to enterprise intranet platforms, user training and annual maintenance.',
     'work.label': 'Service steps',
     'work.1.t': 'Analysis',
     'work.1.d': 'Through one to one sessions with your departments, we map current workflows and uncover repetitive manual steps and hidden costs. We quantify staff hours, error rates and opportunity cost together.',
@@ -160,16 +166,6 @@
     'tagline.label': 'Our principle',
     'tagline': 'Packaged software<br> is built for everyone.<br> We build for you.',
 
-    'services.eyebrow': 'Services',
-    'services.title': 'From analysis to training,<br> end to end.',
-    'services.1.t': 'Business analysis',
-    'services.1.d': 'We review departmental processes on site and identify opportunities to raise efficiency and cut costs.',
-    'services.2.t': 'Solution design',
-    'services.2.d': 'Prioritized product proposals grounded in analysis, each with a calculated return on investment.',
-    'services.3.t': 'Software development',
-    'services.3.d': 'AI accelerated engineering that delivers software tailored to your organization quickly and economically.',
-    'services.4.t': 'Training and adoption',
-    'services.4.d': 'User training that ensures your teams adopt the new system from day one.',
 
     'approach.eyebrow': 'Approach',
     'approach.title': 'Packaged software,<br> or software built for you?',
@@ -185,17 +181,7 @@
     'compare.no': 'No',
     'compare.yes': 'Yes',
 
-    'process.eyebrow': 'Process',
-    'process.title': 'A clear process<br> in four steps.',
-    'process.1.t': 'Analysis',
-    'process.1.d': 'We study your departments’ processes on site and report the efficiency and cost opportunities.',
-    'process.2.t': 'Development',
-    'process.2.d': 'We build the prioritized solution in short iterations and test it together with your teams.',
-    'process.3.t': 'Training and rollout',
-    'process.3.d': 'We roll out the system and secure lasting adoption through user training.',
 
-    'process.4.t': 'Maintenance and support',
-    'process.4.d': 'Annual maintenance and technical support keep your systems current and secure.',
 
     'commit.eyebrow': 'Our commitments',
     'commit.title': 'A long term<br> partnership.',
@@ -206,10 +192,27 @@
     'commit.3.t': 'Annual maintenance and support',
     'commit.3.d': 'Your systems stay current and secure after launch, and we are there whenever you need us.',
 
+    'nav.about': 'About',
+    'about.eyebrow': 'About us',
+    'about.title': 'The discipline of<br> critical systems,<br> in your software.',
+    'about.story': 'In a rapidly changing business world, it is getting harder for organizations to meet standards and work efficiently at the same time. We saw that packaged software leaves this gap open and that departments still carry the load of manual processes. We founded Aule Software to offer the experience we gained in critical systems to organizations of every size, as business analysis and software built for them.',
+    'about.fact1': 'Headquarters: Kadıköy, Istanbul',
+    'about.fact2': 'Serving clients in Türkiye and abroad',
+    'about.fact3': 'Experience with ISO, IATA and SWIFT standards',
+    'about.name.t': 'The story behind our name',
+    'about.name.d': 'In J.R.R. Tolkien’s world, Aulë is the smith of the Valar, master of stone, metal and craft. We see software as a craft too: solid, carefully made and built to last.',
+    'about.role': 'Founding partner',
+    'about.f1.bio': 'More than 7 years of experience in banking and aviation, working on systems that must run without interruption under international standards.',
+    'about.f1.w1': 'International SWIFT money transfer product built to ISO standards',
+    'about.f1.w2': 'Airline reservation systems built to IATA standards',
+    'about.f2.bio': 'More than 7 years of experience in banking, specializing in payment systems and central bank integrations.',
+    'about.f2.w1': 'International SWIFT money transfer product built to ISO standards',
+    'about.f2.w2': 'Central Bank of the Republic of Türkiye FAST and KOLAS products used by more than 10 banks',
+    'footer.address': 'Eğitim Mah., 34722 Kadıköy, Istanbul, Türkiye',
     'faq.eyebrow': 'FAQ',
     'faq.title': 'Frequently asked questions',
     'faq.1.q': 'Which organizations do you work with?',
-    'faq.1.a': 'Organizations of any size whose operations rely on repetitive or manual processes and who want to raise efficiency.',
+    'faq.1.a': 'Organizations of any size, in Türkiye and abroad, whose operations rely on repetitive or manual processes and who want to raise efficiency.',
     'faq.2.q': 'Why bespoke software instead of a packaged product?',
     'faq.2.a': 'Packaged products are designed for common needs and require you to adapt your processes to them. Bespoke software fits your existing workflow, and you invest only in the functionality you need.',
     'faq.3.q': 'Doesn’t bespoke software require a large budget?',
@@ -232,6 +235,7 @@
     'contact.b2': 'You own the source code and data',
     'contact.b3': 'Annual maintenance and technical support',
 
+    'contact.direct': 'Write to us directly:',
     'form.name': 'Full name',
     'form.email': 'Work email',
     'form.emailPh': 'name@company.com',
@@ -263,6 +267,8 @@
       sending: 'Gönderiliyor',
       failed: 'Mesaj gönderilemedi. Lütfen bağlantınızı kontrol edip tekrar deneyin.',
       thanks: 'Teşekkürler',
+      notConnected: 'Çevrimiçi form henüz aktif değil; mesajınız gönderilmedi.',
+      writeTo: 'Bize doğrudan yazın:',
       menuOpen: 'Menüyü aç',
       menuClose: 'Menüyü kapat',
       toLight: 'Açık temaya geç',
@@ -274,6 +280,8 @@
       sending: 'Sending',
       failed: 'Your message could not be sent. Please check your connection and try again.',
       thanks: 'Thank you',
+      notConnected: 'The online form is not active yet; your message was not sent.',
+      writeTo: 'Write to us directly:',
       menuOpen: 'Open menu',
       menuClose: 'Close menu',
       toLight: 'Switch to light theme',
@@ -281,75 +289,17 @@
     }
   };
 
-  var META = {
-    tr: { title: document.title, desc: (document.querySelector('meta[name="description"]') || {}).content || '', locale: 'tr_TR' },
-    en: {
-      title: document.body.getAttribute('data-title-en') || 'Aule Software | Enterprise digital transformation and bespoke software',
-      desc: document.body.getAttribute('data-desc-en') || 'Aule Software analyzes how your departments work and builds tailored software that raises efficiency and lowers operating costs.',
-      locale: 'en_US'
-    }
-  };
-
-  /* Remember the Turkish originals from the HTML. */
-  var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-i18n]'));
-  nodes.forEach(function (el) { el.__tr = el.innerHTML; });
-  var attrNodes = Array.prototype.slice.call(document.querySelectorAll('[data-i18n-attr]'));
-  attrNodes.forEach(function (el) {
-    el.__trAttr = {};
-    el.getAttribute('data-i18n-attr').split(',').forEach(function (pair) {
-      var name = pair.split('=')[0].trim();
-      el.__trAttr[name] = el.getAttribute(name);
-    });
-  });
-
   var current = root.lang === 'en' ? 'en' : 'tr';
 
-  function apply(lang) {
-    current = lang;
-    nodes.forEach(function (el) {
-      var key = el.getAttribute('data-i18n');
-      el.innerHTML = lang === 'en' && EN[key] != null ? EN[key] : el.__tr;
-    });
-    attrNodes.forEach(function (el) {
-      el.getAttribute('data-i18n-attr').split(',').forEach(function (pair) {
-        var parts = pair.split('='), name = parts[0].trim(), key = (parts[1] || '').trim();
-        el.setAttribute(name, lang === 'en' && EN[key] != null ? EN[key] : el.__trAttr[name]);
-      });
-    });
-    root.lang = lang;
-    document.title = META[lang].title;
-    var desc = document.querySelector('meta[name="description"]');
-    if (desc) desc.setAttribute('content', META[lang].desc);
-    var loc = document.querySelector('meta[property="og:locale"]');
-    if (loc) loc.setAttribute('content', META[lang].locale);
-    document.querySelectorAll('[data-lang]').forEach(function (b) {
-      b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
-    });
-    root.classList.remove('i18n-pending');
-    document.dispatchEvent(new CustomEvent('aule:lang', { detail: { lang: lang } }));
-  }
-
-  function set(lang) {
-    if (lang === current) return;
-    try { localStorage.setItem(STORE, lang); } catch (e) {}
-    try {
-      var url = new URL(location.href);
-      url.searchParams.set('lang', lang);
-      history.replaceState(null, '', url);
-    } catch (e) {}
-    apply(lang);
-  }
-
+  /* The language links are real links between / and /en/; remember an explicit choice. */
   document.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-lang]');
-    if (b) set(b.getAttribute('data-lang'));
+    var link = e.target.closest('[data-lang]');
+    if (link) { try { localStorage.setItem(STORE, link.getAttribute('data-lang')); } catch (err) {} }
   });
 
   window.aule = {
     get lang() { return current; },
     t: function (key) { return MSG[current][key]; },
-    set: set
+    EN: EN
   };
-
-  apply(current);
 })();
