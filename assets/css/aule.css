@@ -492,6 +492,7 @@ textarea.au-input { min-height: 120px; resize: vertical; }
 }
 .au-band .au-eyebrow { color: var(--band-accent); }
 .au-band-head { display: grid; gap: var(--spacing-200); max-width: 680px; }
+.au-band-head p { color: var(--on-band-muted); }
 .au-band-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--spacing-200); }
 .au-band-item { display: grid; gap: var(--spacing-200); align-content: start; padding: var(--spacing-400); border: 1px solid var(--band-line); border-radius: var(--radius-2xl); }
 .au-band-item p { color: var(--on-band-muted); }
