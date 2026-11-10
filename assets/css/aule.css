@@ -1022,3 +1022,8 @@ body::after {
 }
 .au-social .au-icon { color: var(--brass); }
 .au-social:hover { color: var(--ink); }
+
+/* Legal pages: long-form text under the page head */
+.au-legal { max-width: 760px; padding-bottom: var(--spacing-800); }
+.au-legal .au-table td:first-child { color: var(--ink); }
+.au-legal .au-table th { white-space: normal; }

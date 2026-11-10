@@ -28,7 +28,7 @@ Ardından `http://localhost:5173` adresini açın.
 | `assets/css/tokens.css` | Renk, yazı, boşluk ve köşe token'ları. Koyu tema varsayılandır, açık tema `data-theme="light"` ile gelir. |
 | `assets/css/aule.css` | Bileşen stilleri (`.au-*`). |
 | `404.html` | İki dilli hata sayfası. |
-| `gizlilik/`, `kosullar/`, `en/privacy/`, `en/terms/` | Yasal sayfalar (noindex). **Elle düzenlenmez**; metinler `tools/build_en.py` içindeki `LEGAL` listesinden üretilir. |
+| `gizlilik/`, `kosullar/`, `en/privacy/`, `en/terms/` | Yasal sayfalar (noindex). **Elle düzenlenmez**; metinler `content/legal/*.md` dosyalarından üretilir; değiştirince `tools/build_en.py` içindeki `LEGAL_UPDATED` tarihini güncelleyin. |
 
 Tasarım kuralları ve bileşenler, Claude'daki **Aule Software** design system'inde belgelenmiştir.
 
