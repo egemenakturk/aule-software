@@ -841,6 +841,11 @@ body::after {
 /* ══ Performance and touch (SEO audit, Nov 2026) ═════════════════════ */
 /* Large drifting glow is a desktop luxury; phones keep the static gradient. */
 @media (max-width: 767px) { body::after { display: none; } }
+/* Backdrop blur is costly on phones: a lighter blur for the bar, none behind the near-opaque menu panel. */
+@media (max-width: 767px) {
+  .au-nav { -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .au-menu { -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
 /* Infinite loops pause while their section is off screen (set by main.js). */
 .is-offscreen, .is-offscreen * { animation-play-state: paused !important; }
 /* Touch targets: at least 44px in the mobile header. */
@@ -898,8 +903,8 @@ body::after {
 /* Direct e-mail links (contact, footer, founder cards) */
 .au-direct { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-75); color: var(--ink-muted); }
 .au-direct .au-icon, .au-founder-mail .au-icon { width: 16px; height: 16px; color: var(--brass); flex: none; }
-.au-direct a, .au-address a, .au-founder-mail { color: var(--ink); text-decoration: underline; text-decoration-color: var(--control-border); text-underline-offset: 3px; transition: text-decoration-color 300ms var(--ease); }
-.au-direct a:hover, .au-address a:hover, .au-founder-mail:hover { text-decoration-color: var(--brass); }
+.au-direct a, .au-address a, .au-founder-mail, .au-faq-answer a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--control-border); text-underline-offset: 3px; transition: text-decoration-color 300ms var(--ease); }
+.au-direct a:hover, .au-address a:hover, .au-founder-mail:hover, .au-faq-answer a:hover { text-decoration-color: var(--brass); }
 .au-founder-mail { display: inline-flex; align-items: center; gap: var(--spacing-75); justify-self: start; }
 
 /* ── Blog ────────────────────────────────────────────────────────── */

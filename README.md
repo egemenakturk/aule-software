@@ -17,11 +17,12 @@ Ardından `http://localhost:5173` adresini açın.
 | `index.html` | Türkçe ana sayfa (`/`). Her metin bir `data-i18n` anahtarı taşır. |
 | `en/index.html` | İngilizce sayfa (`/en/`). **Elle düzenlenmez**; `tools/build_en.py` üretir. |
 | `assets/js/i18n.js` | İngilizce metinler (`EN` sözlüğü) ve betiklerin kullandığı mesajlar. İlk ziyarette Türkiye saat dilimindeki tarayıcılar `/`, diğerleri `/en/` sayfasına yönlendirilir; arama motoru ve önizleme botları yönlendirilmez. Dil seçimi kaydedilir. |
-| `tools/build_en.py` | `index.html` + `i18n.js` → `en/index.html` ve yasal sayfalar; iki sayfanın yapısal verisini (kuruluş, hizmet, 8 soruluk SSS) görünen metinden üretir. |
+| `tools/build_en.py` | `index.html` + `i18n.js` → `en/index.html` ve yasal sayfalar; iki sayfanın yapısal verisini (kuruluş, hizmet, SSS) ve `llms.txt` dosyasını görünen metinden üretir. |
 | `content/blog/*.md` | Blog yazılarının kaynağı (yalnızca Türkçe). |
 | `blog/` | Blog dizini, yazı sayfaları ve `rss.xml`. **Elle düzenlenmez**; `tools/build_blog.py` üretir. |
 | `tools/build_blog.py` | Yazıları HTML'e çevirir; `index.html`'deki "Son yazılar" bölümünü ve `sitemap.xml`'i günceller. `build_en.py` bunu kendisi çağırır. |
 | `robots.txt`, `sitemap.xml` | Arama motoru keşif dosyaları. `sitemap.xml` üretilir. |
+| `llms.txt` | Yapay zekâ asistanları için site özeti ve bağlantılar ([llmstxt.org](https://llmstxt.org)). **Elle düzenlenmez**; `tools/build_en.py` üretir. |
 | `assets/fonts/` | Kendi sunucumuzdan yüklenen Geist yazı tipleri (OFL). |
 | `assets/js/main.js` | Animasyonlar, hizmet yolculuğu sekmeleri, sayaçlar, tema düğmesi, mobil menü ve form doğrulaması. |
 | `assets/css/tokens.css` | Renk, yazı, boşluk ve köşe token'ları. Koyu tema varsayılandır, açık tema `data-theme="light"` ile gelir. |

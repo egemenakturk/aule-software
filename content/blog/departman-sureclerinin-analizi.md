@@ -8,7 +8,7 @@ category: Süreç analizi
 order: 2
 ---
 
-Çoğu kurumda verimlilik kaybı tek bir büyük sorundan değil, gün içinde fark edilmeyen yüzlerce küçük adımdan doğar. Bir dosyanın mailden indirilip başka bir sisteme yazılması, bir onayın üç kişiden sırayla istenmesi, ay sonunda aynı raporun elle yeniden hazırlanması. Her biri birkaç dakika sürer; yıl sonunda ise bir ya da iki çalışanın tam zamanlı işine dönüşür.
+Çoğu kurumda verimlilik kaybı tek bir büyük sorundan değil, gün içinde fark edilmeyen yüzlerce küçük adımdan doğar. Bir dosyanın e-postadan indirilip başka bir sisteme yazılması, bir onayın üç kişiden sırayla istenmesi, ay sonunda aynı raporun elle yeniden hazırlanması. Her biri birkaç dakika sürer; yıl sonunda ise bir ya da iki çalışanın tam zamanlı işine dönüşür.
 
 Süreç analizi, bu görünmeyen yükü görünür ve ölçülebilir hâle getirme işidir. Bu yazıda bir departmanın süreçlerini nasıl analiz ettiğimizi, hangi verileri topladığımızı ve hangi fırsatın önce ele alınması gerektiğine nasıl karar verdiğimizi adım adım anlatıyoruz.
 
@@ -44,11 +44,11 @@ Bunun için üç yöntemi birlikte kullanıyoruz:
 
 1. **Birebir görüşmeler.** Süreci yürüten her rolden en az bir kişiyle konuşun. "Bu işi bana baştan sona anlatır mısınız?" sorusu, çoğu zaman yazılı prosedürde olmayan adımları ortaya çıkarır.
 2. **Yanında izleme.** Çalışanın işi gerçekten yaparken yanında oturun. İnsanlar alışkanlık hâline gelmiş adımları anlatırken atlar; izlerken atlayamazsınız.
-3. **Dijital izler.** Mail klasörleri, paylaşılan Excel dosyaları, sistem kayıtları ve form geçmişleri, sürecin ne sıklıkla ve hangi hacimde yürüdüğünü gösterir.
+3. **Dijital izler.** E-posta klasörleri, paylaşılan Excel dosyaları, sistem kayıtları ve form geçmişleri, sürecin ne sıklıkla ve hangi hacimde yürüdüğünü gösterir.
 
 Haritada her adım için şunları not edin: kim yapıyor, hangi araçla yapıyor, girdi nereden geliyor, çıktı nereye gidiyor ve adım ne kadar sürüyor.
 
-> Haritalamada en değerli bulgular genellikle "bunu ayrıca bir Excel'de de takip ediyoruz" ya da "o kısmı her seferinde mailden kontrol ediyorum" cümlelerinin arkasında saklıdır. Bu ifadeler, resmi sistemin çözmediği bir boşluğa işaret eder.
+> Haritalamada en değerli bulgular genellikle "bunu ayrıca bir Excel'de de takip ediyoruz" ya da "o kısmı her seferinde e-postadan kontrol ediyorum" cümlelerinin arkasında saklıdır. Bu ifadeler, resmi sistemin çözmediği bir boşluğa işaret eder.
 
 ## Adım 3: Zamanı ve maliyeti ölçün
 
@@ -64,7 +64,7 @@ Basit bir formül kullanıyoruz:
 
 | Adım | İşlem başına süre | Yıllık hacim | Sorumlu rol | Hata ya da tekrar sıklığı |
 |---|---|---|---|---|
-| Katılımcı listesini mailden toplama | | | | |
+| Katılımcı listesini e-postadan toplama | | | | |
 | Listeyi İK sistemiyle eşleştirme | | | | |
 | Sertifika hazırlama ve gönderme | | | | |
 | Aylık raporu hazırlama | | | | |
@@ -108,7 +108,7 @@ Etkiyi değerlendirirken yalnızca kazanılan saatlere değil, şu sorulara da b
 
 **Geri dönüş süresi (ay)** = yazılım yatırımı ÷ yıllık tasarruf × 12
 
-Gerçek bir projeden örnek verelim. Bir bankanın insan kaynakları departmanında etkinlik ve eğitim süreçlerini iki çalışan yürütüyordu: kayıtlar mailden toplanıyor, katılımcılar elle eşleştiriliyor, raporlar her dönem yeniden hazırlanıyordu.
+Gerçek bir projeden örnek verelim. Bir bankanın insan kaynakları departmanında etkinlik ve eğitim süreçlerini iki çalışan yürütüyordu: kayıtlar e-postadan toplanıyor, katılımcılar elle eşleştiriliyor, raporlar her dönem yeniden hazırlanıyordu.
 
 | Kalem | Tutar |
 |---|---|

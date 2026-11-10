@@ -207,6 +207,41 @@ def build_legal():
     print('legal pages written:', ', '.join('/' + p[1] + '/' for p in LEGAL))
 
 
+def build_llms(tr, en, posts):
+    """llms.txt (llmstxt.org): a plain summary of the site and links for AI assistants, from the visible text."""
+    tr_desc = head_value(tr, r'<meta name="description" content="([^"]*)"')
+    a = ORG['address']
+    lines = [
+        '# Aule Software', '',
+        '> ' + visible(tr, 'work.d'), '',
+        'English: ' + en['work.d'], '',
+        f'- Merkez / Headquarters: {a["streetAddress"]}, {a["postalCode"]} {a["addressLocality"]}, {a["addressRegion"]}, Türkiye',
+        f'- İletişim / Contact: {ORG["email"]}',
+        '- Kurucular / Founders: ' + ', '.join(n for n, _ in ORG['founders']),
+        '- Diller / Languages: Türkçe, English',
+        '- LinkedIn: ' + ORG['same_as'][0], '',
+        '## Sayfalar / Pages', '',
+        f'- [Ana sayfa (Türkçe)]({SITE}/): {tr_desc}',
+        f'- [Home page (English)]({SITE}/en/): {en["meta.desc"]}',
+        f'- [Blog]({SITE}/blog/): Kuruma özel yazılım, süreç analizi ve yapay zekâ destekli geliştirme üzerine yazılar (Türkçe).', '',
+        '## Hizmetler / Services', '',
+    ]
+    lines += [f'- {visible(tr, f"work.{n}.t")}: {visible(tr, f"work.{n}.d")}' for n in range(1, 6)]
+    lines += ['', '## Blog yazıları / Articles (Turkish)', '']
+    lines += [f'- [{p["title"]}]({SITE}/blog/{p["slug"]}/): {p["description"]}' for p in posts]
+    lines += ['', '## Sık sorulan sorular / FAQ', '']
+    i = 1
+    while re.search(r'data-i18n="faq\.%d\.q"' % i, tr):
+        lines.append(f'- {visible(tr, f"faq.{i}.q")} {visible(tr, f"faq.{i}.a")}')
+        i += 1
+    lines += ['', '## Optional', '',
+              f'- [RSS]({SITE}/blog/rss.xml)',
+              f'- [Gizlilik politikası]({SITE}/gizlilik/)',
+              f'- [Kullanım koşulları]({SITE}/kosullar/)', '']
+    (ROOT / 'llms.txt').write_text('\n'.join(lines), encoding='utf-8', newline='\n')
+    print('llms.txt written')
+
+
 def main():
     import sys
     sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -215,6 +250,7 @@ def main():
     build_legal()
     en = load_en()
     tr = SRC.read_text(encoding='utf-8')
+    build_llms(tr, en, build_blog.load_posts())
 
     # Turkish page: structured data from its own visible text
     tr_title = head_value(tr, r'<title>(.*?)</title>')

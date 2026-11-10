@@ -99,7 +99,7 @@ Geliştirilen yazılımın içinde yapay zekâ özelliği bulunacaksa, örneğin
 
 ## Yazılımın içindeki yapay zekâ: yeni riskler
 
-Yapay zekâ yalnızca geliştirme aracı olarak değil, ürünün bir parçası olarak kullanıldığında yeni risk türleri ortaya çıkar. Bunların başında **istem enjeksiyonu** gelir: Modelin işlediği bir doküman ya da mail içine yerleştirilen talimatlar, modelin davranışını değiştirmeye çalışabilir.
+Yapay zekâ yalnızca geliştirme aracı olarak değil, ürünün bir parçası olarak kullanıldığında yeni risk türleri ortaya çıkar. Bunların başında **istem enjeksiyonu** gelir: Modelin işlediği bir doküman ya da e-posta içine yerleştirilen talimatlar, modelin davranışını değiştirmeye çalışabilir.
 
 Bu riske karşı uyguladığımız temel önlemler şunlardır:
 

@@ -20,10 +20,8 @@
     'nav.label': 'Main menu',
     'nav.home': 'Aule Software, back to top',
     'nav.services': 'Services',
-    'nav.process': 'Process',
     'nav.faq': 'FAQ',
     'nav.contact': 'Contact',
-    'nav.commitments': 'Commitments',
     'lang.label': 'Language',
     'cta': 'Book a consultation',
 
@@ -230,6 +228,8 @@
     'faq.7.a': 'The source code and all data of the software we build belong to your organization.',
     'faq.8.q': 'Do you provide support after launch?',
     'faq.8.a': 'Yes. Our annual maintenance and technical support keeps your systems current and secure, and we are on hand whenever you need us.',
+    'faq.9.q': 'How do you ensure the quality and data security of AI assisted code?',
+    'faq.9.a': 'An engineer reviews every line produced with AI, and no code is merged before it passes automated tests and security scans. Your organization\'s real data is never given to AI tools; development and testing use synthetic or masked data. We explain the details in our <a href="../blog/yapay-zeka-destekli-yazilim-gelistirme-kalite-ve-guvenlik/" hreflang="tr">article on quality and data security</a> (in Turkish).',
 
     'contact.eyebrow': 'Contact',
     'contact.title': 'Let’s plan your transformation together.',
@@ -251,22 +251,14 @@
 
     'footer.tag': 'Enterprise digital transformation and bespoke software.',
     'footer.privacy': 'Privacy policy',
-    'footer.terms': 'Terms of use',
-
-    '404.eyebrow': '404',
-    '404.title': 'This page could not be found.',
-    '404.d': 'The link may be out of date or the address may be mistyped.',
-    'back': 'Back to home',
-    'legal': 'Legal',
-    'privacy.d': '{{privacy policy text, to be provided by your legal advisor}}',
-    'terms.d': '{{terms of use text, to be provided by your legal advisor}}'
+    'footer.terms': 'Terms of use'
   };
 
   /* Strings used by scripts (form validation, menu). */
   var MSG = {
     tr: {
       required: 'Bu alan zorunludur.',
-      email: 'Geçerli bir mail adresi girin. Örnek: ad@sirket.com',
+      email: 'Geçerli bir e-posta adresi girin. Örnek: ad@sirket.com',
       sending: 'Gönderiliyor',
       failed: 'Mesaj gönderilemedi. Lütfen bağlantınızı kontrol edip tekrar deneyin.',
       thanks: 'Teşekkürler',

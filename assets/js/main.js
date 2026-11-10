@@ -299,7 +299,7 @@
       var value = input.value.trim();
       var msg = '';
       if (input.required && !value) msg = t('required', 'Bu alan zorunludur.');
-      else if (input.type === 'email' && value && !EMAIL.test(value)) msg = t('email', 'Geçerli bir mail adresi girin.');
+      else if (input.type === 'email' && value && !EMAIL.test(value)) msg = t('email', 'Geçerli bir e-posta adresi girin.');
       field.classList.toggle('is-invalid', !!msg);
       input.setAttribute('aria-invalid', String(!!msg));
       error.textContent = msg;

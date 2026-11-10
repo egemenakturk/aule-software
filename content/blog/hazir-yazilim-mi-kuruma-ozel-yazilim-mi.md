@@ -22,7 +22,7 @@ Bu yüzden asıl soru "hangisi daha iyi?" değil, şudur: **Bu süreç, kurumumu
 
 Hazır yazılım, yani paket yazılım ya da abonelikle kullanılan bulut ürünleri, aşağıdaki durumlarda çoğu zaman en mantıklı tercihtir:
 
-- **Süreç sektör standardıysa.** Muhasebe, bordro, kurumsal mail ya da temel müşteri ilişkileri yönetimi gibi alanlarda iş yapış biçimi şirketten şirkete pek değişmez.
+- **Süreç sektör standardıysa.** Muhasebe, bordro, kurumsal e-posta ya da temel müşteri ilişkileri yönetimi gibi alanlarda iş yapış biçimi şirketten şirkete pek değişmez.
 - **Süreç rekabet avantajı sağlamıyorsa.** Bordroyu rakiplerinizden farklı hesaplamanız size müşteri kazandırmaz.
 - **Hızlı başlamanız gerekiyorsa.** Hazır bir ürün birkaç gün içinde kullanıma alınabilir.
 - **Süreciniz ürüne uyum sağlayabiliyorsa.** Ürünün önerdiği iş akışı sizin için yeterliyse, onu benimsemek çoğu zaman en ekonomik yoldur.
@@ -34,9 +34,9 @@ Bu durumlarda tekerleği yeniden icat etmenin anlamı yoktur. İyi bir paket ür
 Kuruma özel yazılım ise şu işaretler belirdiğinde öne çıkar:
 
 - **Süreç kurumunuza özgüyse.** Onay zincirleriniz, departmanlar arası el değiştirmeleriniz veya veri yapınız standart bir ürüne sığmıyorsa.
-- **Birden fazla sistemi birbirine bağlamanız gerekiyorsa.** İnsan kaynakları sistemi, intranet, ERP ve mail arasında veri elle taşınıyorsa.
+- **Birden fazla sistemi birbirine bağlamanız gerekiyorsa.** İnsan kaynakları sistemi, intranet, ERP ve e-posta arasında veri elle taşınıyorsa.
 - **Mevzuat ve denetim izi kritikse.** Bankacılık, enerji, sağlık gibi düzenlemeye tabi sektörlerde kimin neyi ne zaman onayladığının izlenebilmesi gerekir.
-- **Hazır ürün yarım kullanılıyorsa.** Lisansı alınmış bir yazılımın etrafında hâlâ Excel dosyaları, mail zincirleri ve manuel hatırlatmalar dönüyorsa, ürün aslında süreci çözmüyordur.
+- **Hazır ürün yarım kullanılıyorsa.** Lisansı alınmış bir yazılımın etrafında hâlâ Excel dosyaları, e-posta zincirleri ve manuel hatırlatmalar dönüyorsa, ürün aslında süreci çözmüyordur.
 - **Süreç rekabet avantajınızın parçasıysa.** Müşteriye daha hızlı yanıt vermenizi ya da daha düşük maliyetle çalışmanızı sağlayan bir iş akışı, size özel olmayı hak eder.
 
 ## Yan yana karşılaştırma
@@ -86,7 +86,7 @@ Aşağıdaki sorulara ekibinizle birlikte dürüstçe cevap verin. "Evet" cevapl
 
 1. Bu süreç, kurumumuzu rakiplerimizden ayıran bir iş yapış biçimi mi?
 2. Hazır ürünleri denediğimizde, sürecimizi değiştirmeden kullanamayacağımız adımlar var mı?
-3. Mevcut çözümün etrafında Excel, mail ve manuel hatırlatmalar dönüyor mu?
+3. Mevcut çözümün etrafında Excel, e-posta ve manuel hatırlatmalar dönüyor mu?
 4. Bu süreçte birden fazla sistem arasında elle veri taşınıyor mu?
 5. Denetim izi, onay geçmişi ya da mevzuata uyum kritik mi?
 6. Kullanıcı sayısı arttıkça lisans maliyeti ciddi şekilde büyüyecek mi?

@@ -1,0 +1,50 @@
+# Aule Software
+
+> Aule Software, kurumların departman süreçlerini analiz eden ve kuruma özel yazılım geliştiren, İstanbul merkezli bir dijital dönüşüm şirketidir. Türkiye'de ve yurt dışında; iş süreçleri analizinden süreç otomasyonuna, kurumsal intranet platformlarından kullanıcı eğitimine ve yıllık bakıma kadar tüm adımları tek ekip yürütür.
+
+English: Aule Software is an Istanbul based digital transformation company that analyzes how departments work and builds custom software for each organization. In Türkiye and abroad, one team covers every step, from business process analysis and process automation to enterprise intranet platforms, user training and annual maintenance.
+
+- Merkez / Headquarters: Eğitim Mah., 34722 Kadıköy, İstanbul, Türkiye
+- İletişim / Contact: info@aulesoftware.com
+- Kurucular / Founders: Egemen Doğuş Aktürk, Mert Kelkit
+- Diller / Languages: Türkçe, English
+- LinkedIn: https://www.linkedin.com/company/aule-software/
+
+## Sayfalar / Pages
+
+- [Ana sayfa (Türkçe)](https://www.aulesoftware.com/): Aule Software, departmanlarınızın iş süreçlerini analiz eder; verimliliği artıran ve operasyonel maliyeti düşüren yazılımları kurumunuza özel geliştirir.
+- [Home page (English)](https://www.aulesoftware.com/en/): Aule Software analyzes how your departments work and builds custom software that raises efficiency and lowers operating costs.
+- [Blog](https://www.aulesoftware.com/blog/): Kuruma özel yazılım, süreç analizi ve yapay zekâ destekli geliştirme üzerine yazılar (Türkçe).
+
+## Hizmetler / Services
+
+- Analiz: Departmanlarınızla birebir görüşerek mevcut iş akışlarını haritalar, tekrar eden manuel adımları ve görünmeyen maliyetleri tespit ederiz. Çalışan saatini, hata oranını ve fırsat maliyetini birlikte hesaplarız.
+- Çözüm tasarımı: Otomasyon potansiyeli en yüksek alanları önceliklendirir, her öneri için yatırım getirisini ve uygulama yol haritasını çıkarırız. Neyin, hangi sırayla ve ne kadar sürede hayata geçeceği baştan bellidir.
+- Geliştirme: Kurum içi altyapınızla uyumlu, güvenli web platformları geliştiririz: kullanıcı ve rol yönetimi, raporlama panelleri ve mevcut sistemlerle entegrasyon dahil. Yapay zekâ destekli geliştirmeyle kısa döngülerde, ekiplerinizle birlikte test ederek ilerleriz.
+- Eğitim ve devreye alma: Sistemi kademeli olarak devreye alır, her kullanıcı grubuna uygulamalı eğitim veririz. Kullanım kılavuzları ve değişim yönetimi desteğiyle yazılım ilk günden gündelik işin parçası olur.
+- Bakım ve destek: Yıllık bakım ve teknik destek kapsamında güvenlik güncellemelerini, performans iyileştirmelerini ve yeni özellik geliştirmelerini üstleniriz. Sistemleriniz yayından sonra da güncel ve güvenli kalır.
+
+## Blog yazıları / Articles (Turkish)
+
+- [Hazır yazılım mı, kuruma özel yazılım mı? Karar rehberi](https://www.aulesoftware.com/blog/hazir-yazilim-mi-kuruma-ozel-yazilim-mi/): Paket yazılım ile kuruma özel yazılım arasında seçim yaparken bakılması gereken kriterler, gözden kaçan maliyetler, toplam sahip olma maliyeti hesabı ve karar vermenizi kolaylaştıracak sekiz soru.
+- [Departman süreçlerinin analizi: verimlilik fırsatları nasıl bulunur?](https://www.aulesoftware.com/blog/departman-sureclerinin-analizi/): Bir departmanın iş akışlarını haritalamak, zaman ve maliyet kayıplarını ölçmek, otomasyon fırsatlarını önceliklendirmek ve yatırımın geri dönüşünü hesaplamak için adım adım bir yöntem.
+- [Yapay zekâ destekli yazılım geliştirme: kalite ve veri güvenliği nasıl korunur?](https://www.aulesoftware.com/blog/yapay-zeka-destekli-yazilim-gelistirme-kalite-ve-guvenlik/): Yapay zekâ kodlama araçlarıyla daha hızlı geliştirirken kod kalitesini, kurumsal verinin gizliliğini, KVKK uyumunu ve tedarik zinciri güvenliğini korumak için uyguladığımız kontroller.
+- [Forward Deployed Engineer nedir? Müşterinin yanında çalışan mühendis](https://www.aulesoftware.com/blog/forward-deployed-engineer-nedir/): Forward Deployed Engineer rolünün ne olduğu, nereden çıktığı, klasik yazılım ekibi ve danışmanlıktan farkı, yapay zekâ döneminde neden yeniden önem kazandığı ve kurumlara ne kazandırdığı.
+
+## Sık sorulan sorular / FAQ
+
+- Hangi kurumlarla çalışıyorsunuz? Türkiye'de ve yurt dışında, operasyonunda tekrarlayan ve manuel süreçler bulunan, verimliliğini artırmak isteyen her ölçekteki kurumla çalışıyoruz.
+- Hazır yazılım yerine neden kurumunuza özel yazılım? Paket yazılımlar ortak ihtiyaçlara göre tasarlanır ve süreçlerinizi onlara uyarlamanızı gerektirir. Kurumunuza özel yazılım ise mevcut iş akışınıza uyum sağlar; yalnızca ihtiyaç duyduğunuz işlevlere yatırım yaparsınız.
+- Özel yazılım yüksek bütçe gerektirmez mi? Yapay zekâ destekli geliştirme, maliyeti ve teslim süresini belirgin biçimde düşürdü. Her öneriyi, yatırımın geri dönüş süresiyle birlikte sunuyoruz.
+- Süreç nasıl başlıyor? Bir ön görüşmeyle hedeflerinizi ve öncelikli departmanları belirliyoruz. Ardından yerinde analizle iş süreçlerini inceliyor ve önerilerimizi raporluyoruz.
+- Ekiplerimiz yeni sisteme nasıl uyum sağlayacak? Kullanıcı eğitimi hizmetimizin ayrılmaz bir parçasıdır. Sistemi devreye alırken ekiplerinize uygulamalı eğitim veriyoruz.
+- Fiyatlandırma nasıl belirleniyor? Fiyatlandırma projenin kapsamına göre belirlenir. Analizin ardından, beklenen yatırım getirisiyle birlikte projeye özel bir teklif sunarız.
+- Kaynak kod ve veriler kime ait olur? Geliştirdiğimiz yazılımın kaynak kodu ve tüm verileri kurumunuza aittir.
+- Yayından sonra destek veriyor musunuz? Evet. Yıllık bakım ve teknik destek kapsamında sistemlerinizi güncel ve güvenli tutuyor, ihtiyaç duyduğunuzda yanınızda oluyoruz.
+- Yapay zekâ ile geliştirilen kodun kalitesi ve veri güvenliği nasıl sağlanıyor? Yapay zekâ ile üretilen her satırı bir mühendis inceler; kod, otomatik testlerden ve güvenlik taramalarından geçmeden birleştirilmez. Kurumunuzun gerçek verisi yapay zekâ araçlarına verilmez; geliştirme ve testte sentetik ya da maskelenmiş veri kullanılır. Ayrıntıları kalite ve veri güvenliği yazımızda anlatıyoruz.
+
+## Optional
+
+- [RSS](https://www.aulesoftware.com/blog/rss.xml)
+- [Gizlilik politikası](https://www.aulesoftware.com/gizlilik/)
+- [Kullanım koşulları](https://www.aulesoftware.com/kosullar/)

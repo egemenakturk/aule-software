@@ -260,6 +260,14 @@
             "@type": "Answer",
             "text": "Evet. Yıllık bakım ve teknik destek kapsamında sistemlerinizi güncel ve güvenli tutuyor, ihtiyaç duyduğunuzda yanınızda oluyoruz."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Yapay zekâ ile geliştirilen kodun kalitesi ve veri güvenliği nasıl sağlanıyor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yapay zekâ ile üretilen her satırı bir mühendis inceler; kod, otomatik testlerden ve güvenlik taramalarından geçmeden birleştirilmez. Kurumunuzun gerçek verisi yapay zekâ araçlarına verilmez; geliştirme ve testte sentetik ya da maskelenmiş veri kullanılır. Ayrıntıları kalite ve veri güvenliği yazımızda anlatıyoruz."
+          }
         }
       ]
     }
@@ -448,7 +456,7 @@
             <h3 class="heading-4" data-i18n="case.1.title">İK etkinlik ve eğitim yönetimi</h3>
             <p class="body-3" data-i18n="case.1.sub">Büyük bir bankanın İK departmanı, yıl boyunca düzenlenen etkinlik ve eğitim süreçlerini manuel yönetiyordu.</p>
             <div class="au-case-blocks">
-              <div class="au-case-block is-problem"><h4 class="caption-3"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="96"/><line x1="128" y1="80" x2="128" y2="136"/><circle cx="128" cy="172" r="4" fill="currentColor"/></svg><span data-i18n="case.problem">Sorun</span></h4><p class="body-6" data-i18n="case.1.prob">Etkinlik planlama, katılımcı takibi, salon ve yemek organizasyonu ve eğitim sertifikaları Excel ve mail üzerinden yürütülüyordu. Bu süreçleri iki çalışan yürütüyordu.</p></div>
+              <div class="au-case-block is-problem"><h4 class="caption-3"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="96"/><line x1="128" y1="80" x2="128" y2="136"/><circle cx="128" cy="172" r="4" fill="currentColor"/></svg><span data-i18n="case.problem">Sorun</span></h4><p class="body-6" data-i18n="case.1.prob">Etkinlik planlama, katılımcı takibi, salon ve yemek organizasyonu ve eğitim sertifikaları Excel ve e-posta üzerinden yürütülüyordu. Bu süreçleri iki çalışan yürütüyordu.</p></div>
               <div class="au-case-block"><h4 class="caption-3"><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><polyline points="40 144 96 200 224 72"/></svg><span data-i18n="case.solution">Çözüm</span></h4><p class="body-6" data-i18n="case.1.sol">İntranet tabanlı etkinlik yönetim platformu: otomatik davet, katılım takibi, salon ve yemek yönetimi, sertifika oluşturma ve raporlama tek ekranda.</p></div>
             </div>
           </div>
@@ -662,6 +670,10 @@
           <summary class="title-2"><span data-i18n="faq.8.q">Yayından sonra destek veriyor musunuz?</span><svg class="au-icon au-icon-lg" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/><line x1="128" y1="40" x2="128" y2="216"/></svg></summary>
           <p class="au-faq-answer body-3" data-i18n="faq.8.a">Evet. Yıllık bakım ve teknik destek kapsamında sistemlerinizi güncel ve güvenli tutuyor, ihtiyaç duyduğunuzda yanınızda oluyoruz.</p>
         </details>
+        <details class="au-faq-item">
+          <summary class="title-2"><span data-i18n="faq.9.q">Yapay zekâ ile geliştirilen kodun kalitesi ve veri güvenliği nasıl sağlanıyor?</span><svg class="au-icon au-icon-lg" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/><line x1="128" y1="40" x2="128" y2="216"/></svg></summary>
+          <p class="au-faq-answer body-3" data-i18n="faq.9.a">Yapay zekâ ile üretilen her satırı bir mühendis inceler; kod, otomatik testlerden ve güvenlik taramalarından geçmeden birleştirilmez. Kurumunuzun gerçek verisi yapay zekâ araçlarına verilmez; geliştirme ve testte sentetik ya da maskelenmiş veri kullanılır. Ayrıntıları <a href="blog/yapay-zeka-destekli-yazilim-gelistirme-kalite-ve-guvenlik/">kalite ve veri güvenliği yazımızda</a> anlatıyoruz.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -694,7 +706,7 @@
               <p class="au-field-error caption-2" id="f-name-err" aria-live="polite"></p>
             </div>
             <div class="au-field">
-              <label class="title-4" for="f-email" data-i18n="form.email">Kurumsal mail adresi</label>
+              <label class="title-4" for="f-email" data-i18n="form.email">Kurumsal e-posta adresi</label>
               <input class="au-input" id="f-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="ad@sirket.com" data-i18n-attr="placeholder=form.emailPh" required aria-describedby="f-email-err">
               <p class="au-field-error caption-2" id="f-email-err" aria-live="polite"></p>
             </div>
