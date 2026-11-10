@@ -26,6 +26,7 @@ ORG = {
     'address': {'streetAddress': 'Eğitim Mah.', 'addressLocality': 'Kadıköy', 'addressRegion': 'İstanbul',
                 'postalCode': '34722', 'addressCountry': 'TR'},
     'email': 'info@aulesoftware.com',
+    'same_as': ['https://www.linkedin.com/company/aule-software/'],
     'founders': [('Egemen Doğuş Aktürk', 'egemen.akturk@aulesoftware.com'), ('Mert Kelkit', 'mert.kelkit@aulesoftware.com')],
     'knows_about': {
         'tr': ['Kuruma özel yazılım geliştirme', 'İş süreçleri analizi', 'Süreç otomasyonu', 'Kurumsal intranet platformları',
@@ -114,7 +115,8 @@ def graph(lang, doc, title, desc):
         '@context': 'https://schema.org',
         '@graph': [
             {'@type': 'Organization', '@id': SITE + '/#organization', 'name': 'Aule Software', 'alternateName': 'Aule',
-             'legalName': ORG['legal_name'], 'url': SITE + '/', 'description': org_desc, 'knowsLanguage': ['tr', 'en'],
+             'legalName': ORG['legal_name'], 'url': SITE + '/', 'logo': SITE + '/assets/apple-touch-icon.png',
+             'sameAs': ORG['same_as'], 'description': org_desc, 'knowsLanguage': ['tr', 'en'],
              'address': {'@type': 'PostalAddress', **ORG['address']}, 'email': ORG['email'],
              'contactPoint': {'@type': 'ContactPoint', 'contactType': 'sales', 'email': ORG['email'], 'availableLanguage': ['Turkish', 'English']},
              'founder': [{'@type': 'Person', 'name': n, 'email': e, 'jobTitle': visible(doc, 'about.role')} for n, e in ORG['founders']],

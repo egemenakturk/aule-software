@@ -1008,3 +1008,12 @@ body::after {
   .au-callout { padding: var(--spacing-300); }
 }
 @media (prefers-reduced-motion: reduce) { .au-post-card:hover { transform: none; } }
+
+/* Social link (footer) */
+.au-icon-fill { fill: currentColor; stroke: none; }
+.au-social {
+  display: inline-flex; align-items: center; gap: var(--spacing-75); margin-top: var(--spacing-200);
+  min-height: 44px; color: var(--ink-muted); text-decoration: none; transition: color 300ms var(--ease);
+}
+.au-social .au-icon { color: var(--brass); }
+.au-social:hover { color: var(--ink); }
