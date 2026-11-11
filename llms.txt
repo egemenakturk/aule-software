@@ -26,6 +26,7 @@ English: Aule Software is an Istanbul based digital transformation company that 
 
 ## Blog yazıları / Articles (Turkish)
 
+- [Eğitim katılım takibi: eğitim ve etkinlikleri Excel'de yönetmenin gizli maliyeti](https://www.aulesoftware.com/blog/egitim-katilim-takibi-excel/): Kurum içi eğitim ve etkinliklerin davet, kayıt, yoklama, sertifika ve raporlama adımlarını Excel ve e-postayla yürütmenin gerçek maliyeti, bu maliyeti hesaplama yöntemi ve bir eğitim takip sisteminde olması gerekenler.
 - [Hazır yazılım mı, kuruma özel yazılım mı? Karar rehberi](https://www.aulesoftware.com/blog/hazir-yazilim-mi-kuruma-ozel-yazilim-mi/): Paket yazılım ile kuruma özel yazılım arasında seçim yaparken bakılması gereken kriterler, gözden kaçan maliyetler, toplam sahip olma maliyeti hesabı ve karar vermenizi kolaylaştıracak sekiz soru.
 - [Departman süreçlerinin analizi: verimlilik fırsatları nasıl bulunur?](https://www.aulesoftware.com/blog/departman-sureclerinin-analizi/): Bir departmanın iş akışlarını haritalamak, zaman ve maliyet kayıplarını ölçmek, otomasyon fırsatlarını önceliklendirmek ve yatırımın geri dönüşünü hesaplamak için adım adım bir yöntem.
 - [Yapay zekâ destekli yazılım geliştirme: kalite ve veri güvenliği nasıl korunur?](https://www.aulesoftware.com/blog/yapay-zeka-destekli-yazilim-gelistirme-kalite-ve-guvenlik/): Yapay zekâ kodlama araçlarıyla daha hızlı geliştirirken kod kalitesini, kurumsal verinin gizliliğini, KVKK uyumunu ve tedarik zinciri güvenliğini korumak için uyguladığımız kontroller.
