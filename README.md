@@ -18,8 +18,8 @@ Ardından `http://localhost:5173` adresini açın.
 | `en/index.html` | İngilizce sayfa (`/en/`). **Elle düzenlenmez**; `tools/build_en.py` üretir. |
 | `assets/js/i18n.js` | İngilizce metinler (`EN` sözlüğü) ve betiklerin kullandığı mesajlar. İlk ziyarette Türkiye saat dilimindeki tarayıcılar `/`, diğerleri `/en/` sayfasına yönlendirilir; arama motoru ve önizleme botları yönlendirilmez. Dil seçimi kaydedilir. |
 | `tools/build_en.py` | `index.html` + `i18n.js` → `en/index.html` ve yasal sayfalar; iki sayfanın yapısal verisini (kuruluş, hizmet, SSS) ve `llms.txt` dosyasını görünen metinden üretir. |
-| `content/blog/*.md` | Blog yazılarının kaynağı (yalnızca Türkçe). |
-| `blog/` | Blog dizini, yazı sayfaları ve `rss.xml`. **Elle düzenlenmez**; `tools/build_blog.py` üretir. |
+| `content/blog/*.md`, `content/blog/en/*.md` | Blog yazılarının kaynağı: Türkçe ve İngilizce. İngilizce yazı, `tr:` alanında Türkçe karşılığının slug'ını taşır; iki sayfa birbirine hreflang ve dil düğmesiyle bağlanır. |
+| `blog/`, `en/blog/` | Türkçe ve İngilizce blog dizini, yazı sayfaları ve `rss.xml`. **Elle düzenlenmez**; `tools/build_blog.py` üretir. |
 | `tools/build_blog.py` | Yazıları HTML'e çevirir; `index.html`'deki "Son yazılar" bölümünü ve `sitemap.xml`'i günceller. `build_en.py` bunu kendisi çağırır. |
 | `robots.txt`, `sitemap.xml` | Arama motoru keşif dosyaları. `sitemap.xml` üretilir. |
 | `llms.txt` | Yapay zekâ asistanları için site özeti ve bağlantılar ([llmstxt.org](https://llmstxt.org)). **Elle düzenlenmez**; `tools/build_en.py` üretir. |
@@ -55,6 +55,8 @@ category: Süreç analizi
 order: 5              # isteğe bağlı; aynı tarihli yazıların sırası
 ---
 ```
+
+İngilizce çevirisini `content/blog/en/` altına aynı biçimde ekleyin; başa `tr: <türkçe-slug>` satırını yazın ki iki yazı birbirine bağlansın.
 
 Gövdede `##` ve `###` başlıklar (içindekilere `##` girer), `-` ve `1.` listeler, `**kalın**`, `[bağlantı](../diger-yazi/)`, boru tabloları ve `>` ile vurgu kutusu kullanılabilir. Başlıkta iki nokta varsa değeri tırnak içine alın.
 

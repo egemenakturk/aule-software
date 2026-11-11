@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Aule Software Blog</title>
+    <link>https://www.aulesoftware.com/en/blog/</link>
+    <description>Articles on custom software, business process analysis and digital transformation.</description>
+    <language>en</language>
+    <item>
+      <title>Training attendance tracking: the hidden cost of running training and events in Excel</title>
+      <link>https://www.aulesoftware.com/en/blog/training-attendance-tracking-excel/</link>
+      <guid>https://www.aulesoftware.com/en/blog/training-attendance-tracking-excel/</guid>
+      <pubDate>Wed, 11 Nov 2026 09:00:00 +0300</pubDate>
+      <description>The real cost of running the invitation, registration, attendance, certificate and reporting steps of internal training and events with Excel and e-mail, how to calculate it, and what a training tracking system should include.</description>
+    </item>
+    <item>
+      <title>Off-the-shelf or custom software? A decision guide</title>
+      <link>https://www.aulesoftware.com/en/blog/build-vs-buy-custom-software/</link>
+      <guid>https://www.aulesoftware.com/en/blog/build-vs-buy-custom-software/</guid>
+      <pubDate>Mon, 09 Nov 2026 09:00:00 +0300</pubDate>
+      <description>The criteria to weigh when choosing between packaged and custom software, the costs that comparisons usually miss, how to calculate total cost of ownership, and eight questions that make the decision easier.</description>
+    </item>
+    <item>
+      <title>Analyzing department processes: how to find efficiency opportunities</title>
+      <link>https://www.aulesoftware.com/en/blog/analyzing-department-processes/</link>
+      <guid>https://www.aulesoftware.com/en/blog/analyzing-department-processes/</guid>
+      <pubDate>Mon, 09 Nov 2026 09:00:00 +0300</pubDate>
+      <description>A step by step method to map a department&#x27;s workflows, measure time and cost losses, prioritize automation opportunities and calculate the return on investment.</description>
+    </item>
+    <item>
+      <title>AI assisted software development: how to protect quality and data security</title>
+      <link>https://www.aulesoftware.com/en/blog/ai-assisted-software-development-quality-and-security/</link>
+      <guid>https://www.aulesoftware.com/en/blog/ai-assisted-software-development-quality-and-security/</guid>
+      <pubDate>Mon, 09 Nov 2026 09:00:00 +0300</pubDate>
+      <description>The controls we apply to protect code quality, the confidentiality of corporate data, compliance with data protection law and supply chain security while building faster with AI coding tools.</description>
+    </item>
+    <item>
+      <title>What is a Forward Deployed Engineer? The engineer who works alongside the client</title>
+      <link>https://www.aulesoftware.com/en/blog/what-is-a-forward-deployed-engineer/</link>
+      <guid>https://www.aulesoftware.com/en/blog/what-is-a-forward-deployed-engineer/</guid>
+      <pubDate>Mon, 09 Nov 2026 09:00:00 +0300</pubDate>
+      <description>What the Forward Deployed Engineer role is, where it came from, how it differs from a traditional software team and from consulting, why it matters again in the age of AI, and what it brings to organizations.</description>
+    </item>
+  </channel>
+</rss>

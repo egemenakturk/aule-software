@@ -17,25 +17,85 @@
   <url>
     <loc>https://www.aulesoftware.com/blog/</loc>
     <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aulesoftware.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aulesoftware.com/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aulesoftware.com/blog/"/>
+  </url>
+  <url>
+    <loc>https://www.aulesoftware.com/en/blog/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aulesoftware.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aulesoftware.com/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aulesoftware.com/blog/"/>
   </url>
   <url>
     <loc>https://www.aulesoftware.com/blog/egitim-katilim-takibi-excel/</loc>
     <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aulesoftware.com/blog/egitim-katilim-takibi-excel/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aulesoftware.com/en/blog/training-attendance-tracking-excel/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aulesoftware.com/blog/egitim-katilim-takibi-excel/"/>
   </url>
   <url>
     <loc>https://www.aulesoftware.com/blog/hazir-yazilim-mi-kuruma-ozel-yazilim-mi/</loc>
     <lastmod>2026-11-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aulesoftware.com/blog/hazir-yazilim-mi-kuruma-ozel-yazilim-mi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aulesoftware.com/en/blog/build-vs-buy-custom-software/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aulesoftware.com/blog/hazir-yazilim-mi-kuruma-ozel-yazilim-mi/"/>
   </url>
   <url>
     <loc>https://www.aulesoftware.com/blog/departman-sureclerinin-analizi/</loc>
     <lastmod>2026-11-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aulesoftware.com/blog/departman-sureclerinin-analizi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aulesoftware.com/en/blog/analyzing-department-processes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aulesoftware.com/blog/departman-sureclerinin-analizi/"/>
   </url>
   <url>
     <loc>https://www.aulesoftware.com/blog/yapay-zeka-destekli-yazilim-gelistirme-kalite-ve-guvenlik/</loc>
     <lastmod>2026-11-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aulesoftware.com/blog/yapay-zeka-destekli-yazilim-gelistirme-kalite-ve-guvenlik/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aulesoftware.com/en/blog/ai-assisted-software-development-quality-and-security/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aulesoftware.com/blog/yapay-zeka-destekli-yazilim-gelistirme-kalite-ve-guvenlik/"/>
   </url>
   <url>
     <loc>https://www.aulesoftware.com/blog/forward-deployed-engineer-nedir/</loc>
     <lastmod>2026-11-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aulesoftware.com/blog/forward-deployed-engineer-nedir/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aulesoftware.com/en/blog/what-is-a-forward-deployed-engineer/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aulesoftware.com/blog/forward-deployed-engineer-nedir/"/>
+  </url>
+  <url>
+    <loc>https://www.aulesoftware.com/en/blog/training-attendance-tracking-excel/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aulesoftware.com/en/blog/training-attendance-tracking-excel/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aulesoftware.com/blog/egitim-katilim-takibi-excel/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aulesoftware.com/blog/egitim-katilim-takibi-excel/"/>
+  </url>
+  <url>
+    <loc>https://www.aulesoftware.com/en/blog/build-vs-buy-custom-software/</loc>
+    <lastmod>2026-11-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aulesoftware.com/en/blog/build-vs-buy-custom-software/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aulesoftware.com/blog/hazir-yazilim-mi-kuruma-ozel-yazilim-mi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aulesoftware.com/blog/hazir-yazilim-mi-kuruma-ozel-yazilim-mi/"/>
+  </url>
+  <url>
+    <loc>https://www.aulesoftware.com/en/blog/analyzing-department-processes/</loc>
+    <lastmod>2026-11-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aulesoftware.com/en/blog/analyzing-department-processes/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aulesoftware.com/blog/departman-sureclerinin-analizi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aulesoftware.com/blog/departman-sureclerinin-analizi/"/>
+  </url>
+  <url>
+    <loc>https://www.aulesoftware.com/en/blog/ai-assisted-software-development-quality-and-security/</loc>
+    <lastmod>2026-11-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aulesoftware.com/en/blog/ai-assisted-software-development-quality-and-security/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aulesoftware.com/blog/yapay-zeka-destekli-yazilim-gelistirme-kalite-ve-guvenlik/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aulesoftware.com/blog/yapay-zeka-destekli-yazilim-gelistirme-kalite-ve-guvenlik/"/>
+  </url>
+  <url>
+    <loc>https://www.aulesoftware.com/en/blog/what-is-a-forward-deployed-engineer/</loc>
+    <lastmod>2026-11-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aulesoftware.com/en/blog/what-is-a-forward-deployed-engineer/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aulesoftware.com/blog/forward-deployed-engineer-nedir/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aulesoftware.com/blog/forward-deployed-engineer-nedir/"/>
   </url>
 </urlset>

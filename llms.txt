@@ -14,7 +14,8 @@ English: Aule Software is an Istanbul based digital transformation company that 
 
 - [Ana sayfa (Türkçe)](https://www.aulesoftware.com/): Aule Software, departmanlarınızın iş süreçlerini analiz eder; verimliliği artıran ve operasyonel maliyeti düşüren yazılımları kurumunuza özel geliştirir.
 - [Home page (English)](https://www.aulesoftware.com/en/): Aule Software analyzes how your departments work and builds custom software that raises efficiency and lowers operating costs.
-- [Blog](https://www.aulesoftware.com/blog/): Kuruma özel yazılım, süreç analizi ve yapay zekâ destekli geliştirme üzerine yazılar (Türkçe).
+- [Blog (Türkçe)](https://www.aulesoftware.com/blog/): Kuruma özel yazılım, süreç analizi ve yapay zekâ destekli geliştirme üzerine yazılar.
+- [Blog (English)](https://www.aulesoftware.com/en/blog/): Articles on custom software, process analysis and AI assisted development.
 
 ## Hizmetler / Services
 
@@ -24,13 +25,21 @@ English: Aule Software is an Istanbul based digital transformation company that 
 - Eğitim ve devreye alma: Sistemi kademeli olarak devreye alır, her kullanıcı grubuna uygulamalı eğitim veririz. Kullanım kılavuzları ve değişim yönetimi desteğiyle yazılım ilk günden gündelik işin parçası olur.
 - Bakım ve destek: Yıllık bakım ve teknik destek kapsamında güvenlik güncellemelerini, performans iyileştirmelerini ve yeni özellik geliştirmelerini üstleniriz. Sistemleriniz yayından sonra da güncel ve güvenli kalır.
 
-## Blog yazıları / Articles (Turkish)
+## Blog yazıları (Türkçe)
 
 - [Eğitim katılım takibi: eğitim ve etkinlikleri Excel'de yönetmenin gizli maliyeti](https://www.aulesoftware.com/blog/egitim-katilim-takibi-excel/): Kurum içi eğitim ve etkinliklerin davet, kayıt, yoklama, sertifika ve raporlama adımlarını Excel ve e-postayla yürütmenin gerçek maliyeti, bu maliyeti hesaplama yöntemi ve bir eğitim takip sisteminde olması gerekenler.
 - [Hazır yazılım mı, kuruma özel yazılım mı? Karar rehberi](https://www.aulesoftware.com/blog/hazir-yazilim-mi-kuruma-ozel-yazilim-mi/): Paket yazılım ile kuruma özel yazılım arasında seçim yaparken bakılması gereken kriterler, gözden kaçan maliyetler, toplam sahip olma maliyeti hesabı ve karar vermenizi kolaylaştıracak sekiz soru.
 - [Departman süreçlerinin analizi: verimlilik fırsatları nasıl bulunur?](https://www.aulesoftware.com/blog/departman-sureclerinin-analizi/): Bir departmanın iş akışlarını haritalamak, zaman ve maliyet kayıplarını ölçmek, otomasyon fırsatlarını önceliklendirmek ve yatırımın geri dönüşünü hesaplamak için adım adım bir yöntem.
 - [Yapay zekâ destekli yazılım geliştirme: kalite ve veri güvenliği nasıl korunur?](https://www.aulesoftware.com/blog/yapay-zeka-destekli-yazilim-gelistirme-kalite-ve-guvenlik/): Yapay zekâ kodlama araçlarıyla daha hızlı geliştirirken kod kalitesini, kurumsal verinin gizliliğini, KVKK uyumunu ve tedarik zinciri güvenliğini korumak için uyguladığımız kontroller.
 - [Forward Deployed Engineer nedir? Müşterinin yanında çalışan mühendis](https://www.aulesoftware.com/blog/forward-deployed-engineer-nedir/): Forward Deployed Engineer rolünün ne olduğu, nereden çıktığı, klasik yazılım ekibi ve danışmanlıktan farkı, yapay zekâ döneminde neden yeniden önem kazandığı ve kurumlara ne kazandırdığı.
+
+## Articles (English)
+
+- [Training attendance tracking: the hidden cost of running training and events in Excel](https://www.aulesoftware.com/en/blog/training-attendance-tracking-excel/): The real cost of running the invitation, registration, attendance, certificate and reporting steps of internal training and events with Excel and e-mail, how to calculate it, and what a training tracking system should include.
+- [Off-the-shelf or custom software? A decision guide](https://www.aulesoftware.com/en/blog/build-vs-buy-custom-software/): The criteria to weigh when choosing between packaged and custom software, the costs that comparisons usually miss, how to calculate total cost of ownership, and eight questions that make the decision easier.
+- [Analyzing department processes: how to find efficiency opportunities](https://www.aulesoftware.com/en/blog/analyzing-department-processes/): A step by step method to map a department's workflows, measure time and cost losses, prioritize automation opportunities and calculate the return on investment.
+- [AI assisted software development: how to protect quality and data security](https://www.aulesoftware.com/en/blog/ai-assisted-software-development-quality-and-security/): The controls we apply to protect code quality, the confidentiality of corporate data, compliance with data protection law and supply chain security while building faster with AI coding tools.
+- [What is a Forward Deployed Engineer? The engineer who works alongside the client](https://www.aulesoftware.com/en/blog/what-is-a-forward-deployed-engineer/): What the Forward Deployed Engineer role is, where it came from, how it differs from a traditional software team and from consulting, why it matters again in the age of AI, and what it brings to organizations.
 
 ## Sık sorulan sorular / FAQ
 
@@ -46,6 +55,7 @@ English: Aule Software is an Istanbul based digital transformation company that 
 
 ## Optional
 
-- [RSS](https://www.aulesoftware.com/blog/rss.xml)
+- [RSS (Türkçe)](https://www.aulesoftware.com/blog/rss.xml)
+- [RSS (English)](https://www.aulesoftware.com/en/blog/rss.xml)
 - [Gizlilik politikası](https://www.aulesoftware.com/gizlilik/)
 - [Kullanım koşulları](https://www.aulesoftware.com/kosullar/)

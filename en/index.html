@@ -61,7 +61,11 @@
       "@type": "Organization",
       "@id": "https://www.aulesoftware.com/#organization",
       "name": "Aule Software",
-      "alternateName": "Aule",
+      "alternateName": [
+        "Aule Yazılım",
+        "Aule",
+        "aulesoftware.com"
+      ],
       "legalName": "Aule Yazılım",
       "url": "https://www.aulesoftware.com/",
       "logo": "https://www.aulesoftware.com/assets/apple-touch-icon.png",
@@ -120,6 +124,10 @@
       "@id": "https://www.aulesoftware.com/#website",
       "url": "https://www.aulesoftware.com/",
       "name": "Aule Software",
+      "alternateName": [
+        "Aule Yazılım",
+        "aulesoftware.com"
+      ],
       "inLanguage": [
         "tr",
         "en"
@@ -269,7 +277,7 @@
           "name": "How do you ensure the quality and data security of AI assisted code?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "An engineer reviews every line produced with AI, and no code is merged before it passes automated tests and security scans. Your organization's real data is never given to AI tools; development and testing use synthetic or masked data. We explain the details in our article on quality and data security (in Turkish)."
+            "text": "An engineer reviews every line produced with AI, and no code is merged before it passes automated tests and security scans. Your organization's real data is never given to AI tools; development and testing use synthetic or masked data. We explain the details in our article on quality and data security ."
           }
         }
       ]
@@ -289,7 +297,7 @@
     <ul class="au-nav-links title-4">
       <li><a href="#services" data-nav-link data-i18n="nav.services">Services</a></li>
       <li><a href="#cases" data-nav-link data-i18n="nav.cases">Projects</a></li>
-      <li><a href="../blog/" hreflang="tr" data-i18n="nav.blog">Blog</a></li>
+      <li><a href="blog/" data-i18n="nav.blog">Blog</a></li>
       <li><a href="#faq" data-nav-link data-i18n="nav.faq">FAQ</a></li>
       <li><a href="#about" data-nav-link data-i18n="nav.about">About</a></li>
     </ul>
@@ -305,7 +313,7 @@
     <ul class="heading-4">
       <li style="--i:0"><a href="#services" data-nav-link data-i18n="nav.services">Services</a></li>
       <li style="--i:1"><a href="#cases" data-nav-link data-i18n="nav.cases">Projects</a></li>
-      <li style="--i:2"><a href="../blog/" hreflang="tr" data-i18n="nav.blog">Blog</a></li>
+      <li style="--i:2"><a href="blog/" data-i18n="nav.blog">Blog</a></li>
       <li style="--i:3"><a href="#faq" data-nav-link data-i18n="nav.faq">FAQ</a></li>
       <li style="--i:4"><a href="#about" data-nav-link data-i18n="nav.about">About</a></li>
     </ul>
@@ -599,6 +607,39 @@
     </div>
   </section>
 
+  <!--blog:start-->
+  <!-- Blog -->
+  <section class="au-section" id="blog" aria-labelledby="blog-title">
+    <div class="au-container">
+      <div class="au-section-head au-measure au-reveal">
+        <p class="au-eyebrow caption-4">Blog</p>
+        <h2 class="heading-2" id="blog-title" data-split>Latest articles</h2>
+        <p class="body-3 au-muted">Articles by our founders on custom software, process analysis and digital transformation.</p>
+      </div>
+      <div class="au-post-grid au-reveal au-stagger">
+      <article class="au-post-card">
+        <p class="caption-4 au-post-cat">Human resources</p>
+        <h3 class="title-1"><a href="blog/training-attendance-tracking-excel/">Training attendance tracking: the hidden cost of running training and events in Excel</a></h3>
+        <p class="body-6 au-muted">The real cost of running the invitation, registration, attendance, certificate and reporting steps of internal training and events with Excel and e-mail, how to calculate it, and what a training tracking system should include.</p>
+        <p class="au-post-meta caption-5">Mert Kelkit · November 11, 2026 · 7 min</p>
+      </article>
+      <article class="au-post-card">
+        <p class="caption-4 au-post-cat">Decision guide</p>
+        <h3 class="title-1"><a href="blog/build-vs-buy-custom-software/">Off-the-shelf or custom software? A decision guide</a></h3>
+        <p class="body-6 au-muted">The criteria to weigh when choosing between packaged and custom software, the costs that comparisons usually miss, how to calculate total cost of ownership, and eight questions that make the decision easier.</p>
+        <p class="au-post-meta caption-5">Egemen Doğuş Aktürk · November 9, 2026 · 7 min</p>
+      </article>
+      <article class="au-post-card">
+        <p class="caption-4 au-post-cat">Process analysis</p>
+        <h3 class="title-1"><a href="blog/analyzing-department-processes/">Analyzing department processes: how to find efficiency opportunities</a></h3>
+        <p class="body-6 au-muted">A step by step method to map a department&#x27;s workflows, measure time and cost losses, prioritize automation opportunities and calculate the return on investment.</p>
+        <p class="au-post-meta caption-5">Mert Kelkit · November 9, 2026 · 7 min</p>
+      </article>
+      </div>
+      <p class="au-blog-more au-reveal"><a class="au-btn au-btn-secondary" href="blog/"><span class="au-btn-label">All articles</span><svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/><polyline points="144 56 216 128 144 200"/></svg></a></p>
+    </div>
+  </section>
+  <!--blog:end-->
 
   <!-- FAQ -->
   <section class="au-section" id="faq" aria-labelledby="faq-title">
@@ -642,7 +683,7 @@
         </details>
         <details class="au-faq-item">
           <summary class="title-2"><span data-i18n="faq.9.q">How do you ensure the quality and data security of AI assisted code?</span><svg class="au-icon au-icon-lg" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/><line x1="128" y1="40" x2="128" y2="216"/></svg></summary>
-          <p class="au-faq-answer body-3" data-i18n="faq.9.a">An engineer reviews every line produced with AI, and no code is merged before it passes automated tests and security scans. Your organization's real data is never given to AI tools; development and testing use synthetic or masked data. We explain the details in our <a href="../blog/yapay-zeka-destekli-yazilim-gelistirme-kalite-ve-guvenlik/" hreflang="tr">article on quality and data security</a> (in Turkish).</p>
+          <p class="au-faq-answer body-3" data-i18n="faq.9.a">An engineer reviews every line produced with AI, and no code is merged before it passes automated tests and security scans. Your organization's real data is never given to AI tools; development and testing use synthetic or masked data. We explain the details in our <a href="blog/ai-assisted-software-development-quality-and-security/">article on quality and data security</a>.</p>
         </details>
       </div>
     </div>
@@ -766,7 +807,7 @@
       <ul class="au-footer-links body-6">
         <li><a href="#services" data-i18n="nav.services">Services</a></li>
         <li><a href="#cases" data-i18n="nav.cases">Projects</a></li>
-        <li><a href="../blog/" hreflang="tr" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="blog/" data-i18n="nav.blog">Blog</a></li>
         <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         <li><a href="#about" data-i18n="nav.about">About</a></li>
       </ul>

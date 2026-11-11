@@ -229,7 +229,7 @@
     'faq.8.q': 'Do you provide support after launch?',
     'faq.8.a': 'Yes. Our annual maintenance and technical support keeps your systems current and secure, and we are on hand whenever you need us.',
     'faq.9.q': 'How do you ensure the quality and data security of AI assisted code?',
-    'faq.9.a': 'An engineer reviews every line produced with AI, and no code is merged before it passes automated tests and security scans. Your organization\'s real data is never given to AI tools; development and testing use synthetic or masked data. We explain the details in our <a href="../blog/yapay-zeka-destekli-yazilim-gelistirme-kalite-ve-guvenlik/" hreflang="tr">article on quality and data security</a> (in Turkish).',
+    'faq.9.a': 'An engineer reviews every line produced with AI, and no code is merged before it passes automated tests and security scans. Your organization\'s real data is never given to AI tools; development and testing use synthetic or masked data. We explain the details in our <a href="blog/ai-assisted-software-development-quality-and-security/">article on quality and data security</a>.',
 
     'contact.eyebrow': 'Contact',
     'contact.title': 'Let’s plan your transformation together.',

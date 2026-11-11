@@ -1,8 +1,8 @@
-"""Build the blog from Markdown.
+"""Build the Turkish and English blog from Markdown.
 
-    python tools/build_en.py        (runs this first, then builds the English page)
+    python tools/build_en.py        (runs this first, then builds the English page and the English blog)
 
-Posts live in content/blog/*.md with a front matter block:
+Turkish posts live in content/blog/*.md, English posts in content/blog/en/*.md, each with a front matter block:
 
     ---
     title: Hazır yazılım mı, kuruma özel yazılım mı? Karar rehberi
@@ -12,12 +12,14 @@ Posts live in content/blog/*.md with a front matter block:
     author: egemen            (a key of AUTHORS below)
     category: Karar rehberi
     order: 1                  (optional; lower comes first on the same date)
+    tr: <turkish slug>        (English posts only: the Turkish post this one translates)
     ---
 
 Supported Markdown: ## and ### headings, paragraphs, - and 1. lists, > callouts, pipe tables,
 **bold**, `code` and [links](url). This script writes:
-  blog/index.html, blog/<slug>/index.html, the "Son yazılar" block in index.html (between
-  <!--blog:start--> and <!--blog:end-->) and sitemap.xml.
+  blog/ and en/blog/ (index, posts, rss.xml), the "Son yazılar" block in index.html (between
+  <!--blog:start--> and <!--blog:end-->) and sitemap.xml. build_en.py puts the English block
+  into en/index.html and calls build_pages('en', ...).
 """
 import datetime
 import html
@@ -25,22 +27,54 @@ import json
 import math
 import re
 from pathlib import Path
+from urllib.parse import urljoin
 
 ROOT = Path(__file__).resolve().parent.parent
-POSTS = ROOT / 'content' / 'blog'
 SITE = 'https://www.aulesoftware.com'
+SRC = {'tr': ROOT / 'content' / 'blog', 'en': ROOT / 'content' / 'blog' / 'en'}
+HOME = {'tr': '/', 'en': '/en/'}          # home page path per language
+BLOG = {'tr': '/blog/', 'en': '/en/blog/'}
 
 AUTHORS = {
-    'egemen': {'name': 'Egemen Doğuş Aktürk', 'initials': 'EA', 'role': 'Kurucu Ortak',
+    'egemen': {'name': 'Egemen Doğuş Aktürk', 'initials': 'EA',
                'email': 'egemen.akturk@aulesoftware.com',
-               'bio': 'Bankacılık ve havacılık sektörlerinde 7 yılı aşkın deneyim. ISO standartlarına uygun uluslararası SWIFT para transferi ürününde ve IATA standartlarına uygun havayolu rezervasyon sistemlerinde görev aldı.'},
-    'mert': {'name': 'Mert Kelkit', 'initials': 'MK', 'role': 'Kurucu Ortak',
+               'bio': {'tr': 'Bankacılık ve havacılık sektörlerinde 7 yılı aşkın deneyim. ISO standartlarına uygun uluslararası SWIFT para transferi ürününde ve IATA standartlarına uygun havayolu rezervasyon sistemlerinde görev aldı.',
+                       'en': 'More than 7 years of experience in banking and aviation. Worked on an international SWIFT money transfer product built to ISO standards and on airline reservation systems built to IATA standards.'}},
+    'mert': {'name': 'Mert Kelkit', 'initials': 'MK',
              'email': 'mert.kelkit@aulesoftware.com',
-             'bio': 'Bankacılık sektöründe 7 yılı aşkın deneyim. ISO standartlarına uygun uluslararası SWIFT para transferi ürününde ve 10\'dan fazla bankada kullanılan TCMB FAST ve KOLAS ürünlerinde görev aldı.'},
+             'bio': {'tr': 'Bankacılık sektöründe 7 yılı aşkın deneyim. ISO standartlarına uygun uluslararası SWIFT para transferi ürününde ve 10\'dan fazla bankada kullanılan TCMB FAST ve KOLAS ürünlerinde görev aldı.',
+                     'en': 'More than 7 years of experience in banking. Worked on an international SWIFT money transfer product built to ISO standards and on the Central Bank of the Republic of Türkiye FAST and KOLAS products used by more than 10 banks.'}},
 }
-MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
+
+T = {
+    'tr': dict(
+        html_lang='tr', locale='tr_TR', locale_alt='en_US', og_image='og-image.png', skip='İçeriğe geç',
+        role='Kurucu Ortak', home='Ana sayfa', crumbs='İçerik yolu', toc='İçindekiler', related='Diğer yazılar',
+        author='Yazar', read='dk okuma', mins='dk',
+        cta_eyebrow='Ön görüşme', cta_title='Bu yazıdaki konuları kurumunuz için konuşalım.',
+        cta_text='Kısa bir ön görüşmede hedeflerinizi ve öncelikli süreçlerinizi birlikte değerlendirelim.',
+        cta_btn='Ön görüşme planlayın',
+        index_title='Blog | Aule Software', index_h1='Kuruma özel yazılım ve<br> dijital dönüşüm üzerine.',
+        index_desc='Kuruma özel yazılım, iş süreçleri analizi ve dijital dönüşüm üzerine Aule Software kurucularının yazıları.',
+        teaser_title='Son yazılar', all_posts='Tüm yazılar',
+        teaser_desc='Kuruma özel yazılım, süreç analizi ve dijital dönüşüm üzerine kurucularımızın yazıları.',
+        rss_desc='Kuruma özel yazılım, iş süreçleri analizi ve dijital dönüşüm üzerine yazılar.'),
+    'en': dict(
+        html_lang='en', locale='en_US', locale_alt='tr_TR', og_image='og-image-en.png', skip='Skip to content',
+        role='Founding Partner', home='Home', crumbs='Breadcrumb', toc='Contents', related='More articles',
+        author='Author', read='min read', mins='min',
+        cta_eyebrow='Consultation', cta_title='Let’s talk about these topics for your organization.',
+        cta_text='In a short introductory call, we will review your goals and priority processes together.',
+        cta_btn='Book a consultation',
+        index_title='Blog | Aule Software', index_h1='On custom software and<br> digital transformation.',
+        index_desc='Articles by the founders of Aule Software on custom software, business process analysis and digital transformation.',
+        teaser_title='Latest articles', all_posts='All articles',
+        teaser_desc='Articles by our founders on custom software, process analysis and digital transformation.',
+        rss_desc='Articles on custom software, business process analysis and digital transformation.'),
+}
+MONTHS = {'tr': ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+          'en': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']}
 ARROW = '<svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><line x1="40" y1="128" x2="216" y2="128"/><polyline points="144 56 216 128 144 200"/></svg>'
-CLOCK = '<svg class="au-icon" viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="96"/><polyline points="128 72 128 128 184 128"/></svg>'
 
 
 # ── Markdown ──────────────────────────────────────────────────────
@@ -132,9 +166,9 @@ def markdown(src):
 
 # ── Posts ─────────────────────────────────────────────────────────
 
-def load_posts():
+def load_posts(lang='tr'):
     posts = []
-    for f in sorted(POSTS.glob('*.md')):
+    for f in sorted(SRC[lang].glob('*.md')):
         raw = f.read_text(encoding='utf-8')
         m = re.match(r'---\n(.*?)\n---\n(.*)', raw, re.S)
         if not m:
@@ -148,37 +182,73 @@ def load_posts():
             raise SystemExit(f'{f.name}: unknown author {meta["author"]}')
         body, toc = markdown(m.group(2))
         words = len(re.findall(r'\w+', re.sub(r'<[^>]+>', ' ', body)))
-        meta.update(body=body, toc=toc, words=words, minutes=max(1, math.ceil(words / 200)),
+        meta.update(lang=lang, body=body, toc=toc, words=words, minutes=max(1, math.ceil(words / 200)),
                     date_obj=datetime.date.fromisoformat(meta['date']), order=int(meta.get('order', 99)))
         posts.append(meta)
     posts.sort(key=lambda p: (-p['date_obj'].toordinal(), p['order']))
     return posts
 
 
-def human_date(d):
-    return f'{d.day} {MONTHS[d.month - 1]} {d.year}'
+def load_all():
+    """Both languages, with each post's translation path in p['alt'] (or None)."""
+    tr, en = load_posts('tr'), load_posts('en')
+    tr_slugs = {p['slug'] for p in tr}
+    en_of = {}
+    for p in en:
+        if p.get('tr') and p['tr'] not in tr_slugs:
+            raise SystemExit(f'en/{p["slug"]}: no Turkish post with slug {p["tr"]}')
+        if p.get('tr'):
+            en_of[p['tr']] = p['slug']
+    for p in tr:
+        p['alt'] = BLOG['en'] + en_of[p['slug']] + '/' if p['slug'] in en_of else None
+    for p in en:
+        p['alt'] = BLOG['tr'] + p['tr'] + '/' if p.get('tr') else None
+    return {'tr': tr, 'en': en}
 
 
-# ── Shared chrome (navigation and footer copied from index.html) ──
+def path_of(p):
+    return BLOG[p['lang']] + p['slug'] + '/'
 
-def chrome(index_html, up):
-    header = index_html[index_html.index('<header>'): index_html.index('</header>') + len('</header>')]
-    footer = index_html[index_html.index('<footer'): index_html.index('</footer>') + len('</footer>')]
+
+def human_date(d, lang):
+    m = MONTHS[lang][d.month - 1]
+    return f'{d.day} {m} {d.year}' if lang == 'tr' else f'{m} {d.day}, {d.year}'
+
+
+# ── Shared chrome (navigation and footer copied from the home page) ──
+
+def chrome(page_html, base):
+    """Header and footer of a home page, with every relative link made root-absolute against `base`."""
+    header = page_html[page_html.index('<header>'): page_html.index('</header>') + len('</header>')]
+    footer = page_html[page_html.index('<footer'): page_html.index('</footer>') + len('</footer>')]
+
+    def absolute(m):
+        attr, url = m.group(1), m.group(2)
+        if re.match(r'(https?:|mailto:|/|#content$)', url):
+            return m.group(0)
+        return f'{attr}="{urljoin(base, url)}"'
 
     def fix(part):
-        part = part.replace(' data-nav-link', '')
-        part = re.sub(r'href="#(?!content")', f'href="{up}#', part)
-        part = part.replace('href="./" data-lang="tr"', f'href="{up}" data-lang="tr"')
-        part = re.sub(r'href="(blog/|en/|gizlilik/|kosullar/)', lambda m: f'href="{up}{m.group(1)}', part)
-        part = part.replace(' aria-current="true">TR', '>TR')
-        return part
+        part = part.replace(' data-nav-link', '').replace(' aria-current="true"', '')
+        return re.sub(r'(href|src)="([^"]*)"', absolute, part)
     return fix(header), fix(footer)
 
 
-def head(title, desc, canonical, up, extra=''):
+def set_lang_links(header, lang, tr_href, en_href):
+    header = re.sub(r'<a href="[^"]*" data-lang="tr"', f'<a href="{tr_href}" data-lang="tr"', header)
+    header = re.sub(r'<a href="[^"]*" data-lang="en"', f'<a href="{en_href}" data-lang="en"', header)
+    return re.sub(r'(<a href="[^"]*" data-lang="%s"[^>]*)>' % lang, r'\1 aria-current="true">', header, count=1)
+
+
+def head(lang, title, desc, path, alternates, extra='', og_type='website'):
+    t = T[lang]
+    url = SITE + path
+    alt = ''.join(f'  <link rel="alternate" hreflang="{l}" href="{SITE}{u}">\n' for l, u in alternates.items())
+    if alternates:
+        alt += f'  <link rel="alternate" hreflang="x-default" href="{SITE}{alternates.get("tr", path)}">\n'
     return f'''<!doctype html>
 <!-- Generated by tools/build_blog.py from content/blog. Do not edit by hand. -->
-<html lang="tr" class="no-js">
+<html lang="{t["html_lang"]}" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -191,36 +261,36 @@ def head(title, desc, canonical, up, extra=''):
   <title>{html.escape(title)}</title>
   <meta name="description" content="{html.escape(desc, quote=True)}">
   <meta name="theme-color" content="#131209">
-  <link rel="canonical" href="{canonical}">
-  <meta property="og:type" content="{'article' if '/blog/' in canonical and canonical.rstrip('/') != SITE + '/blog' else 'website'}">
-  <meta property="og:locale" content="tr_TR">
+  <link rel="canonical" href="{url}">
+{alt}  <meta property="og:type" content="{og_type}">
+  <meta property="og:locale" content="{t["locale"]}">
   <meta property="og:site_name" content="Aule Software">
   <meta property="og:title" content="{html.escape(title, quote=True)}">
   <meta property="og:description" content="{html.escape(desc, quote=True)}">
-  <meta property="og:url" content="{canonical}">
-  <meta property="og:image" content="{SITE}/assets/og-image.png">
+  <meta property="og:url" content="{url}">
+  <meta property="og:image" content="{SITE}/assets/{t["og_image"]}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="{SITE}/assets/og-image.png">
-  <link rel="alternate" type="application/rss+xml" title="Aule Software Blog" href="{SITE}/blog/rss.xml">
-  <link rel="icon" href="{up}favicon.ico" sizes="48x48">
-  <link rel="icon" href="{up}assets/favicon-192.png" sizes="192x192" type="image/png">
-  <link rel="icon" href="{up}assets/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="{up}assets/apple-touch-icon.png">
-  <link rel="preload" href="{up}assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="{up}assets/css/tokens.css">
-  <link rel="stylesheet" href="{up}assets/css/aule.css">
+  <meta name="twitter:image" content="{SITE}/assets/{t["og_image"]}">
+  <link rel="alternate" type="application/rss+xml" title="Aule Software Blog" href="{SITE}{BLOG[lang]}rss.xml">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/assets/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/aule.css">
 {extra}</head>
 <body>
-<a class="au-skip button-sm" href="#content">İçeriğe geç</a>
+<a class="au-skip button-sm" href="#content">{t["skip"]}</a>
 '''
 
 
-def tail(footer, up):
+def tail(footer):
     return f'''{footer}
-<script src="{up}assets/js/i18n.js" defer></script>
-<script src="{up}assets/js/main.js" defer></script>
+<script src="/assets/js/i18n.js" defer></script>
+<script src="/assets/js/main.js" defer></script>
 </body>
 </html>
 '''
@@ -232,8 +302,9 @@ def jsonld(data):
 
 
 def author_line(a, p):
+    t = T[p['lang']]
     return (f'<span class="au-avatar au-avatar-sm" aria-hidden="true">{a["initials"]}</span>'
-            f'<span><strong>{a["name"]}</strong><br><span class="au-muted">{human_date(p["date_obj"])} · {p["minutes"]} dk okuma</span></span>')
+            f'<span><strong>{a["name"]}</strong><br><span class="au-muted">{human_date(p["date_obj"], p["lang"])} · {p["minutes"]} {t["read"]}</span></span>')
 
 
 def card(p, href):
@@ -242,47 +313,59 @@ def card(p, href):
         <p class="caption-4 au-post-cat">{html.escape(p["category"])}</p>
         <h3 class="title-1"><a href="{href}">{html.escape(p["title"])}</a></h3>
         <p class="body-6 au-muted">{html.escape(p["description"])}</p>
-        <p class="au-post-meta caption-5">{a["name"]} · {human_date(p["date_obj"])} · {p["minutes"]} dk</p>
+        <p class="au-post-meta caption-5">{a["name"]} · {human_date(p["date_obj"], p["lang"])} · {p["minutes"]} {T[p["lang"]]["mins"]}</p>
       </article>
 '''
 
 
 # ── Pages ─────────────────────────────────────────────────────────
 
-def build_post(p, posts, index_html):
-    up = '../../'
-    url = f'{SITE}/blog/{p["slug"]}/'
+def write(path, text):
+    out = ROOT / path.strip('/') / 'index.html'
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(text, encoding='utf-8', newline='\n')
+
+
+def build_post(p, posts, page_html):
+    lang, t = p['lang'], T[p['lang']]
+    path, url = path_of(p), SITE + path_of(p)
     a = AUTHORS[p['author']]
-    header, footer = chrome(index_html, up)
+    other = 'en' if lang == 'tr' else 'tr'
+    header, footer = chrome(page_html, HOME[lang])
+    links = {lang: path, other: p['alt'] or BLOG[other]}
+    header = set_lang_links(header, lang, links['tr'], links['en'])
+    alternates = {lang: path, other: p['alt']} if p['alt'] else {}
     org = {'@id': SITE + '/#organization'}
     data = {'@context': 'https://schema.org', '@graph': [
         {'@type': 'BlogPosting', '@id': url + '#article', 'headline': p['title'], 'description': p['description'],
-         'datePublished': p['date'], 'dateModified': p.get('updated', p['date']), 'inLanguage': 'tr',
-         'mainEntityOfPage': url, 'url': url, 'image': SITE + '/assets/og-image.png', 'wordCount': p['words'],
+         'datePublished': p['date'], 'dateModified': p.get('updated', p['date']), 'inLanguage': lang,
+         'mainEntityOfPage': url, 'url': url, 'image': f'{SITE}/assets/{t["og_image"]}', 'wordCount': p['words'],
          'articleSection': p['category'],
-         'author': {'@type': 'Person', 'name': a['name'], 'jobTitle': a['role'], 'email': a['email'], 'worksFor': org},
-         'publisher': org, 'isPartOf': {'@id': SITE + '/blog/#blog'}},
+         'author': {'@type': 'Person', 'name': a['name'], 'jobTitle': t['role'], 'email': a['email'], 'worksFor': org},
+         'publisher': org, 'isPartOf': {'@id': SITE + BLOG[lang] + '#blog'}},
         {'@type': 'BreadcrumbList', 'itemListElement': [
-            {'@type': 'ListItem', 'position': 1, 'name': 'Ana sayfa', 'item': SITE + '/'},
-            {'@type': 'ListItem', 'position': 2, 'name': 'Blog', 'item': SITE + '/blog/'},
+            {'@type': 'ListItem', 'position': 1, 'name': t['home'], 'item': SITE + HOME[lang]},
+            {'@type': 'ListItem', 'position': 2, 'name': 'Blog', 'item': SITE + BLOG[lang]},
             {'@type': 'ListItem', 'position': 3, 'name': p['title'], 'item': url}]},
     ]}
-    toc = ''.join(f'<li><a href="#{anc}">{html.escape(t)}</a></li>' for anc, t in p['toc'])
+    if p['alt']:
+        data['@graph'][0]['workTranslation' if lang == 'tr' else 'translationOfWork'] = {'@id': SITE + p['alt'] + '#article'}
+    toc = ''.join(f'<li><a href="#{anc}">{html.escape(x)}</a></li>' for anc, x in p['toc'])
     others = [q for q in posts if q['slug'] != p['slug']][:2]
     related = ''.join(card(q, f'../{q["slug"]}/') for q in others)
-    page = head(f'{p["title"]} | Aule Software Blog', p['description'], url, up, jsonld(data)) + header + f'''
+    page = head(lang, f'{p["title"]} | Aule Software Blog', p['description'], path, alternates, jsonld(data), 'article') + header + f'''
 <main id="content">
   <article class="au-article">
     <header class="au-container au-article-head">
-      <nav class="au-crumbs caption-4" aria-label="İçerik yolu"><a href="{up}">Ana sayfa</a><span aria-hidden="true">/</span><a href="../">Blog</a></nav>
+      <nav class="au-crumbs caption-4" aria-label="{t["crumbs"]}"><a href="{HOME[lang]}">{t["home"]}</a><span aria-hidden="true">/</span><a href="../">Blog</a></nav>
       <p class="au-eyebrow caption-4">{html.escape(p["category"])}</p>
       <h1 class="heading-2 au-article-title">{html.escape(p["title"])}</h1>
       <p class="body-3 au-muted au-article-lead">{html.escape(p["description"])}</p>
       <div class="au-article-meta caption-2">{author_line(a, p)}</div>
     </header>
     <div class="au-container au-article-layout">
-      <nav class="au-toc" aria-label="İçindekiler">
-        <p class="caption-3">İçindekiler</p>
+      <nav class="au-toc" aria-label="{t["toc"]}">
+        <p class="caption-3">{t["toc"]}</p>
         <ol class="body-6">{toc}</ol>
       </nav>
       <div class="au-prose body-7">
@@ -290,75 +373,71 @@ def build_post(p, posts, index_html):
       </div>
     </div>
     <div class="au-container au-article-foot">
-      <aside class="au-author-box" aria-label="Yazar">
+      <aside class="au-author-box" aria-label="{t["author"]}">
         <span class="au-avatar" aria-hidden="true">{a["initials"]}</span>
         <div>
           <p class="title-2">{a["name"]}</p>
-          <p class="caption-4 au-founder-role">{a["role"]}, Aule Software</p>
-          <p class="body-6 au-muted">{html.escape(a["bio"])}</p>
+          <p class="caption-4 au-founder-role">{t["role"]}, Aule Software</p>
+          <p class="body-6 au-muted">{html.escape(a["bio"][lang])}</p>
           <a class="au-founder-mail caption-2" href="mailto:{a["email"]}">{a["email"]}</a>
         </div>
       </aside>
       <div class="au-band au-post-cta">
         <div>
-          <p class="au-eyebrow caption-4">Ön görüşme</p>
-          <p class="heading-5">Bu yazıdaki konuları kurumunuz için konuşalım.</p>
-          <p class="body-6">Kısa bir ön görüşmede hedeflerinizi ve öncelikli süreçlerinizi birlikte değerlendirelim.</p>
+          <p class="au-eyebrow caption-4">{t["cta_eyebrow"]}</p>
+          <p class="heading-5">{t["cta_title"]}</p>
+          <p class="body-6">{t["cta_text"]}</p>
         </div>
-        <a class="au-btn au-btn-primary" href="{up}#contact"><span class="au-btn-label">Ön görüşme planlayın</span>{ARROW}</a>
+        <a class="au-btn au-btn-primary" href="{HOME[lang]}#contact"><span class="au-btn-label">{t["cta_btn"]}</span>{ARROW}</a>
       </div>
     </div>
   </article>
   <section class="au-section au-related" aria-labelledby="related-title">
     <div class="au-container">
-      <h2 class="heading-5" id="related-title">Diğer yazılar</h2>
+      <h2 class="heading-5" id="related-title">{t["related"]}</h2>
       <div class="au-post-grid">
 {related}      </div>
     </div>
   </section>
 </main>
-''' + tail(footer, up)
-    out = ROOT / 'blog' / p['slug'] / 'index.html'
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(page, encoding='utf-8', newline='\n')
+''' + tail(footer)
+    write(path, page)
 
 
-def build_index(posts, index_html):
-    up = '../'
-    url = SITE + '/blog/'
-    header, footer = chrome(index_html, up)
-    header = header.replace('href="../blog/" data-i18n="nav.blog">Blog', 'href="./" data-i18n="nav.blog" aria-current="page">Blog')
-    title = 'Blog | Aule Software'
-    desc = 'Kuruma özel yazılım, iş süreçleri analizi ve dijital dönüşüm üzerine Aule Software kurucularının yazıları.'
+def build_index(lang, posts, page_html):
+    t, path = T[lang], BLOG[lang]
+    url = SITE + path
+    header, footer = chrome(page_html, HOME[lang])
+    header = set_lang_links(header, lang, BLOG['tr'], BLOG['en'])
+    header = header.replace(f'href="{path}" data-i18n="nav.blog">', f'href="{path}" data-i18n="nav.blog" aria-current="page">')
     data = {'@context': 'https://schema.org', '@type': 'Blog', '@id': url + '#blog', 'url': url, 'name': 'Aule Software Blog',
-            'description': desc, 'inLanguage': 'tr', 'publisher': {'@id': SITE + '/#organization'},
-            'blogPost': [{'@type': 'BlogPosting', 'headline': p['title'], 'url': f'{SITE}/blog/{p["slug"]}/',
+            'description': t['index_desc'], 'inLanguage': lang, 'publisher': {'@id': SITE + '/#organization'},
+            'blogPost': [{'@type': 'BlogPosting', 'headline': p['title'], 'url': SITE + path_of(p),
                           'datePublished': p['date'], 'author': {'@type': 'Person', 'name': AUTHORS[p['author']]['name']}} for p in posts]}
     cards = ''.join(card(p, f'{p["slug"]}/') for p in posts)
-    page = head(title, desc, url, up, jsonld(data)) + header + f'''
+    page = head(lang, t['index_title'], t['index_desc'], path, {'tr': BLOG['tr'], 'en': BLOG['en']}, jsonld(data)) + header + f'''
 <main id="content">
   <section class="au-section au-blog-head">
     <div class="au-container">
       <div class="au-section-head au-measure">
         <p class="au-eyebrow caption-4">Blog</p>
-        <h1 class="heading-2">Kuruma özel yazılım ve<br> dijital dönüşüm üzerine.</h1>
-        <p class="body-3 au-muted">{desc}</p>
+        <h1 class="heading-2">{t["index_h1"]}</h1>
+        <p class="body-3 au-muted">{t["index_desc"]}</p>
       </div>
       <div class="au-post-grid">
 {cards}      </div>
     </div>
   </section>
 </main>
-''' + tail(footer, up)
-    (ROOT / 'blog').mkdir(exist_ok=True)
-    (ROOT / 'blog' / 'index.html').write_text(page, encoding='utf-8', newline='\n')
+''' + tail(footer)
+    write(path, page)
 
 
-def build_rss(posts):
+def build_rss(lang, posts):
     items = ''.join(f'''    <item>
       <title>{html.escape(p["title"])}</title>
-      <link>{SITE}/blog/{p["slug"]}/</link>
-      <guid>{SITE}/blog/{p["slug"]}/</guid>
+      <link>{SITE}{path_of(p)}</link>
+      <guid>{SITE}{path_of(p)}</guid>
       <pubDate>{datetime.datetime.combine(p["date_obj"], datetime.time(9, 0)).strftime("%a, %d %b %Y %H:%M:%S +0300")}</pubDate>
       <description>{html.escape(p["description"])}</description>
     </item>
@@ -367,59 +446,87 @@ def build_rss(posts):
 <rss version="2.0">
   <channel>
     <title>Aule Software Blog</title>
-    <link>{SITE}/blog/</link>
-    <description>Kuruma özel yazılım, iş süreçleri analizi ve dijital dönüşüm üzerine yazılar.</description>
-    <language>tr</language>
+    <link>{SITE}{BLOG[lang]}</link>
+    <description>{T[lang]["rss_desc"]}</description>
+    <language>{lang}</language>
 {items}  </channel>
 </rss>
 '''
-    (ROOT / 'blog' / 'rss.xml').write_text(rss, encoding='utf-8', newline='\n')
+    out = ROOT / BLOG[lang].strip('/') / 'rss.xml'
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(rss, encoding='utf-8', newline='\n')
 
 
-def build_teaser(posts, index_html):
+def teaser_block(lang, posts):
+    """The 'latest articles' section for a home page; links are relative to that home page."""
+    t = T[lang]
     cards = ''.join(card(p, f'blog/{p["slug"]}/') for p in posts[:3])
-    block = f'''  <!--blog:start-->
+    return f'''  <!--blog:start-->
   <!-- Blog -->
   <section class="au-section" id="blog" aria-labelledby="blog-title">
     <div class="au-container">
       <div class="au-section-head au-measure au-reveal">
         <p class="au-eyebrow caption-4">Blog</p>
-        <h2 class="heading-2" id="blog-title" data-split>Son yazılar</h2>
-        <p class="body-3 au-muted">Kuruma özel yazılım, süreç analizi ve dijital dönüşüm üzerine kurucularımızın yazıları.</p>
+        <h2 class="heading-2" id="blog-title" data-split>{t["teaser_title"]}</h2>
+        <p class="body-3 au-muted">{t["teaser_desc"]}</p>
       </div>
       <div class="au-post-grid au-reveal au-stagger">
 {cards}      </div>
-      <p class="au-blog-more au-reveal"><a class="au-btn au-btn-secondary" href="blog/"><span class="au-btn-label">Tüm yazılar</span>{ARROW}</a></p>
+      <p class="au-blog-more au-reveal"><a class="au-btn au-btn-secondary" href="blog/"><span class="au-btn-label">{t["all_posts"]}</span>{ARROW}</a></p>
     </div>
   </section>
   <!--blog:end-->
 '''
-    return re.sub(r'  <!--blog:start-->.*?<!--blog:end-->\n', lambda m: block, index_html, count=1, flags=re.S)
 
 
-def build_sitemap(posts):
-    home = ['', 'en/']
-    alt = ''.join(f'\n    <xhtml:link rel="alternate" hreflang="{l}" href="{SITE}/{h}"/>' for l, h in [('tr', ''), ('en', 'en/'), ('x-default', '')])
-    today = max(p['date_obj'] for p in posts).isoformat() if posts else datetime.date.today().isoformat()
-    urls = ''.join(f'  <url>\n    <loc>{SITE}/{h}</loc>\n    <lastmod>{today}</lastmod>{alt}\n  </url>\n' for h in home)
-    urls += f'  <url>\n    <loc>{SITE}/blog/</loc>\n    <lastmod>{today}</lastmod>\n  </url>\n'
-    urls += ''.join(f'  <url>\n    <loc>{SITE}/blog/{p["slug"]}/</loc>\n    <lastmod>{p.get("updated", p["date"])}</lastmod>\n  </url>\n' for p in posts)
+def put_teaser(page_html, block):
+    return re.sub(r'  <!--blog:start-->.*?<!--blog:end-->\n', lambda m: block, page_html, count=1, flags=re.S)
+
+
+def build_pages(lang, page_html, everything=None):
+    """Posts, index and RSS for one language; page_html is that language's home page (for the header and footer)."""
+    posts = (everything or load_all())[lang]
+    for p in posts:
+        build_post(p, posts, page_html)
+    build_index(lang, posts, page_html)
+    build_rss(lang, posts)
+    return posts
+
+
+def build_sitemap(everything):
+    tr, en = everything['tr'], everything['en']
+    dates = [p['date_obj'] for p in tr + en]
+    today = max(dates).isoformat() if dates else datetime.date.today().isoformat()
+
+    def entry(path, lastmod, alts):
+        x = ''.join(f'\n    <xhtml:link rel="alternate" hreflang="{l}" href="{SITE}{u}"/>' for l, u in alts.items())
+        if alts:
+            x += f'\n    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE}{alts.get("tr", path)}"/>'
+        return f'  <url>\n    <loc>{SITE}{path}</loc>\n    <lastmod>{lastmod}</lastmod>{x}\n  </url>\n'
+
+    pair = {'tr': '/', 'en': '/en/'}
+    urls = entry('/', today, pair) + entry('/en/', today, pair)
+    bpair = {'tr': BLOG['tr'], 'en': BLOG['en']}
+    urls += entry(BLOG['tr'], today, bpair) + entry(BLOG['en'], today, bpair) if en else entry(BLOG['tr'], today, {})
+    for p in tr + en:
+        alts = {p['lang']: path_of(p), ('en' if p['lang'] == 'tr' else 'tr'): p['alt']} if p['alt'] else {}
+        urls += entry(path_of(p), p.get('updated', p['date']), alts)
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
            'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + urls + '</urlset>\n')
     (ROOT / 'sitemap.xml').write_text(xml, encoding='utf-8', newline='\n')
 
 
 def main():
-    posts = load_posts()
+    """Turkish blog, the Turkish home page block and the sitemap. build_en.py then builds the English side."""
+    everything = load_all()
     src = ROOT / 'index.html'
-    index_html = build_teaser(posts, src.read_text(encoding='utf-8'))
+    index_html = put_teaser(src.read_text(encoding='utf-8'), teaser_block('tr', everything['tr']))
     src.write_text(index_html, encoding='utf-8', newline='\n')
-    for p in posts:
-        build_post(p, posts, index_html)
-    build_index(posts, index_html)
-    build_rss(posts)
-    build_sitemap(posts)
-    print(f'blog: {len(posts)} posts, ' + ', '.join(f'{p["slug"]} ({p["words"]} words)' for p in posts))
+    build_pages('tr', index_html, everything)
+    build_sitemap(everything)
+    for lang in ('tr', 'en'):
+        print(f'blog ({lang}): {len(everything[lang])} posts, ' + ', '.join(f'{p["slug"]} ({p["words"]} words)' for p in everything[lang]))
+    return everything
 
 
 if __name__ == '__main__':
