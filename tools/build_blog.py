@@ -508,6 +508,8 @@ def build_sitemap(everything):
     urls = entry('/', today, pair) + entry('/en/', today, pair)
     bpair = {'tr': BLOG['tr'], 'en': BLOG['en']}
     urls += entry(BLOG['tr'], today, bpair) + entry(BLOG['en'], today, bpair) if en else entry(BLOG['tr'], today, {})
+    spair = {'tr': '/hizmetler/', 'en': '/en/services/'}
+    urls += entry(spair['tr'], today, spair) + entry(spair['en'], today, spair)
     for p in tr + en:
         alts = {p['lang']: path_of(p), ('en' if p['lang'] == 'tr' else 'tr'): p['alt']} if p['alt'] else {}
         urls += entry(path_of(p), p.get('updated', p['date']), alts)

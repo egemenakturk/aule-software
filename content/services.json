@@ -1,0 +1,168 @@
+{
+  "tr": {
+    "path": "/hizmetler/",
+    "title": "Hizmetler: iş süreçleri analizi ve kuruma özel yazılım | Aule Software",
+    "description": "İş süreçleri analizinden çözüm tasarımına, kuruma özel yazılım geliştirmeden eğitim ve yıllık bakıma kadar Aule Software'in beş adımlı hizmeti ve her adımda size teslim edilenler.",
+    "eyebrow": "Hizmetlerimiz",
+    "h1": "Analizden kalıcı desteğe, beş adımda kuruma özel yazılım.",
+    "lead": "Her projeyi aynı ekip baştan sona yürütür: süreçlerinizi yerinde analiz eder, yatırımın geri dönüşünü hesaplar, yazılımı geliştirir, ekiplerinizi eğitir ve yayından sonra da yanınızda kalır.",
+    "nav_label": "Hizmet adımları",
+    "what": "Neler yapıyoruz",
+    "deliverable": "Size teslim edilen",
+    "cta_eyebrow": "Ön görüşme",
+    "cta_title": "Süreçlerinizi birlikte değerlendirelim.",
+    "cta_text": "Kısa bir ön görüşmede öncelikli süreçlerinizi dinliyor, en çok zamanın kaybolduğu adımları birlikte belirliyoruz.",
+    "cta_btn": "Ön görüşme planlayın",
+    "cases_link": "Gerçek projelerimizi inceleyin",
+    "steps": [
+      {
+        "id": "analiz",
+        "n": "01",
+        "t": "Analiz",
+        "d": "Kurumunuzla ya da belirlediğiniz departmanlarla görüşüyor, yapılan işlerin analizini çıkarıyor ve hızlandırılabilecek noktaları saptıyoruz. Süreci olması gerektiği gibi değil, gerçekte nasıl yürüdüğü gibi haritalıyoruz.",
+        "items": [
+          "Departman yöneticileri ve süreci yürüten çalışanlarla birebir görüşmeler",
+          "İşin yanında izleme; dosya, e-posta ve sistem kayıtlarının incelenmesi",
+          "Her adımın süresinin, hacminin ve hata oranının ölçülmesi",
+          "Tekrar eden manuel adımların ve görünmeyen maliyetlerin tespiti"
+        ],
+        "out": "Süreç haritası ve her adımın yıllık zaman ve maliyet tablosu"
+      },
+      {
+        "id": "cozum-tasarimi",
+        "n": "02",
+        "t": "Çözüm tasarımı",
+        "d": "Analiz sonuçlarını ve bunlara yönelik çözümlerimizi listeliyor, önceliklendiriyor; her biri için yatırım getirisini ve yol haritasını çıkarıyoruz. Neyin, hangi sırayla ve ne kadar sürede hayata geçeceği baştan bellidir.",
+        "items": [
+          "Fırsatların etki ve efor açısından önceliklendirilmesi",
+          "Her öneri için yatırım tutarı, yıllık tasarruf ve geri dönüş süresi",
+          "Uygun olan yerde hazır ürün önerisi; her ihtiyaç özel yazılım gerektirmez",
+          "Kapsam, aşamalar ve takvimden oluşan yol haritası"
+        ],
+        "out": "Önceliklendirilmiş öneri listesi, iş gerekçesi ve projeye özel teklif"
+      },
+      {
+        "id": "gelistirme",
+        "n": "03",
+        "t": "Geliştirme",
+        "d": "Onaylanan çözümü, kurum içi altyapınızla uyumlu ve güvenli bir web platformu olarak geliştiriyoruz. Yapay zekâ destekli geliştirmeyle kısa döngülerde, ekiplerinizle birlikte test ederek ilerliyoruz.",
+        "items": [
+          "Kullanıcı ve rol yönetimi, onay akışları ve raporlama panelleri",
+          "İK sistemi, ERP, intranet ve kurumsal dizin gibi mevcut sistemlerle entegrasyon",
+          "Kısa döngüler; her aşamada ekiplerinizle birlikte test",
+          "İnsan incelemesi, otomatik testler ve güvenlik taramaları"
+        ],
+        "out": "Çalışan yazılım, kaynak kod ve teknik dokümantasyon"
+      },
+      {
+        "id": "egitim-ve-devreye-alma",
+        "n": "04",
+        "t": "Eğitim ve devreye alma",
+        "d": "Sistemi kademeli olarak devreye alıyor, her kullanıcı grubunu uygulamalı olarak eğitiyoruz. Kullanım kılavuzları ve değişim yönetimi desteğiyle yazılım ilk günden gündelik işin parçası oluyor.",
+        "items": [
+          "Pilot kullanıcılarla ilk kullanım ve geri bildirim",
+          "Mevcut verilerin yeni sisteme aktarılması",
+          "Her kullanıcı grubuna uygulamalı eğitim ve kullanım kılavuzları",
+          "Analizde belirlenen başarı kriterlerinin ölçülmesi"
+        ],
+        "out": "Ekiplerinizin gündelik işte kullandığı sistem ve ilk ölçüm sonuçları"
+      },
+      {
+        "id": "bakim-ve-destek",
+        "n": "05",
+        "t": "Bakım ve destek",
+        "d": "Yıllık bakım ve teknik destekle sistemlerinizin yayından sonra da güncel, güvenli ve ihtiyaçlarınıza uygun kalmasını sağlıyoruz.",
+        "items": [
+          "Güvenlik güncellemeleri ve hata düzeltmeleri",
+          "Performans iyileştirmeleri",
+          "İhtiyaçlar değiştikçe yeni özellik geliştirmeleri",
+          "Sistemin yeni departmanlara ve süreçlere genişletilmesi"
+        ],
+        "out": "Yıllık bakım ve destek kapsamında sürekli güncel bir sistem"
+      }
+    ]
+  },
+  "en": {
+    "path": "/en/services/",
+    "title": "Services: business process analysis and custom software | Aule Software",
+    "description": "Aule Software's five-step service, from business process analysis and solution design to custom software development, training and annual maintenance, and what you receive at each step.",
+    "eyebrow": "Our services",
+    "h1": "From analysis to lasting support, custom software in five steps.",
+    "lead": "The same team runs every project from start to finish: we analyze your processes on site, calculate the return on investment, build the software, train your teams and stay with you after launch.",
+    "nav_label": "Service steps",
+    "what": "What we do",
+    "deliverable": "What you receive",
+    "cta_eyebrow": "Consultation",
+    "cta_title": "Let’s review your processes together.",
+    "cta_text": "In a short introductory call, we listen to your priority processes and identify together where the most time is lost.",
+    "cta_btn": "Book a consultation",
+    "cases_link": "See our real projects",
+    "steps": [
+      {
+        "id": "analysis",
+        "n": "01",
+        "t": "Analysis",
+        "d": "We meet with your organization or the departments you choose, analyze the work being done and identify where it can be done faster. We map the process as it really runs, not as it should run.",
+        "items": [
+          "Interviews with department managers and the people who run the process",
+          "Observing the work and reviewing files, e-mails and system logs",
+          "Measuring the time, volume and error rate of each step",
+          "Identifying repeated manual steps and hidden costs"
+        ],
+        "out": "A process map and a table of the annual time and cost of each step"
+      },
+      {
+        "id": "solution-design",
+        "n": "02",
+        "t": "Solution design",
+        "d": "We list the findings and our proposed solutions, prioritize them, and set out the return on investment and roadmap for each. What will be delivered, in what order and how long it will take is clear from the start.",
+        "items": [
+          "Prioritizing opportunities by impact and effort",
+          "Investment, annual savings and payback period for each proposal",
+          "A ready-made product where it fits better; not every need calls for custom software",
+          "A roadmap of scope, phases and timeline"
+        ],
+        "out": "A prioritized list of proposals, a business case and a project-specific quote"
+      },
+      {
+        "id": "development",
+        "n": "03",
+        "t": "Development",
+        "d": "We build the approved solution as a secure web platform that fits your in-house infrastructure. With AI assisted development, we move in short cycles and test together with your teams.",
+        "items": [
+          "User and role management, approval flows and reporting dashboards",
+          "Integration with existing systems such as HR, ERP, the intranet and the corporate directory",
+          "Short cycles, testing every stage together with your teams",
+          "Human review, automated tests and security scans"
+        ],
+        "out": "Working software, the source code and technical documentation"
+      },
+      {
+        "id": "training-and-rollout",
+        "n": "04",
+        "t": "Training and rollout",
+        "d": "We roll the system out in phases and give every user group practical training. With user guides and change management support, the software becomes part of daily work from day one.",
+        "items": [
+          "First use and feedback with pilot users",
+          "Moving existing data into the new system",
+          "Practical training and user guides for each user group",
+          "Measuring the success criteria set in the analysis"
+        ],
+        "out": "A system your teams use in daily work, and the first measured results"
+      },
+      {
+        "id": "maintenance-and-support",
+        "n": "05",
+        "t": "Maintenance and support",
+        "d": "With annual maintenance and technical support, your systems stay up to date, secure and fit for your needs after launch.",
+        "items": [
+          "Security updates and bug fixes",
+          "Performance improvements",
+          "New features as your needs change",
+          "Extending the system to new departments and processes"
+        ],
+        "out": "A system kept up to date under an annual maintenance and support agreement"
+      }
+    ]
+  }
+}

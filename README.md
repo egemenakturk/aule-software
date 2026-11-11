@@ -21,6 +21,7 @@ Ardından `http://localhost:5173` adresini açın.
 | `content/blog/*.md`, `content/blog/en/*.md` | Blog yazılarının kaynağı: Türkçe ve İngilizce. İngilizce yazı, `tr:` alanında Türkçe karşılığının slug'ını taşır; iki sayfa birbirine hreflang ve dil düğmesiyle bağlanır. |
 | `blog/`, `en/blog/` | Türkçe ve İngilizce blog dizini, yazı sayfaları ve `rss.xml`. **Elle düzenlenmez**; `tools/build_blog.py` üretir. |
 | `tools/build_blog.py` | Yazıları HTML'e çevirir; `index.html`'deki "Son yazılar" bölümünü ve `sitemap.xml`'i günceller. `build_en.py` bunu kendisi çağırır. |
+| `content/services.json`, `hizmetler/`, `en/services/` | Hizmetler sayfası (TR/EN): beş adımın açıklaması, "Neler yapıyoruz" ve "Size teslim edilen". Sayfalar **elle düzenlenmez**; `tools/build_services.py` JSON'dan üretir, taahhütler bandını ana sayfadan alır. |
 | `robots.txt`, `sitemap.xml` | Arama motoru keşif dosyaları. `sitemap.xml` üretilir. |
 | `llms.txt` | Yapay zekâ asistanları için site özeti ve bağlantılar ([llmstxt.org](https://llmstxt.org)). **Elle düzenlenmez**; `tools/build_en.py` üretir. |
 | `assets/fonts/` | Kendi sunucumuzdan yüklenen Geist yazı tipleri (OFL). |

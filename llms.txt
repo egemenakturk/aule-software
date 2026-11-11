@@ -14,6 +14,7 @@ English: Aule Software is an Istanbul based digital transformation company that 
 
 - [Ana sayfa (Türkçe)](https://www.aulesoftware.com/): Aule Software, departmanlarınızın iş süreçlerini analiz eder; verimliliği artıran ve operasyonel maliyeti düşüren yazılımları kurumunuza özel geliştirir.
 - [Home page (English)](https://www.aulesoftware.com/en/): Aule Software analyzes how your departments work and builds custom software that raises efficiency and lowers operating costs.
+- [Hizmetler](https://www.aulesoftware.com/hizmetler/) / [Services](https://www.aulesoftware.com/en/services/): Analiz, çözüm tasarımı, geliştirme, eğitim ve bakım adımlarının ayrıntıları ve her adımda teslim edilenler.
 - [Blog (Türkçe)](https://www.aulesoftware.com/blog/): Kuruma özel yazılım, süreç analizi ve yapay zekâ destekli geliştirme üzerine yazılar.
 - [Blog (English)](https://www.aulesoftware.com/en/blog/): Articles on custom software, process analysis and AI assisted development.
 

@@ -20,6 +20,7 @@
     'nav.label': 'Main menu',
     'nav.home': 'Aule Software, back to top',
     'nav.services': 'Services',
+    'work.more': 'Service details',
     'nav.faq': 'FAQ',
     'nav.contact': 'Contact',
     'lang.label': 'Language',
