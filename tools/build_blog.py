@@ -204,6 +204,8 @@ def head(title, desc, canonical, up, extra=''):
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="{SITE}/assets/og-image.png">
   <link rel="alternate" type="application/rss+xml" title="Aule Software Blog" href="{SITE}/blog/rss.xml">
+  <link rel="icon" href="{up}favicon.ico" sizes="48x48">
+  <link rel="icon" href="{up}assets/favicon-192.png" sizes="192x192" type="image/png">
   <link rel="icon" href="{up}assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="{up}assets/apple-touch-icon.png">
   <link rel="preload" href="{up}assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>

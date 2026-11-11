@@ -183,6 +183,8 @@ def build_legal():
   <title>{title} | Aule Software</title>
   <meta name="robots" content="noindex">
   <link rel="canonical" href="{SITE}/{path}/">
+  <link rel="icon" href="{up}favicon.ico" sizes="48x48">
+  <link rel="icon" href="{up}assets/favicon-192.png" sizes="192x192" type="image/png">
   <link rel="icon" href="{up}assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="{up}assets/apple-touch-icon.png">
   <link rel="preload" href="{up}assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
